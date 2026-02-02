@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # Frontend + Backend for production deployment on kconsole.koompi.cloud
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/labkoompi
+      - BARAY_API_KEY=${BARAY_API_KEY}
+      - BARAY_SK=${BARAY_SK}
+      - BARAY_IV=${BARAY_IV}
+      - BASE_URL=${BASE_URL}
+      - PORT=3001
+      - NODE_ENV=production
+    depends_on:
+      - mongo
+    restart: always
+
+  # MongoDB
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
+volumes:
+  mongo_data:

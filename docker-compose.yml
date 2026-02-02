@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Frontend + Backend
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/labkoompi
+      - BASE_URL=http://localhost:3000
+      - PORT=3001
+      - NODE_ENV=development
+    depends_on:
+      - mongo
+    volumes:
+      - ./src:/app/src
+      - ./server:/app/server
+      - ./index.html:/app/index.html
+      - ./package.json:/app/package.json
+    restart: unless-stopped
+
+  # MongoDB
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
