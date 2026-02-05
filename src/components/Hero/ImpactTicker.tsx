@@ -56,7 +56,7 @@ const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) =
   }, [isVisible, value])
 
   return (
-    <span ref={ref} className="font-mono text-3xl md:text-4xl font-bold text-solar-amber">
+    <span ref={ref} className="font-mono text-3xl md:text-4xl font-bold text-koompi-accent-orange">
       {count}{suffix}
     </span>
   )

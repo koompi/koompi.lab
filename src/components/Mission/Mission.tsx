@@ -56,9 +56,9 @@ const Mission = () => {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Headline */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-cambodian-blue mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold text-koompi-primary mb-6">
             Built to empower.
-            <span className="block text-solar-amber">Born to connect.</span>
+            <span className="block text-koompi-accent-orange">Born to connect.</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Our KOOMPI Lab and Content Server solutions are designed specifically
@@ -82,7 +82,7 @@ const Mission = () => {
         <div className="mt-20 bg-white rounded-2xl shadow-xl p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-2xl font-bold text-cambodian-blue mb-4">
+              <h3 className="text-2xl font-bold text-koompi-primary mb-4">
                 Transparent Pricing
               </h3>
               <p className="text-gray-600 mb-6">
@@ -105,7 +105,7 @@ const Mission = () => {
               </ul>
             </div>
             <div className="bg-cream rounded-xl p-6">
-              <h4 className="font-semibold text-cambodian-blue mb-4">What's Included:</h4>
+              <h4 className="font-semibold text-koompi-primary mb-4">What's Included:</h4>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li>• KOOMPI Mini/Ministations</li>
                 <li>• 2TB SSD with educational content</li>

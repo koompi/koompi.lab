@@ -29,11 +29,12 @@ const HomePage = () => {
         provinceFilter={provinceFilter}
         statusFilter={statusFilter}
         onFundClick={handleFundClick}
+        limit={12}
+        compact
       />
-      <Footer />
 
       {/* Quick link to all schools */}
-      <section className="py-16 bg-cambodian-blue text-white text-center">
+      <section className="py-16 bg-koompi-primary text-white text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to make a difference?
@@ -43,7 +44,7 @@ const HomePage = () => {
           </p>
           <Link
             to="/schools"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-solar-amber text-white rounded-full font-semibold hover:bg-amber-600 transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-koompi-accent-orange text-white rounded-full font-semibold hover:bg-amber-600 transition-colors"
           >
             View All Schools
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,6 +53,8 @@ const HomePage = () => {
           </Link>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }

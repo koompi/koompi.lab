@@ -1,10 +1,10 @@
 const Footer = () => {
   return (
-    <footer className="bg-cambodian-blue text-white py-12 px-4">
+    <footer className="bg-koompi-primary text-white py-12 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-2xl font-bold text-solar-amber mb-4">KOOMPI Lab</h3>
+            <h3 className="text-2xl font-bold text-koompi-accent-orange mb-4">KOOMPI Lab</h3>
             <p className="text-gray-400 text-sm">
               Bringing digital education to every school in Cambodia.
             </p>

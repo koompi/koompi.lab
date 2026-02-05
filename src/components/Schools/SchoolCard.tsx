@@ -29,7 +29,7 @@ const SchoolCard = ({ school, onFund }: SchoolCardProps) => {
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-semibold text-cambodian-blue mb-1 line-clamp-1">
+        <h3 className="font-semibold text-koompi-primary mb-1 line-clamp-1">
           {school.name}
         </h3>
         <p className="text-sm text-gray-500 mb-3">
@@ -41,11 +41,11 @@ const SchoolCard = ({ school, onFund }: SchoolCardProps) => {
           <div className="mb-4">
             <div className="flex justify-between text-sm mb-1">
               <span className="text-gray-600">Funding Progress</span>
-              <span className="font-medium text-cambodian-blue">{school.fundedPercentage}%</span>
+              <span className="font-medium text-koompi-primary">{school.fundedPercentage}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
-                className="progress-bar bg-gradient-to-r from-cambodian-blue to-solar-amber h-2 rounded-full transition-all duration-1000"
+                className="progress-bar bg-gradient-to-r from-koompi-primary to-koompi-accent-orange h-2 rounded-full transition-all duration-1000"
                 style={{ width: `${school.fundedPercentage}%` }}
               />
             </div>
@@ -81,7 +81,7 @@ const SchoolCard = ({ school, onFund }: SchoolCardProps) => {
         {/* Fund Button */}
         <button
           onClick={() => onFund(school)}
-          className="w-full py-2 px-4 bg-cambodian-blue text-white rounded-lg font-medium hover:bg-blue-900 transition flex items-center justify-center gap-2"
+          className="w-full py-2 px-4 bg-koompi-primary text-white rounded-lg font-medium hover:bg-blue-900 transition flex items-center justify-center gap-2"
         >
           <span>Fund</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

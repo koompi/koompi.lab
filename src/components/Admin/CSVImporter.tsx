@@ -178,7 +178,7 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <div>
-            <h2 className="text-xl font-bold text-cambodian-blue">
+            <h2 className="text-xl font-bold text-koompi-primary">
               {step === 'upload' && 'Import Schools from CSV'}
               {step === 'preview' && 'Review Import Data'}
               {step === 'importing' && 'Importing Schools...'}
@@ -219,7 +219,7 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
                   </div>
                   <button
                     onClick={downloadTemplate}
-                    className="px-4 py-2 bg-cambodian-blue text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition"
+                    className="px-4 py-2 bg-koompi-primary text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition"
                   >
                     Download Template
                   </button>
@@ -234,8 +234,8 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
                 onDrop={handleDrop}
                 className={`border-2 border-dashed rounded-xl p-12 text-center transition ${
                   dragActive
-                    ? 'border-cambodian-blue bg-blue-50'
-                    : 'border-gray-300 hover:border-cambodian-blue'
+                    ? 'border-koompi-primary bg-blue-50'
+                    : 'border-gray-300 hover:border-koompi-primary'
                 }`}
               >
                 <input
@@ -264,7 +264,7 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
                 <p className="text-sm text-gray-500 mb-4">or</p>
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="px-6 py-2 bg-cambodian-blue text-white rounded-lg font-medium hover:bg-blue-900 transition"
+                  className="px-6 py-2 bg-koompi-primary text-white rounded-lg font-medium hover:bg-blue-900 transition"
                 >
                   Browse Files
                 </button>
@@ -275,7 +275,7 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
               {file && (
                 <div className="mt-6 p-4 bg-gray-50 rounded-lg flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <svg className="w-8 h-8 text-cambodian-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-koompi-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     <div>
@@ -327,7 +327,7 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
                   <p className="text-sm text-green-700">Valid Schools</p>
                 </div>
                 <div className="bg-blue-50 rounded-lg p-4 text-center">
-                  <p className="text-2xl font-bold text-cambodian-blue">{parseResult.summary.totalRows}</p>
+                  <p className="text-2xl font-bold text-koompi-primary">{parseResult.summary.totalRows}</p>
                   <p className="text-sm text-blue-700">Total Rows</p>
                 </div>
                 <div className="bg-red-50 rounded-lg p-4 text-center">
@@ -412,7 +412,7 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
 
           {step === 'importing' && (
             <div className="text-center py-12">
-              <div className="w-16 h-16 border-4 border-cambodian-blue border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+              <div className="w-16 h-16 border-4 border-koompi-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
               <p className="text-lg font-medium text-gray-700">Importing schools...</p>
               <p className="text-sm text-gray-500 mt-2">This may take a moment for large files</p>
             </div>
@@ -425,7 +425,7 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-cambodian-blue mb-2">
+              <h3 className="text-xl font-bold text-koompi-primary mb-2">
                 Import Complete!
               </h3>
               <p className="text-gray-600">
@@ -447,7 +447,7 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
             <button
               onClick={handleUpload}
               disabled={!file}
-              className="flex-1 py-3 bg-cambodian-blue text-white rounded-lg font-semibold hover:bg-blue-900 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 py-3 bg-koompi-primary text-white rounded-lg font-semibold hover:bg-blue-900 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Parse CSV
             </button>
@@ -476,7 +476,7 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
           <div className="flex gap-3 p-6 border-t bg-gray-50">
             <button
               onClick={onClose}
-              className="flex-1 py-3 bg-cambodian-blue text-white rounded-lg font-semibold hover:bg-blue-900 transition"
+              className="flex-1 py-3 bg-koompi-primary text-white rounded-lg font-semibold hover:bg-blue-900 transition"
             >
               Done
             </button>

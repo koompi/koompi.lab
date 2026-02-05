@@ -55,7 +55,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
 
     return (
       <div className="bg-cream rounded-lg p-4 mt-4">
-        <h4 className="font-semibold text-cambodian-blue mb-3">Your donation provides:</h4>
+        <h4 className="font-semibold text-koompi-primary mb-3">Your donation provides:</h4>
         <ul className="space-y-2 text-sm text-gray-700">
           <li className="flex items-start gap-2">
             <span className="text-growth-green mt-0.5">✓</span>
@@ -131,7 +131,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <div>
-            <h2 className="text-xl font-bold text-cambodian-blue">
+            <h2 className="text-xl font-bold text-koompi-primary">
               {step === 'amount' ? 'Select Amount' : 'Fund ' + school.name}
             </h2>
             <p className="text-sm text-gray-500">{school.studentCount.toLocaleString()} students</p>
@@ -168,7 +168,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
                     onClick={() => handleAmountSelect(value)}
                     className={`py-3 px-4 rounded-lg font-semibold transition ${
                       amount === value && !isCustom
-                        ? 'bg-cambodian-blue text-white'
+                        ? 'bg-koompi-primary text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -192,7 +192,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
                     }}
                     onFocus={() => setIsCustom(true)}
                     placeholder="Enter amount"
-                    className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                    className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                   />
                 </div>
               </div>
@@ -207,7 +207,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
               <div className="bg-cream rounded-lg p-4 mb-6">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Donation Amount</span>
-                  <span className="text-2xl font-bold text-cambodian-blue">
+                  <span className="text-2xl font-bold text-koompi-primary">
                     ${typeof amount === 'number' ? amount.toLocaleString() : amount}
                   </span>
                 </div>
@@ -228,7 +228,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
                     value={donorInfo.name}
                     onChange={(e) => setDonorInfo({ ...donorInfo, name: e.target.value })}
                     placeholder="Enter your name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                   />
                 </div>
 
@@ -242,7 +242,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
                     value={donorInfo.email}
                     onChange={(e) => setDonorInfo({ ...donorInfo, email: e.target.value })}
                     placeholder="your@email.com"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                   />
                 </div>
 
@@ -255,7 +255,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
                     onChange={(e) => setDonorInfo({ ...donorInfo, message: e.target.value })}
                     placeholder="Add a message of encouragement..."
                     rows={2}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent resize-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent resize-none"
                   />
                 </div>
 
@@ -264,7 +264,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
                     type="checkbox"
                     checked={donorInfo.anonymous}
                     onChange={(e) => setDonorInfo({ ...donorInfo, anonymous: e.target.checked })}
-                    className="w-4 h-4 text-cambodian-blue rounded focus:ring-cambodian-blue"
+                    className="w-4 h-4 text-koompi-primary rounded focus:ring-koompi-primary"
                   />
                   <span className="text-sm text-gray-600">Make donation anonymous</span>
                 </label>
@@ -296,7 +296,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
           <button
             onClick={handleContinue}
             disabled={isProcessing || (step === 'details' && (!donorInfo.name || !donorInfo.email))}
-            className="flex-1 py-3 bg-cambodian-blue text-white rounded-lg font-semibold hover:bg-blue-900 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="flex-1 py-3 bg-koompi-primary text-white rounded-lg font-semibold hover:bg-blue-900 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isProcessing ? (
               <>

@@ -93,7 +93,7 @@ const testimonials = [
 ]
 
 const milestones = [
-  { year: '2021', title: 'KOOMPI Founded', description: 'Started with a mission to bring digital education to Cambodia' },
+  { year: '2018', title: 'KOOMPI Founded', description: 'Cambodia\'s first locally designed laptop brand launched' },
   { year: '2022', title: 'First Lab Deployed', description: 'Pilot program equipped 5 schools with computer labs' },
   { year: '2023', title: 'Content Server Launch', description: 'Introduced offline digital library for schools without internet' },
   { year: '2024', title: '65 Schools Reached', description: 'Expanded to 65 schools with 12,000+ students impacted daily' },
@@ -107,15 +107,22 @@ const ImpactPage = () => {
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-cambodian-blue via-blue-900 to-cambodian-blue text-white py-24">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="relative overflow-hidden bg-gradient-to-br from-koompi-primary via-koompi-primary to-secondary-600 text-white py-20 pt-32">
+        {/* Subtle dot pattern overlay */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }} />
+
+        {/* Decorative gradient orbs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-koompi-accent-orange/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-koompi-accent-blue/20 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1 bg-solar-amber/20 text-solar-amber rounded-full text-sm font-medium mb-4">
-              Impact & Stories
-            </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Real Impact.<br />
-              <span className="text-solar-amber">Real Stories.</span>
+              <span className="text-koompi-accent-orange">Real Stories.</span>
             </h1>
             <p className="text-xl text-gray-300">
               See how KOOMPI Labs are transforming education across Cambodia, one school at a time.
@@ -125,19 +132,19 @@ const ImpactPage = () => {
           {/* Impact Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-solar-amber">65</p>
+              <p className="text-4xl font-bold text-koompi-accent-orange">65</p>
               <p className="text-gray-300">Schools Equipped</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-solar-amber">12,000+</p>
+              <p className="text-4xl font-bold text-koompi-accent-orange">12,000+</p>
               <p className="text-gray-300">Students Daily</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-solar-amber">24</p>
+              <p className="text-4xl font-bold text-koompi-accent-orange">24</p>
               <p className="text-gray-300">Provinces Reached</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-solar-amber">$780K</p>
+              <p className="text-4xl font-bold text-koompi-accent-orange">$780K</p>
               <p className="text-gray-300">Donated</p>
             </div>
           </div>
@@ -147,7 +154,7 @@ const ImpactPage = () => {
       {/* Timeline */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-cambodian-blue text-center mb-12">
+          <h2 className="text-3xl font-bold text-koompi-primary text-center mb-12">
             Our Journey
           </h2>
           <div className="relative">
@@ -162,12 +169,12 @@ const ImpactPage = () => {
                   className={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
                   <div className="flex-1" />
-                  <div className="hidden md:flex w-12 h-12 bg-cambodian-blue text-white rounded-full items-center justify-center font-bold z-10">
+                  <div className="hidden md:flex w-12 h-12 bg-koompi-primary text-white rounded-full items-center justify-center font-bold z-10">
                     {milestone.year.slice(-2)}
                   </div>
                   <div className="flex-1 p-6 bg-cream rounded-xl shadow-sm">
-                    <span className="text-solar-amber font-semibold">{milestone.year}</span>
-                    <h3 className="text-lg font-bold text-cambodian-blue mt-1">{milestone.title}</h3>
+                    <span className="text-koompi-accent-orange font-semibold">{milestone.year}</span>
+                    <h3 className="text-lg font-bold text-koompi-primary mt-1">{milestone.title}</h3>
                     <p className="text-gray-600 text-sm">{milestone.description}</p>
                   </div>
                 </div>
@@ -180,7 +187,7 @@ const ImpactPage = () => {
       {/* Impact Stories */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-cambodian-blue text-center mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary text-center mb-4">
             Featured Stories
           </h2>
           <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
@@ -194,14 +201,14 @@ const ImpactPage = () => {
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                 onClick={() => setSelectedStory(story)}
               >
-                <div className="aspect-video bg-gradient-to-br from-cambodian-blue to-solar-amber flex items-center justify-center">
+                <div className="aspect-video bg-gradient-to-br from-koompi-primary to-koompi-accent-orange flex items-center justify-center">
                   <span className="text-white text-4xl">📸</span>
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-medium text-solar-amber uppercase tracking-wide">
+                  <span className="text-xs font-medium text-koompi-accent-orange uppercase tracking-wide">
                     {story.category}
                   </span>
-                  <h3 className="text-xl font-bold text-cambodian-blue mt-2 mb-2">
+                  <h3 className="text-xl font-bold text-koompi-primary mt-2 mb-2">
                     {story.title}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4">{story.excerpt}</p>
@@ -219,7 +226,7 @@ const ImpactPage = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4 bg-cambodian-blue text-white">
+      <section className="py-20 px-4 bg-koompi-primary text-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             What People Say
@@ -231,7 +238,7 @@ const ImpactPage = () => {
                 key={index}
                 className="bg-white/10 backdrop-blur-sm rounded-2xl p-6"
               >
-                <div className="w-12 h-12 bg-solar-amber rounded-full flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-koompi-accent-orange rounded-full flex items-center justify-center mb-4">
                   <span className="text-white text-xl">👤</span>
                 </div>
                 <blockquote className="text-gray-200 mb-4">
@@ -260,17 +267,17 @@ const ImpactPage = () => {
             className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="aspect-video bg-gradient-to-br from-cambodian-blue to-solar-amber flex items-center justify-center">
+            <div className="aspect-video bg-gradient-to-br from-koompi-primary to-koompi-accent-orange flex items-center justify-center">
               <span className="text-white text-6xl">📸</span>
             </div>
             <div className="p-8">
               <div className="flex items-center gap-4 mb-4">
-                <span className="px-3 py-1 bg-solar-amber/20 text-solar-amber rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-koompi-accent-orange/20 text-koompi-accent-orange rounded-full text-sm font-medium">
                   {selectedStory.category}
                 </span>
                 <span className="text-gray-500">{selectedStory.date}</span>
               </div>
-              <h2 className="text-2xl font-bold text-cambodian-blue mb-4">
+              <h2 className="text-2xl font-bold text-koompi-primary mb-4">
                 {selectedStory.title}
               </h2>
               <div className="prose prose-gray max-w-none text-gray-600 whitespace-pre-line">
@@ -278,7 +285,7 @@ const ImpactPage = () => {
               </div>
               <button
                 onClick={() => setSelectedStory(null)}
-                className="mt-6 w-full py-3 bg-cambodian-blue text-white rounded-lg font-semibold hover:bg-blue-900 transition"
+                className="mt-6 w-full py-3 bg-koompi-primary text-white rounded-lg font-semibold hover:bg-blue-900 transition"
               >
                 Close
               </button>

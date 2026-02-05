@@ -82,12 +82,19 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-cambodian-blue to-blue-900 text-white py-24">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="relative overflow-hidden bg-gradient-to-br from-koompi-primary via-koompi-primary to-secondary-600 text-white py-20 pt-32">
+        {/* Subtle dot pattern overlay */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }} />
+
+        {/* Decorative gradient orbs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-koompi-accent-orange/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-koompi-accent-blue/20 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1 bg-solar-amber/20 text-solar-amber rounded-full text-sm font-medium mb-4">
-              Contact
-            </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Get in Touch
             </h1>
@@ -103,13 +110,13 @@ const ContactPage = () => {
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Contact Info */}
           <div className="lg:col-span-1">
-            <h2 className="text-2xl font-bold text-cambodian-blue mb-6">
+            <h2 className="text-2xl font-bold text-koompi-primary mb-6">
               Contact Information
             </h2>
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="text-cambodian-blue">{info.icon}</div>
+                  <div className="text-koompi-primary">{info.icon}</div>
                   <div>
                     <p className="text-sm text-gray-500">{info.label}</p>
                     <p className="font-medium text-gray-800">{info.value}</p>
@@ -120,20 +127,20 @@ const ContactPage = () => {
 
             {/* Quick Links */}
             <div className="mt-12">
-              <h3 className="text-lg font-semibold text-cambodian-blue mb-4">
+              <h3 className="text-lg font-semibold text-koompi-primary mb-4">
                 Quick Links
               </h3>
               <div className="space-y-2">
-                <a href="/schools" className="block text-gray-600 hover:text-cambodian-blue">
+                <a href="/schools" className="block text-gray-600 hover:text-koompi-primary">
                   → Find a School to Support
                 </a>
-                <a href="/impact" className="block text-gray-600 hover:text-cambodian-blue">
+                <a href="/impact" className="block text-gray-600 hover:text-koompi-primary">
                   → Read Impact Stories
                 </a>
-                <a href="/about" className="block text-gray-600 hover:text-cambodian-blue">
+                <a href="/about" className="block text-gray-600 hover:text-koompi-primary">
                   → Learn About Us
                 </a>
-                <a href="https://koompi.com/contentserver" target="_blank" rel="noopener noreferrer" className="block text-gray-600 hover:text-cambodian-blue">
+                <a href="https://koompi.com/contentserver" target="_blank" rel="noopener noreferrer" className="block text-gray-600 hover:text-koompi-primary">
                   → KOOMPI Content Server Info
                 </a>
               </div>
@@ -141,7 +148,7 @@ const ContactPage = () => {
 
             {/* Social Media Placeholder */}
             <div className="mt-12">
-              <h3 className="text-lg font-semibold text-cambodian-blue mb-4">
+              <h3 className="text-lg font-semibold text-koompi-primary mb-4">
                 Follow Us
               </h3>
               <div className="flex gap-4">
@@ -149,7 +156,7 @@ const ContactPage = () => {
                   <a
                     key={social}
                     href="#"
-                    className="w-10 h-10 bg-white rounded-full shadow flex items-center justify-center text-cambodian-blue hover:bg-solar-amber hover:text-white transition"
+                    className="w-10 h-10 bg-white rounded-full shadow flex items-center justify-center text-koompi-primary hover:bg-koompi-accent-orange hover:text-white transition"
                   >
                     <span className="text-xs font-medium">{social.slice(0, 2)}</span>
                   </a>
@@ -168,7 +175,7 @@ const ContactPage = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-cambodian-blue mb-2">
+                  <h3 className="text-2xl font-bold text-koompi-primary mb-2">
                     Message Sent!
                   </h3>
                   <p className="text-gray-600">
@@ -177,7 +184,7 @@ const ContactPage = () => {
                 </div>
               ) : (
                 <>
-                  <h2 className="text-2xl font-bold text-cambodian-blue mb-6">
+                  <h2 className="text-2xl font-bold text-koompi-primary mb-6">
                     Send us a Message
                   </h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -191,7 +198,7 @@ const ContactPage = () => {
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                           placeholder="Your name"
                         />
                       </div>
@@ -204,7 +211,7 @@ const ContactPage = () => {
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                           placeholder="your@email.com"
                         />
                       </div>
@@ -219,7 +226,7 @@ const ContactPage = () => {
                           required
                           value={formData.inquiryType}
                           onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value as any })}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                         >
                           <option value="general">General Inquiry</option>
                           <option value="donation">Donation Question</option>
@@ -236,7 +243,7 @@ const ContactPage = () => {
                           type="text"
                           value={formData.subject}
                           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                           placeholder="What's this about?"
                         />
                       </div>
@@ -251,7 +258,7 @@ const ContactPage = () => {
                         rows={5}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent resize-none"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent resize-none"
                         placeholder="Tell us more..."
                       />
                     </div>
@@ -259,7 +266,7 @@ const ContactPage = () => {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="w-full py-3 bg-cambodian-blue text-white rounded-lg font-semibold hover:bg-blue-900 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full py-3 bg-koompi-primary text-white rounded-lg font-semibold hover:bg-blue-900 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {submitting ? (
                         <>
@@ -279,7 +286,7 @@ const ContactPage = () => {
 
         {/* FAQ */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-cambodian-blue text-center mb-8">
+          <h2 className="text-2xl font-bold text-koompi-primary text-center mb-8">
             Frequently Asked Questions
           </h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
@@ -288,9 +295,9 @@ const ContactPage = () => {
                 key={index}
                 className="bg-white rounded-xl p-6 shadow-sm group"
               >
-                <summary className="font-semibold text-cambodian-blue cursor-pointer list-none flex items-center justify-between">
+                <summary className="font-semibold text-koompi-primary cursor-pointer list-none flex items-center justify-between">
                   {faq.q}
-                  <svg className="w-5 h-5 text-gray-400 group-open:text-cambodian-blue transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-400 group-open:text-koompi-primary transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>

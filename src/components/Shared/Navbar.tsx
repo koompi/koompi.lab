@@ -36,50 +36,55 @@ const Navbar = () => {
           className={`bg-white rounded-full shadow-lg transition-all duration-300 ${isScrolled ? 'shadow-xl' : 'shadow-md'
             }`}
         >
-          <div className="flex items-center justify-between px-5 py-2 min-w-[320px] max-w-md">
+          <div className="flex items-center justify-between px-8 py-2 min-w-[400px] max-w-4xl">
             {/* Logo */}
-            <Link
-              to="/"
-              className="flex items-center gap-2 group"
-            >
-              <span className="text-lg font-bold text-black">koompi</span>
+            <Link to="/" className="flex items-center group">
+              <img src="/logo/koompi-logo-text.png" alt="KOOMPI" className="h-[18px] self-center" />
             </Link>
 
-            {/* Menu Toggle */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-black hover:opacity-60 transition-opacity"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+            {/* Fund Button + Menu Toggle */}
+            <div className="flex items-center gap-3">
+              <Link
+                to="/schools"
+                className="px-4 py-2 border border-koompi-primary text-koompi-primary text-sm rounded-full font-medium hover:bg-koompi-primary hover:text-white transition-colors"
+              >
+                Fund a School
+              </Link>
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-black hover:opacity-60 transition-opacity"
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Dropdown Menu - Expands Below */}
         {isMobileMenuOpen && (
-          <div className="bg-white rounded-2xl shadow-xl mt-2 min-w-[320px] max-w-md overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-xl mt-2 min-w-[400px] max-w-4xl overflow-hidden">
             <div className="py-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   className={`flex items-center justify-between px-5 py-3 transition-colors ${location.pathname === link.path
-                      ? 'text-cambodian-blue bg-blue-50'
+                      ? 'text-koompi-primary bg-blue-50'
                       : 'text-black hover:bg-gray-50'
                     }`}
                 >
                   <span className="font-medium">{link.name}</span>
                   {location.pathname === link.path && (
-                    <span className="w-2 h-2 bg-solar-amber rounded-full" />
+                    <span className="w-2 h-2 bg-koompi-accent-orange rounded-full" />
                   )}
                 </Link>
               ))}
@@ -90,7 +95,7 @@ const Navbar = () => {
               <p className="text-xs text-gray-500 mb-3">Ready to help?</p>
               <Link
                 to="/schools"
-                className="block w-full py-3 bg-cambodian-blue text-white text-center rounded-xl font-semibold hover:bg-blue-900 transition-colors"
+                className="block w-full py-3 bg-koompi-primary text-white text-center rounded-xl font-semibold hover:bg-blue-900 transition-colors"
               >
                 Fund a School
               </Link>

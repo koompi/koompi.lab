@@ -80,7 +80,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
       <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-xl font-bold text-cambodian-blue">
+          <h2 className="text-xl font-bold text-koompi-primary">
             {step === 1 && 'School Information'}
             {step === 2 && 'Contact Details'}
             {step === 3 && 'Thank You!'}
@@ -110,7 +110,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                     value={formData.schoolName}
                     onChange={(e) => setFormData({ ...formData, schoolName: e.target.value })}
                     placeholder="Enter school name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                   />
                 </div>
 
@@ -123,7 +123,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                       required
                       value={formData.province}
                       onChange={(e) => setFormData({ ...formData, province: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                     >
                       <option value="">Select</option>
                       {provinces.map((p) => (
@@ -141,7 +141,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                       value={formData.district}
                       onChange={(e) => setFormData({ ...formData, district: e.target.value })}
                       placeholder="District name"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -155,7 +155,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                       required
                       value={formData.schoolLevel}
                       onChange={(e) => setFormData({ ...formData, schoolLevel: e.target.value as any })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                     >
                       <option value="primary">Primary School</option>
                       <option value="secondary">Secondary School</option>
@@ -173,7 +173,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                       value={formData.studentCount}
                       onChange={(e) => setFormData({ ...formData, studentCount: e.target.value })}
                       placeholder="Number of students"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -188,7 +188,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                         key={need}
                         className={`flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer transition ${
                           formData.currentNeeds.includes(need)
-                            ? 'border-cambodian-blue bg-blue-50'
+                            ? 'border-koompi-primary bg-blue-50'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
@@ -196,7 +196,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                           type="checkbox"
                           checked={formData.currentNeeds.includes(need)}
                           onChange={() => handleNeedToggle(need)}
-                          className="w-4 h-4 text-cambodian-blue rounded"
+                          className="w-4 h-4 text-koompi-primary rounded"
                         />
                         <span className="text-sm">{need}</span>
                       </label>
@@ -210,7 +210,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                       type="checkbox"
                       checked={formData.hasElectricity}
                       onChange={(e) => setFormData({ ...formData, hasElectricity: e.target.checked })}
-                      className="w-4 h-4 text-cambodian-blue rounded"
+                      className="w-4 h-4 text-koompi-primary rounded"
                     />
                     <span className="text-sm text-gray-600">Has Electricity</span>
                   </label>
@@ -219,7 +219,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                       type="checkbox"
                       checked={formData.hasInternet}
                       onChange={(e) => setFormData({ ...formData, hasInternet: e.target.checked })}
-                      className="w-4 h-4 text-cambodian-blue rounded"
+                      className="w-4 h-4 text-koompi-primary rounded"
                     />
                     <span className="text-sm text-gray-600">Has Internet</span>
                   </label>
@@ -250,7 +250,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                     value={formData.principalName}
                     onChange={(e) => setFormData({ ...formData, principalName: e.target.value })}
                     placeholder="Name of principal or contact person"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                   />
                 </div>
 
@@ -265,7 +265,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                       value={formData.contactPhone}
                       onChange={(e) => setFormData({ ...formData, contactPhone: e.target.value })}
                       placeholder="School phone"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -277,7 +277,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                       value={formData.contactEmail}
                       onChange={(e) => setFormData({ ...formData, contactEmail: e.target.value })}
                       placeholder="School email"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -298,7 +298,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                         value={formData.submitterName}
                         onChange={(e) => setFormData({ ...formData, submitterName: e.target.value })}
                         placeholder="Your name"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                       />
                     </div>
                     <div>
@@ -309,7 +309,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                         required
                         value={formData.submitterRole}
                         onChange={(e) => setFormData({ ...formData, submitterRole: e.target.value as any })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                       >
                         <option value="teacher">Teacher</option>
                         <option value="parent">Parent</option>
@@ -330,7 +330,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                       value={formData.submitterContact}
                       onChange={(e) => setFormData({ ...formData, submitterContact: e.target.value })}
                       placeholder="Phone or email"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -344,7 +344,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us more about the school's situation..."
                     rows={3}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cambodian-blue focus:border-transparent resize-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent resize-none"
                   />
                 </div>
               </div>
@@ -358,7 +358,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-cambodian-blue mb-2">
+              <h3 className="text-xl font-bold text-koompi-primary mb-2">
                 Submission Received!
               </h3>
               <p className="text-gray-600 mb-6">
@@ -392,7 +392,7 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
             <button
               onClick={() => step === 1 ? setStep(2) : handleSubmit}
               disabled={submitting}
-              className="flex-1 py-3 bg-cambodian-blue text-white rounded-lg font-semibold hover:bg-blue-900 transition disabled:opacity-50 flex items-center justify-center gap-2"
+              className="flex-1 py-3 bg-koompi-primary text-white rounded-lg font-semibold hover:bg-blue-900 transition disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {submitting ? (
                 <>

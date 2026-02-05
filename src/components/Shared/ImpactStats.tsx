@@ -55,24 +55,24 @@ const ImpactStats = () => {
   return (
     <section
       id="impact-stats"
-      className="py-16 bg-cambodian-blue text-white"
+      className="py-16 bg-koompi-primary text-white"
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center">
-            <p className="text-5xl md:text-6xl font-bold font-mono text-solar-amber">
+            <p className="text-5xl md:text-6xl font-bold font-mono text-koompi-accent-orange">
               {stats.donors}+
             </p>
             <p className="text-gray-300 mt-2">Donors</p>
           </div>
           <div className="text-center">
-            <p className="text-5xl md:text-6xl font-bold font-mono text-solar-amber">
+            <p className="text-5xl md:text-6xl font-bold font-mono text-koompi-accent-orange">
               {stats.schools}
             </p>
             <p className="text-gray-300 mt-2">Schools Equipped</p>
           </div>
           <div className="text-center">
-            <p className="text-5xl md:text-6xl font-bold font-mono text-solar-amber">
+            <p className="text-5xl md:text-6xl font-bold font-mono text-koompi-accent-orange">
               {stats.students.toLocaleString()}+
             </p>
             <p className="text-gray-300 mt-2">Students Learning Daily</p>

@@ -39,8 +39,8 @@ const ValuePropCard = ({ icon, title, description, delay }: ValuePropCardProps) 
         transition: 'all 0.6s ease-out',
       }}
     >
-      <div className="text-solar-amber mb-4">{icon}</div>
-      <h3 className="text-xl font-bold text-cambodian-blue mb-3">{title}</h3>
+      <div className="text-koompi-accent-orange mb-4">{icon}</div>
+      <h3 className="text-xl font-bold text-koompi-primary mb-3">{title}</h3>
       <p className="text-gray-600">{description}</p>
     </div>
   )

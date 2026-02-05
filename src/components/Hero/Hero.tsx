@@ -9,11 +9,20 @@ interface HeroProps {
 const Hero = ({ onDonate }: HeroProps) => {
   const [scrollY, setScrollY] = useState(0)
   const heroRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.log('Video autoplay failed:', err)
+      })
+    }
   }, [])
 
   const parallaxStyle = {
@@ -30,22 +39,23 @@ const Hero = ({ onDonate }: HeroProps) => {
       className="relative h-screen overflow-hidden"
     >
       {/* Video Background */}
-      <div className="video-background bg-gradient-to-br from-cambodian-blue via-cambodian-blue/90 to-solar-amber/20">
+      <div className="video-background bg-gradient-to-br from-koompi-primary via-koompi-primary/90 to-koompi-accent-orange/20">
         {/* Placeholder for video - replace with actual video */}
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          className="absolute inset-0 w-full h-full object-cover opacity-70"
         >
-          <source src="/videos/hero-lab.mp4" type="video/mp4" />
+          <source src="/media/videos/Dey-doh.mp4" type="video/mp4" />
         </video>
       </div>
 
       {/* Gradient Overlay */}
       <div
-        className="video-overlay bg-gradient-to-b from-black/60 via-black/40 to-cream"
+        className="video-overlay bg-gradient-to-b from-black/30 via-black/10 to-cream"
         style={parallaxStyle}
       />
 
@@ -54,7 +64,7 @@ const Hero = ({ onDonate }: HeroProps) => {
         {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-center animate-fade-in">
           One lab.
-          <span className="block text-solar-amber">Every school.</span>
+          <span className="block text-koompi-accent-orange">Every school.</span>
         </h1>
 
         {/* Subheadline */}
