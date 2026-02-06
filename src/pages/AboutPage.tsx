@@ -519,8 +519,12 @@ const AboutPage = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-100 hover:border-blue-200 hover:-translate-y-2">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-blue-500/30">
-                <span className="text-4xl">💻</span>
+              <div className="w-32 h-24 mx-auto mb-5 group-hover:scale-110 transition-transform flex items-center justify-center">
+                <img
+                  src="https://koompi.com/images/ministationv2-2.png"
+                  alt="KOOMPI Ministation"
+                  className="w-full h-full object-contain drop-shadow-lg"
+                />
               </div>
               <h3 className="text-xl font-bold text-koompi-primary mb-3 group-hover:text-blue-600 transition-colors">KOOMPI Lab</h3>
               <p className="text-gray-600 leading-relaxed">
