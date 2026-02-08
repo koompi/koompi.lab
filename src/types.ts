@@ -50,6 +50,24 @@ export interface Province {
   fundedCount: number
 }
 
+export interface FAQItem {
+  question: string
+  answer: string
+}
+
+export interface ProductSpec {
+  label: string
+  value: string
+}
+
+export interface LabConfig {
+  numStations: number
+  includeContentServer: boolean
+  includeSolar: boolean
+  location: 'phnom-penh' | 'province'
+  numStudents?: number
+}
+
 export const STATUS_CONFIG = {
   none: {
     label: 'Awaiting Support',

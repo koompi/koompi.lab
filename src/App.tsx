@@ -6,17 +6,17 @@ import SchoolsPage from './pages/SchoolsPage'
 import ImpactPage from './pages/ImpactPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
-import { School } from './types'
+import OnelabPage from './pages/OnelabPage'
+import ContentServerPage from './pages/ContentServerPage'
+import FundSchoolPage from './pages/FundSchoolPage'
+import OSPage from './pages/OSPage'
+import EduSuitePage from './pages/EduSuitePage'
 import { useState } from 'react'
+import type { School } from './types'
 
 function App() {
   const [selectedSchool, setSelectedSchool] = useState<School | null>(null)
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false)
-
-  const handleFundClick = (school: School) => {
-    setSelectedSchool(school)
-    setIsDonationModalOpen(true)
-  }
 
   return (
     <>
@@ -27,6 +27,11 @@ function App() {
         <Route path="/impact" element={<ImpactPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/onelab" element={<OnelabPage />} />
+        <Route path="/content-server" element={<ContentServerPage />} />
+        <Route path="/fund" element={<FundSchoolPage />} />
+        <Route path="/os" element={<OSPage />} />
+        <Route path="/edu-suite" element={<EduSuitePage />} />
       </Routes>
 
       {/* Global donation modal - can be triggered from any page */}

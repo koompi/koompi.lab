@@ -55,14 +55,14 @@ const SchoolsPage = () => {
         }} />
 
         {/* Decorative gradient orbs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-koompi-accent-orange/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-koompi-accent-pink/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-koompi-accent-blue/20 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           {/* Title Section */}
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Schools Across <span className="text-koompi-accent-orange">Cambodia</span>
+              Schools Across <span className="text-koompi-accent-pink">Cambodia</span>
             </h1>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Browse our complete database of schools. Explore by province, equipment status, or search for a specific school.
@@ -82,7 +82,7 @@ const SchoolsPage = () => {
                 placeholder="Search by school name or province..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-12 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-koompi-accent-orange focus:border-transparent transition-all"
+                className="w-full pl-12 pr-12 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-koompi-accent-pink focus:border-transparent transition-all"
               />
               {searchQuery && (
                 <button
@@ -107,8 +107,8 @@ const SchoolsPage = () => {
             {/* Total Schools */}
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4 min-w-[140px]">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-koompi-accent-orange/20 rounded-xl flex items-center justify-center">
-                  <svg className="w-5 h-5 text-koompi-accent-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 bg-koompi-accent-pink/20 rounded-xl flex items-center justify-center">
+                  <svg className="w-5 h-5 text-koompi-accent-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
@@ -122,8 +122,8 @@ const SchoolsPage = () => {
             {/* Equipped */}
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4 min-w-[140px]">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center">
-                  <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 bg-koompi-accent-yellow/20 rounded-xl flex items-center justify-center">
+                  <svg className="w-5 h-5 text-koompi-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -137,8 +137,8 @@ const SchoolsPage = () => {
             {/* Need Support */}
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4 min-w-[140px]">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-koompi-accent-orange/20 rounded-xl flex items-center justify-center">
-                  <svg className="w-5 h-5 text-koompi-accent-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 bg-koompi-accent-pink/20 rounded-xl flex items-center justify-center">
+                  <svg className="w-5 h-5 text-koompi-accent-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
                 </div>

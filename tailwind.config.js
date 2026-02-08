@@ -7,59 +7,60 @@ export default {
   theme: {
     extend: {
       colors: {
-        // KOOMPI Primary Colors (80%)
+        // Official KOOMPI Brand Colors (from koompi-color-system.png)
+        // 60% Primary (navy/black/gray) | 30% Secondary (teal) | 10% Accent (pink/yellow)
         'koompi': {
-          'primary': '#021C40',      // Dark Blue - signature color
-          'secondary': '#035F5F',     // Teal
-          'accent-blue': '#38ACD9',   // Light Blue (30%)
-          'accent-orange': '#F1811B', // Orange (10%)
-          'accent-yellow': '#EEEE81', // Yellow (10%)
+          'primary': '#263c5c',        // Navy Blue (60% usage)
+          'secondary': '#38A7C8',      // Teal/Cyan (30% usage)
+          'accent-blue': '#38A7C8',    // Alias for secondary
+          'accent-pink': '#F16179',    // Fiery Pink (10% accent)
+          'accent-yellow': '#FFD700',  // Gold Yellow (10% accent)
         },
-        // Primary Dark Blue Spectrum (Dial Up/Down)
+        // Primary Navy Blue Spectrum
         'primary': {
-          50: '#E6EBF0',
-          100: '#B3C4D6',
-          200: '#809DBC',
-          300: '#4D76A2',
-          400: '#1A4F88',
-          500: '#021C40',    // Main primary
-          600: '#021838',
-          700: '#011430',
-          800: '#011028',
-          900: '#010C20',
+          50: '#EEF0F4',
+          100: '#D5DAE3',
+          200: '#ABB5C7',
+          300: '#8190AB',
+          400: '#576B8F',
+          500: '#263c5c',    // Main primary
+          600: '#1F3250',
+          700: '#192843',
+          800: '#131E37',
+          900: '#0D142A',
         },
-        // Secondary Teal/Gray Spectrum
+        // Secondary Teal Spectrum
         'secondary': {
-          50: '#F5F5F5',
-          100: '#E0E0E0',
-          200: '#BDBDBD',
-          300: '#9E9E9E',
-          400: '#757575',
-          500: '#035F5F',    // Main secondary
-          600: '#424242',
-          700: '#303030',
-          800: '#212121',
-          900: '#121212',
+          50: '#E8F6FA',
+          100: '#BFE8F2',
+          200: '#96DAE9',
+          300: '#6DCCE1',
+          400: '#50B9D5',
+          500: '#38A7C8',    // Main secondary
+          600: '#2D86A0',
+          700: '#226578',
+          800: '#174450',
+          900: '#0C2328',
         },
-        // Blue Accent Spectrum (for gradients)
+        // Accent Pink Spectrum
         'accent': {
-          50: '#E8F7FC',
-          100: '#BFE9F6',
-          200: '#96DBF0',
-          300: '#6DCDE9',
-          400: '#44BFE3',
-          500: '#38ACD9',    // Main accent blue
-          600: '#2D8AB0',
-          700: '#226886',
-          800: '#17465C',
-          900: '#0C2432',
+          50: '#FDE8ED',
+          100: '#FBBFCB',
+          200: '#F896A9',
+          300: '#F56D87',
+          400: '#F34565',
+          500: '#F16179',    // Main accent (Fiery Pink)
+          600: '#D94E66',
+          700: '#B93D53',
+          800: '#992D40',
+          900: '#791D2D',
         },
-        'cream': '#FFF9F0',
-        // Gradient colors from brand guide
+        'cream': '#f7f7f7',
+        // Gradient colors from brand
         'gradient': {
-          'light': '#35ACC5',
-          'mid': '#1875A1',
-          'dark': '#1FA8C5',
+          'light': '#38A7C8',
+          'mid': '#2D6F8E',
+          'dark': '#263c5c',
         },
       },
       fontFamily: {

@@ -23,7 +23,7 @@ const SchoolTable = ({ schools, onFundClick }: SchoolTableProps) => {
     <div className="flex items-center gap-2">
       <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
         <div
-          className="h-full bg-koompi-accent-orange rounded-full transition-all"
+          className="h-full bg-koompi-accent-pink rounded-full transition-all"
           style={{ width: `${percentage}%` }}
         />
       </div>

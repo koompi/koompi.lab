@@ -58,15 +58,17 @@ All shared types are in `src/types.ts`:
 
 ## Color System
 
-KOOMPI brand colors are defined in `tailwind.config.js`:
-- `koompi-primary`: #021C40 (dark blue - signature)
-- `koompi-secondary`: #035F5F (teal)
-- `accent-blue`: #38ACD9
-- `accent-orange`: #F1811B
-- `accent-yellow`: #EEEE81
-- `cream`: #FFF9F0 (background)
+Official KOOMPI brand colors (from `koompi-color-system.png`), defined in `tailwind.config.js`:
 
-Use these semantic classes rather than arbitrary values.
+| Role | Token | Hex | Usage |
+|------|-------|-----|-------|
+| Primary | `koompi-primary` | #263c5c | 60% — Navy Blue (backgrounds, text, dark sections) |
+| Secondary | `koompi-secondary` | #38A7C8 | 30% — Teal/Cyan (highlights, links, secondary elements) |
+| Accent | `koompi-accent-pink` | #F16179 | 10% — Fiery Pink (CTAs, badges, accents) |
+| Accent | `koompi-accent-yellow` | #FFD700 | 10% — Gold Yellow (sparingly, highlights) |
+| Background | `cream` | #f7f7f7 | Light gray background |
+
+Use these semantic classes rather than arbitrary color values.
 
 ## Blog System
 

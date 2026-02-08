@@ -7,9 +7,9 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 12, suffix: 'K+', label: 'Students Learning Daily' },
   { value: 65, suffix: '', label: 'Schools Equipped' },
-  { value: 435, suffix: '', label: 'Schools Still Need Support' },
+  { value: 13000, suffix: '', label: 'Schools Without Labs' },
+  { value: 12000, suffix: '', label: 'Students Learning' },
 ]
 
 const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
@@ -56,8 +56,8 @@ const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) =
   }, [isVisible, value])
 
   return (
-    <span ref={ref} className="font-mono text-3xl md:text-4xl font-bold text-koompi-accent-orange">
-      {count}{suffix}
+    <span ref={ref} className="font-mono text-3xl md:text-4xl font-bold text-koompi-accent-pink">
+      {count.toLocaleString()}{suffix}
     </span>
   )
 }

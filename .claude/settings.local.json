@@ -7,7 +7,19 @@
       "Bash(docker compose up:*)",
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "WebFetch(domain:koompi.com)",
+      "WebSearch",
+      "WebFetch(domain:web.archive.org)",
+      "Bash(npx vite build:*)",
+      "Bash(find:*)",
+      "WebFetch(domain:www.khmertimeskh.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:nepcambodia.org)",
+      "WebFetch(domain:data.opendevelopmentcambodia.net)",
+      "WebFetch(domain:www.ceicdata.com)",
+      "WebFetch(domain:opendevelopmentcambodia.net)",
+      "WebFetch(domain:cefcambodia.com)"
     ]
   }
 }

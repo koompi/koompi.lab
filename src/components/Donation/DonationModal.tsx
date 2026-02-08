@@ -58,19 +58,19 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
         <h4 className="font-semibold text-koompi-primary mb-3">Your donation provides:</h4>
         <ul className="space-y-2 text-sm text-gray-700">
           <li className="flex items-start gap-2">
-            <span className="text-growth-green mt-0.5">✓</span>
+            <span className="text-koompi-accent-pink mt-0.5">✓</span>
             <span><strong>{Math.round(amount / 1200)} KOOMPI Ministations</strong> - Low-power computers</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-growth-green mt-0.5">✓</span>
+            <span className="text-koompi-accent-pink mt-0.5">✓</span>
             <span><strong>Content Server</strong> - 2TB offline educational content</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-growth-green mt-0.5">✓</span>
+            <span className="text-koompi-accent-pink mt-0.5">✓</span>
             <span><strong>WiFi Network</strong> - Connects up to 150 students</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-growth-green mt-0.5">✓</span>
+            <span className="text-koompi-accent-pink mt-0.5">✓</span>
             <span><strong>Installation & Training</strong> - Teacher support included</span>
           </li>
         </ul>

@@ -1,14 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
-import CTAButton from './CTAButton'
-import ImpactTicker from './ImpactTicker'
+import { Link } from 'react-router-dom'
 
-interface HeroProps {
-  onDonate: () => void
-}
-
-const Hero = ({ onDonate }: HeroProps) => {
+const Hero = () => {
   const [scrollY, setScrollY] = useState(0)
-  const heroRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -19,93 +13,97 @@ const Hero = ({ onDonate }: HeroProps) => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch(err => {
-        console.log('Video autoplay failed:', err)
-      })
+      videoRef.current.play().catch(() => {})
     }
   }, [])
 
-  const parallaxStyle = {
-    transform: `translateY(${scrollY * 0.5}px)`,
-  }
-
-  const scrollToSchools = () => {
-    document.getElementById('schools')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
-    <section
-      ref={heroRef}
-      className="relative h-screen overflow-hidden"
-    >
+    <section className="relative h-screen overflow-hidden">
       {/* Video Background */}
-      <div className="video-background bg-gradient-to-br from-koompi-primary via-koompi-primary/90 to-koompi-accent-orange/20">
-        {/* Placeholder for video - replace with actual video */}
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-70"
-        >
-          <source src="/media/videos/Dey-doh.mp4" type="video/mp4" />
-        </video>
-      </div>
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/example2.mp4" type="video/mp4" />
+      </video>
 
-      {/* Gradient Overlay */}
+      {/* Dark overlay with blur */}
       <div
-        className="video-overlay bg-gradient-to-b from-black/30 via-black/10 to-cream"
-        style={parallaxStyle}
+        className="absolute inset-0 bg-koompi-primary/80 backdrop-blur-[8px]"
+        style={{ transform: `translateY(${scrollY * 0.15}px)` }}
       />
+
+      {/* Gradient orbs */}
+      <div className="absolute top-20 left-10 w-96 h-96 bg-koompi-secondary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
-        {/* Main Headline */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-center animate-fade-in">
-          One lab.
-          <span className="block text-koompi-accent-orange">Every school.</span>
-        </h1>
+        {/* Badge */}
+        <div className="mb-6 animate-fade-in">
+          <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-sm font-medium text-white/90">
+            65 of 13,000+ Schools Equipped — Join the Mission
+          </span>
+        </div>
 
-        {/* Subheadline */}
-        <p className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-3xl text-center mb-8 animate-slide-up">
-          65 schools equipped. 435 to go. Join the mission to bring digital
-          education to every student in Cambodia.
+        {/* Logo + Title */}
+        <div className="mb-6 text-center animate-fade-in">
+          <img
+            src="/logo/koompi-logo-text-white.png"
+            alt="KOOMPI"
+            className="h-16 md:h-24 lg:h-32 mx-auto mb-4"
+          />
+          <span className="block text-koompi-accent-pink text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide" style={{ letterSpacing: 'normal' }}>
+            Digital Education
+          </span>
+        </div>
+
+        {/* Subtitle */}
+        <p className="text-lg md:text-xl text-white/70 max-w-2xl text-center mb-10 animate-slide-up">
+          Over 13,000 public schools in Cambodia. Fewer than 200 have a computer lab. We've equipped 65 — partner with us or start your own.
         </p>
 
-        {/* Impact Ticker */}
-        <div className="mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-          <ImpactTicker />
+        {/* Stats Row - Glassmorphic */}
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          {[
+            { value: '65', label: 'Labs Installed' },
+            { value: '13,000+', label: 'Without Labs' },
+            { value: '24', label: 'Provinces' },
+          ].map((stat, i) => (
+            <div
+              key={i}
+              className="px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl text-center"
+            >
+              <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+              <p className="text-xs md:text-sm text-white/60">{stat.label}</p>
+            </div>
+          ))}
         </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-          <CTAButton
-            variant="primary"
-            onClick={scrollToSchools}
+          <Link
+            to="/fund"
+            className="px-8 py-4 bg-koompi-accent-pink text-white rounded-full font-semibold text-lg hover:bg-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-accent-500"
           >
             Fund a School
-          </CTAButton>
-          <CTAButton
-            variant="secondary"
-            onClick={() => document.getElementById('mission')?.scrollIntoView({ behavior: 'smooth' })}
+          </Link>
+          <Link
+            to="/onelab"
+            className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 transform hover:scale-105 active:scale-95"
           >
-            Learn More
-          </CTAButton>
+            Explore Onelab
+          </Link>
         </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <svg
-            className="w-6 h-6 text-white/60"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          <svg className="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
       </div>

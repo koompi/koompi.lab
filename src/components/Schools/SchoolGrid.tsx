@@ -69,20 +69,20 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-6">
             Browse schools across Cambodia from the Ministry of Education priority list.
-            1,743 schools need labs to serve students nationwide.
+            Over 13,000 public schools need labs to serve students nationwide.
           </p>
 
           {/* Cambodia Context */}
           <div className="inline-flex items-center gap-4 bg-white rounded-full px-6 py-3 shadow-sm text-sm">
             <span className="text-gray-600">
-              Cambodia has <strong>14,522</strong> total schools
+              Cambodia has <strong>13,000+</strong> public schools
             </span>
             <span className="text-gray-300">|</span>
             <span className="text-koompi-primary">
-              <strong>1,743</strong> priority schools targeted
+              Fewer than <strong>200</strong> have computer labs
             </span>
             <span className="text-gray-300">|</span>
-            <span className="text-growth-green">
+            <span className="text-koompi-accent-pink font-semibold">
               <strong>65</strong> equipped so far
             </span>
           </div>
@@ -111,7 +111,7 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
           >
             Community
             {stats.communityPending > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-koompi-accent-orange text-white text-[10px] rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-koompi-accent-pink text-white text-[10px] rounded-full flex items-center justify-center">
                 {stats.communityPending}
               </span>
             )}
@@ -123,7 +123,7 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
           <span className="text-xs text-gray-400">○ {stats.none}</span>
           <span className="text-xs text-blue-600">● {stats.lab}</span>
           <span className="text-xs text-purple-600">●● {stats['lab-content']}</span>
-          <span className="text-xs text-green-600">☀ {stats['full-solar']}</span>
+          <span className="text-xs text-koompi-accent-yellow">☀ {stats['full-solar']}</span>
 
           {/* Status Filter */}
           <span className="text-xs text-gray-400">|</span>
@@ -164,7 +164,7 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => setShowSubmitForm(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-koompi-accent-orange text-white rounded-full font-semibold hover:bg-amber-600 transition"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-koompi-accent-pink text-white rounded-full font-semibold hover:bg-pink-700 transition"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />

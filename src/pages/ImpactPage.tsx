@@ -96,9 +96,9 @@ const milestones = [
   { year: '2018', title: 'KOOMPI Founded', description: 'Cambodia\'s first locally designed laptop brand launched' },
   { year: '2022', title: 'First Lab Deployed', description: 'Pilot program equipped 5 schools with computer labs' },
   { year: '2023', title: 'Content Server Launch', description: 'Introduced offline digital library for schools without internet' },
-  { year: '2024', title: '65 Schools Reached', description: 'Expanded to 65 schools with 12,000+ students impacted daily' },
+  { year: '2024', title: '65 Schools Reached', description: 'Expanded to 65 schools with 12,000 students learning daily — over 13,000 schools still without labs' },
   { year: '2025', title: 'First Solar Lab', description: 'Milestone: First fully solar-powered lab in Mondulkiri province' },
-  { year: '2030', title: 'Goal: All Schools', description: 'Vision: One lab in every school across Cambodia' },
+  { year: '2030', title: 'Goal: Every School', description: 'A shared vision for 13,000+ public schools — whether through KOOMPI or anyone inspired to act' },
 ]
 
 const ImpactPage = () => {
@@ -115,36 +115,36 @@ const ImpactPage = () => {
         }} />
 
         {/* Decorative gradient orbs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-koompi-accent-orange/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-koompi-accent-pink/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-koompi-accent-blue/20 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Real Impact.<br />
-              <span className="text-koompi-accent-orange">Real Stories.</span>
+              <span className="text-koompi-accent-pink">Real Stories.</span>
             </h1>
             <p className="text-xl text-gray-300">
-              See how KOOMPI Labs are transforming education across Cambodia, one school at a time.
+              65 schools equipped. Over 13,000 still without labs. See the progress — and the work ahead.
             </p>
           </div>
 
           {/* Impact Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-orange">65</p>
+              <p className="text-4xl font-bold text-koompi-accent-pink">65</p>
               <p className="text-gray-300">Schools Equipped</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-orange">12,000+</p>
-              <p className="text-gray-300">Students Daily</p>
+              <p className="text-4xl font-bold text-koompi-accent-pink">12,000</p>
+              <p className="text-gray-300">Students Learning</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-orange">24</p>
+              <p className="text-4xl font-bold text-koompi-accent-pink">24</p>
               <p className="text-gray-300">Provinces Reached</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-orange">$780K</p>
+              <p className="text-4xl font-bold text-koompi-accent-pink">$780K</p>
               <p className="text-gray-300">Donated</p>
             </div>
           </div>
@@ -173,7 +173,7 @@ const ImpactPage = () => {
                     {milestone.year.slice(-2)}
                   </div>
                   <div className="flex-1 p-6 bg-cream rounded-xl shadow-sm">
-                    <span className="text-koompi-accent-orange font-semibold">{milestone.year}</span>
+                    <span className="text-koompi-accent-pink font-semibold">{milestone.year}</span>
                     <h3 className="text-lg font-bold text-koompi-primary mt-1">{milestone.title}</h3>
                     <p className="text-gray-600 text-sm">{milestone.description}</p>
                   </div>
@@ -201,11 +201,11 @@ const ImpactPage = () => {
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                 onClick={() => setSelectedStory(story)}
               >
-                <div className="aspect-video bg-gradient-to-br from-koompi-primary to-koompi-accent-orange flex items-center justify-center">
+                <div className="aspect-video bg-gradient-to-br from-koompi-primary to-koompi-accent-pink flex items-center justify-center">
                   <span className="text-white text-4xl">📸</span>
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-medium text-koompi-accent-orange uppercase tracking-wide">
+                  <span className="text-xs font-medium text-koompi-accent-pink uppercase tracking-wide">
                     {story.category}
                   </span>
                   <h3 className="text-xl font-bold text-koompi-primary mt-2 mb-2">
@@ -214,7 +214,7 @@ const ImpactPage = () => {
                   <p className="text-gray-600 text-sm mb-4">{story.excerpt}</p>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-500">{story.province}</span>
-                    <span className="text-growth-green font-medium">
+                    <span className="text-koompi-accent-yellow font-bold">
                       {story.students.toLocaleString()} students
                     </span>
                   </div>
@@ -238,7 +238,7 @@ const ImpactPage = () => {
                 key={index}
                 className="bg-white/10 backdrop-blur-sm rounded-2xl p-6"
               >
-                <div className="w-12 h-12 bg-koompi-accent-orange rounded-full flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-koompi-accent-pink rounded-full flex items-center justify-center mb-4">
                   <span className="text-white text-xl">👤</span>
                 </div>
                 <blockquote className="text-gray-200 mb-4">
@@ -267,12 +267,12 @@ const ImpactPage = () => {
             className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="aspect-video bg-gradient-to-br from-koompi-primary to-koompi-accent-orange flex items-center justify-center">
+            <div className="aspect-video bg-gradient-to-br from-koompi-primary to-koompi-accent-pink flex items-center justify-center">
               <span className="text-white text-6xl">📸</span>
             </div>
             <div className="p-8">
               <div className="flex items-center gap-4 mb-4">
-                <span className="px-3 py-1 bg-koompi-accent-orange/20 text-koompi-accent-orange rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-koompi-accent-pink/20 text-koompi-accent-pink rounded-full text-sm font-medium">
                   {selectedStory.category}
                 </span>
                 <span className="text-gray-500">{selectedStory.date}</span>
