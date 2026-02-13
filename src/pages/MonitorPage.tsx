@@ -6,7 +6,7 @@ import HeroBackground from '../components/Shared/HeroBackground'
 const MonitorPage = () => {
   const features = [
     {
-      title: '24" IPS Panel',
+      title: '21.5" IPS Panel',
       desc: 'Crystal clear colors from every angle',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,22 +74,53 @@ const MonitorPage = () => {
     {
       title: 'Company',
       desc: 'Ideal for offices and workstations',
-      icon: '🏢',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+          <rect x="4" y="8" width="40" height="32" rx={3} strokeWidth={2.5} />
+          <path strokeWidth={2.5} strokeLinecap="round" d="M16 20h6M16 28h6M26 20v12" />
+          <circle cx="36" cy="14" r={2} strokeWidth={2} />
+        </svg>
+      ),
     },
     {
       title: 'Computer Labs',
       desc: 'Perfect for educational setups',
-      icon: '🏫',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+          <rect x="6" y="12" width="16" height="22" rx={2} strokeWidth={2.5} />
+          <path strokeWidth={2.5} d="M10 18h8M10 22h8M10 26h6" />
+          <rect x="26" y="12" width="16" height="22" rx={2} strokeWidth={2.5} />
+          <path strokeWidth={2.5} d="M30 18h8M30 22h8M30 26h6" />
+          <circle cx="14" cy="40" r={1.5} fill="currentColor" />
+          <circle cx="34" cy="40" r={1.5} fill="currentColor" />
+        </svg>
+      ),
     },
     {
       title: 'Study Setup',
       desc: 'Great for students and learning',
-      icon: '📚',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+          <path strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" d="M24 4L12 14v24l12-10M24 4l12 10v24l-12-10" />
+          <path strokeWidth={2.5} strokeLinecap="round" d="M8 22h6M8 26h10" />
+          <rect x="30" y="18" width="12" height="14" rx={2} strokeWidth={2.5} />
+          <path strokeWidth={2.5} d="M34 24h4M34 28h6" />
+          <circle cx="14" cy="8" r={2} strokeWidth={2} />
+        </svg>
+      ),
     },
     {
       title: 'Home Office',
       desc: 'Perfect for productivity and work',
-      icon: '🏠',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+          <path strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" d="M8 38V14a2 2 0 012-2-2h4a2 2 0 012 2 2v24M40 38V14a2 2 0 012-2-2h4a2 2 0 012 2 2v24" />
+          <rect x="18" y="22" width="12" height="10" rx={1.5} strokeWidth={2.5} />
+          <path strokeWidth={2.5} d="M22 26h4M22 28h6" />
+          <circle cx="24" cy="18" r={2} strokeWidth={2} />
+          <path strokeWidth={2.5} strokeLinecap="round" d="M12 34h2M38 34h2" />
+        </svg>
+      ),
     },
   ]
 
@@ -101,15 +132,20 @@ const MonitorPage = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-white">
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/30 rounded-full text-amber-400 text-sm font-semibold mb-6">
-                MONITOR 24"
+                MONITOR 21"
               </span>
-              <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-black mb-4 leading-tight">
                 More For
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">Less</span>
               </h1>
-              <p className="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed max-w-lg">
+              <p className="text-xl md:text-2xl text-white/80 mb-6 leading-relaxed max-w-lg">
                 You can never have "too many" tabs with KOOMPI Monitor. Simultaneously display more documents, media, and projects to get more done in less time.
               </p>
+              {/* Price Display */}
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 mb-6">
+                <span className="text-white/60 text-sm font-medium">Starting at</span>
+                <span className="text-4xl md:text-5xl font-bold text-amber-400">$199</span>
+              </div>
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
@@ -132,7 +168,7 @@ const MonitorPage = () => {
                 <img
                   src="/images/products/monitor6.png"
                   alt="KOOMPI Monitor"
-                  className="w-full max-w-xl drop-shadow-2xl relative z-10 animate-float-slow scale-125"
+                  className="w-full max-w-xl drop-shadow-2xl relative z-10 animate-float-slow scale-150"
                 />
               </div>
             </div>
@@ -146,15 +182,6 @@ const MonitorPage = () => {
           </svg>
         </div>
       </HeroBackground>
-
-      {/* Price Banner */}
-      <section className="py-8 px-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-500">
-        <div className="max-w-7xl mx-auto text-center">
-          <span className="text-4xl md:text-5xl font-black text-white">
-            Price: <span className="text-white">$199</span>
-          </span>
-        </div>
-      </section>
 
       {/* Display Features Grid */}
       <section className="py-24 px-4 bg-cream">
@@ -233,7 +260,9 @@ const MonitorPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {useCases.map((useCase, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
-                <div className="text-4xl mb-4">{useCase.icon}</div>
+                <div className="flex justify-center mb-4 text-koompi-accent-persimmon">
+                  {useCase.icon}
+                </div>
                 <h3 className="text-xl font-bold text-white mb-2">{useCase.title}</h3>
                 <p className="text-gray-300 text-sm">{useCase.desc}</p>
               </div>

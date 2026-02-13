@@ -6,13 +6,13 @@ const MinistationV2Page = () => {
   const [selectedUseCase, setSelectedUseCase] = useState('Study Setup')
 
   const useCases = [
-    { name: 'Study Setup', image: '/images/products/ministation-study.jpg' },
-    { name: 'Computer Labs', image: '/images/products/ministation-lab.jpg' },
-    { name: 'Home Office', image: '/images/products/ministation-office.jpg' },
-    { name: 'Company', image: '/images/products/ministation-company.jpg' },
+    { name: 'Study Setup', image: '/images/products/miniv2-study.jpg' },
+    { name: 'Computer Labs', image: '/images/products/miniv2-lab.jpg' },
+    { name: 'Home Office', image: '/images/products/home-office.png' },
+    { name: 'Company', image: '/images/products/ONELAB-1.png' },
   ]
 
-  const currentImage = useCases.find((uc) => uc.name === selectedUseCase)?.image || '/images/products/ministation-lab.jpg'
+  const currentImage = useCases.find((uc) => uc.name === selectedUseCase)?.image || '/images/products/miniv2-study.jpg'
 
   const specs = [
     {
@@ -97,9 +97,14 @@ const MinistationV2Page = () => {
                 Ministation
                 <span className="text-koompi-accent-persimmon"> Gen2</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed">
                 The Ultimate Desk Setup. All-in-one solution engineered to elevate your productivity. Perfect for offices, classrooms, and creative studios.
               </p>
+              {/* Price Display */}
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 mb-8">
+                <span className="text-white/60 text-sm font-medium">Starting at</span>
+                <span className="text-4xl md:text-5xl font-bold text-amber-400">$349</span>
+              </div>
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
@@ -116,11 +121,15 @@ const MinistationV2Page = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img
-                src="/images/products/ministation-v2.png"
-                alt="KOOMPI Ministation Gen2"
-                className="w-full max-w-lg drop-shadow-2xl animate-float-slow"
-              />
+              <div className="relative inline-block p-3 bg-white rounded-2xl shadow-2xl">
+                <div className="absolute -inset-2 border-4 border-koompi-accent-persimmon/30 rounded-2xl"></div>
+                <div className="absolute -inset-1 border-2 border-white/50 rounded-xl"></div>
+                <img
+                  src="/images/products/miniv2-study.jpg"
+                  alt="KOOMPI Ministation Gen2"
+                  className="w-full h-auto object-cover rounded-xl transform group-hover:scale-[1.02] transition-transform duration-700 animate-float"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -130,15 +139,6 @@ const MinistationV2Page = () => {
           <svg className="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
-        </div>
-      </section>
-
-      {/* Price Banner */}
-      <section className="py-8 px-4 bg-koompi-accent-persimmon">
-        <div className="max-w-7xl mx-auto text-center">
-          <span className="text-4xl md:text-5xl font-black text-white">
-            Starting at <span className="text-white">$349</span>
-          </span>
         </div>
       </section>
 
@@ -219,8 +219,17 @@ const MinistationV2Page = () => {
       </section>
 
       {/* Built for Versatility */}
-      <section className="min-h-screen py-24 px-4 bg-cream overflow-hidden flex items-center">
-        <div className="max-w-7xl mx-auto w-full">
+      <section className="min-h-screen py-16 md:py-32 bg-cream overflow-hidden flex items-center">
+        <div className="container mx-auto px-4 max-w-full">
+          <div className="text-center mb-10 md:mb-16 px-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-4 md:mb-6">
+              Built for Versatility
+            </h2>
+            <p className="text-base md:text-xl text-slate-600 max-w-2xl mx-auto">
+              From classrooms to home offices, KOOMPI Ministation Gen2 adapts to any environment and requirement.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-center max-w-6xl mx-auto">
             {/* Left Column - Tab Cards */}
             <div className="md:col-span-4 grid grid-cols-1 gap-2 md:gap-4">
@@ -246,7 +255,7 @@ const MinistationV2Page = () => {
                 <img
                   key={currentImage}
                   className="w-full h-auto object-cover rounded-xl transform group-hover:scale-[1.02] transition-transform duration-700"
-                  src={currentImage || '/images/products/ministation-lab.jpg'}
+                  src={currentImage || '/images/products/miniv2-study.jpg'}
                   alt="KOOMPI Ministation for any use case"
                 />
               </div>
