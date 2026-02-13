@@ -1,6 +1,7 @@
 import Footer from '../components/Shared/Footer'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { containerVariants, fadeInUp, heroText, staggerItem, scaleIn } from '../utils/animations'
 
 const team = [
   {
@@ -13,7 +14,7 @@ const team = [
     name: 'Brilliant PHAL',
     role: 'OS Lead',
     image: 'https://koompi.com/images/team/brilliant.jpg',
-    bio: 'Leading the development of KOOMPI OS, a Linux-based operating system optimized for education.',
+    bio: 'Leading development of KOOMPI OS, a Linux-based operating system optimized for education.',
   },
   {
     name: 'Vuthy SAN',
@@ -92,159 +93,284 @@ const projects = [
 ]
 
 const AboutPage = () => {
-  // Add smooth scroll and animation classes on mount
-  useEffect(() => {
-    // Smooth scroll behavior
-    document.documentElement.style.scrollBehavior = 'smooth'
-
-    // Add intersection observer for fade-in animations
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up')
-            entry.target.classList.remove('opacity-0', 'translate-y-8')
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    // Observe all sections
-    document.querySelectorAll('section').forEach((section) => {
-      section.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out')
-      observer.observe(section)
-    })
-
-    return () => {
-      document.documentElement.style.scrollBehavior = ''
-      observer.disconnect()
-    }
-  }, [])
-
   return (
     <div className="min-h-screen bg-cream scroll-smooth">
-      {/* Hero - Video Background with Photo Grid */}
-      <section className="relative overflow-hidden bg-koompi-primary text-white min-h-[600px] pt-32 pb-24">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/example2.mp4" type="video/mp4" />
-        </video>
+      {/* Hero - Premium Design */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0f1c]">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f1c] via-[#1a2332] to-[#0a0f1c]" />
+          {/* Animated gradient orbs */}
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#F16179]/10 rounded-full blur-[120px]"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#38A7C8]/10 rounded-full blur-[100px]"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#263c5c]/20 rounded-full blur-[150px]" />
 
-        {/* Dark overlay with blur */}
-        <div className="absolute inset-0 bg-koompi-primary/80 backdrop-blur-[8px]" />
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }} />
 
-        {/* Gradient orbs for depth */}
-        <div className="absolute top-20 left-10 w-96 h-96 bg-koompi-secondary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
-
-        {/* Dot pattern overlay */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-          backgroundSize: '24px 24px'
-        }} />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[500px]">
-            {/* Left Content */}
-            <div className="space-y-8">
-              <div>
-                <span className="inline-block px-4 py-1.5 bg-white/10 border border-white/20 backdrop-blur-xl text-white/90 rounded-full text-sm font-medium mb-6">
-                  About KOOMPI
-                </span>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                  Empowering Cambodia<br />
-                  <span className="text-koompi-accent-pink">Through Digital Education</span>
-                </h1>
-                <p className="text-lg text-gray-300 max-w-xl">
-                  Cambodia's first locally designed laptop brand, founded in 2018 with a mission to bring
-                  digital education to schools across the country — and to share the blueprint so anyone can do the same.
-                </p>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/schools"
-                  className="px-6 py-3 bg-accent-700 text-white rounded-full font-semibold hover:bg-accent-800 transition shadow-lg shadow-pink-500/30 border-2 border-accent-500"
-                >
-                  Fund a School
-                </Link>
-                <Link
-                  to="/impact"
-                  className="px-6 py-3 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 transition border border-white/20"
-                >
-                  Our Impact
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Visual - Photo Grid (desktop only) */}
-            <div className="relative hidden lg:block h-[480px]">
-              {/* Photo 1 - Lab */}
-              <div className="absolute top-0 left-0 w-[280px] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 -rotate-3 animate-float">
-                <img
-                  src="/images/products/lab.jpg"
-                  alt="KOOMPI computer lab"
-                  className="w-full h-[200px] object-cover"
-                />
-              </div>
-
-              {/* Photo 2 - Students */}
-              <div className="absolute top-24 right-0 w-[280px] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 rotate-2">
-                <img
-                  src="/images/products/students.png"
-                  alt="Students using KOOMPI"
-                  className="w-full h-[200px] object-cover"
-                />
-              </div>
-
-              {/* Photo 3 - Vision to Reality */}
-              <div className="absolute bottom-0 left-12 w-[260px] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 -rotate-1">
-                <img
-                  src="/media/images/vision-to-reality.JPG"
-                  alt="KOOMPI vision to reality"
-                  className="w-full h-[180px] object-cover"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Stats Row */}
-          <div className="grid grid-cols-3 gap-4 md:gap-6 mt-12 max-w-2xl mx-auto lg:mx-0">
-            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-6 text-center">
-              <p className="text-2xl md:text-3xl font-bold">65</p>
-              <p className="text-xs md:text-sm text-gray-300 mt-1">Schools Equipped</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-6 text-center">
-              <p className="text-2xl md:text-3xl font-bold">13,000</p>
-              <p className="text-xs md:text-sm text-gray-300 mt-1">Schools Without Labs</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-6 text-center">
-              <p className="text-2xl md:text-3xl font-bold">24</p>
-              <p className="text-xs md:text-sm text-gray-300 mt-1">Provinces</p>
-            </div>
-          </div>
+          {/* Floating particles */}
+          <motion.div
+            className="absolute top-1/4 right-1/4 w-2 h-2 bg-[#F16179]/40 rounded-full"
+            animate={{ y: [0, -30, 0], x: [0, 10, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute top-1/3 left-1/3 w-1.5 h-1.5 bg-[#38A7C8]/40 rounded-full"
+            animate={{ y: [0, -20, 0], x: [0, -10, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-[#FFD700]/30 rounded-full"
+            animate={{ y: [0, 25, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+          />
         </div>
 
-        {/* Wavy divider */}
+        {/* Navigation spacing */}
+        <div className="absolute top-0 left-0 right-0 h-24" />
+
+        <motion.div
+          className="relative z-10 max-w-7xl mx-auto px-6 py-24"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              {/* Badge */}
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
+                variants={fadeInUp}
+              >
+                <motion.span
+                  className="w-2 h-2 bg-[#F16179] rounded-full"
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <span className="text-sm text-gray-400 font-medium tracking-wide">Since 2018</span>
+              </motion.div>
+
+              {/* Main headline with staggered animation */}
+              <div className="space-y-2">
+                <motion.h1
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight"
+                  variants={heroText}
+                >
+                  Cambodia's
+                </motion.h1>
+                <motion.h1
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight"
+                  variants={heroText}
+                >
+                  <motion.span
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-[#F16179] via-[#FFD700] to-[#F16179]"
+                    animate={{ backgroundPosition: ['0% center', '200% center', '0% center'] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+                    style={{ backgroundSize: '200% auto' }}
+                  >
+                    First Laptop
+                  </motion.span>
+                </motion.h1>
+                <motion.h1
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight"
+                  variants={heroText}
+                >
+                  Brand
+                </motion.h1>
+              </div>
+
+              {/* Subtitle */}
+              <motion.p
+                className="text-xl md:text-2xl text-gray-400 leading-relaxed max-w-lg"
+                variants={fadeInUp}
+              >
+                Bridging the digital divide, one school at a time. We build technology that works where others don't.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                className="flex flex-wrap gap-4 pt-4"
+                variants={fadeInUp}
+              >
+                <Link
+                  to="/fund#pricing"
+                  className="group relative px-8 py-4 bg-[#F16179] text-white rounded-full font-semibold overflow-hidden"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Fund a School
+                    <motion.svg
+                      className="w-4 h-4"
+                      whileHover={{ x: 4 }}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </motion.svg>
+                  </span>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-[#e5556b] to-[#F16179]"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </Link>
+                <Link
+                  to="/story"
+                  className="px-8 py-4 text-white rounded-full font-semibold border border-white/20"
+                >
+                  Our Story
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right Visual - Image showcase */}
+            <div className="relative hidden lg:block h-[600px]">
+              {/* Floating cards with 3D effect */}
+              <motion.div
+                className="absolute top-0 right-0 w-[320px] h-[380px] rounded-3xl overflow-hidden shadow-2xl"
+                initial={{ y: 100, opacity: 0, rotate: -5 }}
+                animate={{ y: 0, opacity: 1, rotate: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <img
+                  src="/images/products/onelab-class.jpg"
+                  alt="Students in computer lab"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="text-white font-semibold text-lg">Digital Learning</p>
+                  <p className="text-white/70 text-sm">65 schools equipped</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="absolute bottom-0 left-0 w-[280px] h-[320px] rounded-3xl overflow-hidden shadow-2xl"
+                initial={{ y: 100, opacity: 0, rotate: 5 }}
+                animate={{ y: 0, opacity: 1, rotate: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <img
+                  src="/images/products/content-server-device.png"
+                  alt="Content Server"
+                  className="w-full h-full object-cover bg-white"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="text-white font-semibold text-lg">Offline Library</p>
+                  <p className="text-white/70 text-sm">3000+ educational resources</p>
+                </div>
+              </motion.div>
+
+              {/* Decorative elements */}
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-white/10 rounded-full"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.7 }}
+              />
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] border border-white/5 rounded-full"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.9 }}
+              />
+            </div>
+          </div>
+
+          {/* Bottom stats bar */}
+          <motion.div
+            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+            variants={containerVariants}
+          >
+            {[
+              { value: '65', label: 'Schools Equipped', color: '#F16179' },
+              { value: '13K+', label: 'Students Learning', color: '#38A7C8' },
+              { value: '24', label: 'Provinces', color: '#FFD700' },
+              { value: '2018', label: 'Founded', color: '#263c5c' },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                className="group relative"
+                variants={staggerItem}
+                whileHover={{ y: -4 }}
+              >
+                <motion.div
+                  className="absolute -inset-4 bg-gradient-to-r from-white/5 to-transparent rounded-2xl"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                />
+                <div className="relative text-center">
+                  <motion.p
+                    className="text-4xl md:text-5xl font-bold text-white mb-2"
+                    style={{ color: stat.color }}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1, type: 'spring' }}
+                  >
+                    {stat.value}
+                  </motion.p>
+                  <p className="text-gray-500 text-sm uppercase tracking-wider">{stat.label}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+        >
+          <span className="text-xs text-gray-600 uppercase tracking-widest">Scroll</span>
+          <motion.div
+            className="w-6 h-10 border-2 border-gray-700 rounded-full flex justify-center pt-2"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <motion.div
+              className="w-1 h-2 bg-gray-600 rounded-full"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Curved divider */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#ffffff"/>
+            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
           </svg>
         </div>
       </section>
 
       {/* Our Values */}
       <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+        <motion.div
+          className="max-w-7xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.div className="text-center mb-12" variants={fadeInUp}>
             <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-accent-700 rounded-full text-sm font-medium mb-4">
               Our Foundation
             </span>
@@ -254,53 +380,42 @@ const AboutPage = () => {
             <p className="text-gray-600 max-w-2xl mx-auto">
               The principles that guide everything we do
             </p>
-          </div>
+          </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Innovation */}
-            <div className="group bg-gradient-to-br from-koompi-accent-yellow/10 to-white rounded-2xl p-6 border border-yellow-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-koompi-accent-yellow to-yellow-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg shadow-yellow-500/30">
-                <span className="text-3xl">💡</span>
-              </div>
-              <h3 className="text-lg font-bold text-koompi-primary mb-2">Innovation</h3>
-              <p className="text-gray-600 text-sm">
-                Building technology solutions tailored for Cambodian schools and communities.
-              </p>
-            </div>
-
-            {/* Accessibility */}
-            <div className="group bg-gradient-to-br from-koompi-secondary/5 to-white rounded-2xl p-6 border border-koompi-secondary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-koompi-secondary to-cyan-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg shadow-koompi-secondary/30">
-                <span className="text-3xl">🌍</span>
-              </div>
-              <h3 className="text-lg font-bold text-koompi-primary mb-2">Accessibility</h3>
-              <p className="text-gray-600 text-sm">
-                Making digital education available to every student, regardless of location.
-              </p>
-            </div>
-
-            {/* Sustainability */}
-            <div className="group bg-gradient-to-br from-yellow-50 to-white rounded-2xl p-6 border border-yellow-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-pink-400 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg shadow-yellow-500/30">
-                <span className="text-3xl">☀️</span>
-              </div>
-              <h3 className="text-lg font-bold text-koompi-primary mb-2">Sustainability</h3>
-              <p className="text-gray-600 text-sm">
-                Solar-powered solutions that work off-grid and built to last.
-              </p>
-            </div>
-
-            {/* Community */}
-            <div className="group bg-gradient-to-br from-pink-50 to-white rounded-2xl p-6 border border-pink-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg shadow-pink-500/30">
-                <span className="text-3xl">🤝</span>
-              </div>
-              <h3 className="text-lg font-bold text-koompi-primary mb-2">Community</h3>
-              <p className="text-gray-600 text-sm">
-                Working closely with local communities, teachers, and the Ministry of Education.
-              </p>
-            </div>
+            {[
+              { icon: '💡', title: 'Innovation', desc: 'Building technology solutions tailored for Cambodian schools and communities.', color: 'yellow' },
+              { icon: '🌍', title: 'Accessibility', desc: 'Making digital education available to every student, regardless of location.', color: 'cyan' },
+              { icon: '☀️', title: 'Sustainability', desc: 'Solar-powered solutions that work off-grid and built to last.', color: 'amber' },
+              { icon: '🤝', title: 'Community', desc: 'Working closely with local communities, teachers, and Ministry of Education.', color: 'pink' },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className={`group bg-white rounded-2xl p-6 border transition-all ${
+                  item.color === 'yellow' ? 'border-yellow-200 hover:shadow-xl hover:shadow-yellow-500/20' :
+                  item.color === 'cyan' ? 'border-koompi-secondary/20 hover:shadow-xl hover:shadow-koompi-secondary/20' :
+                  item.color === 'amber' ? 'border-yellow-100 hover:shadow-xl hover:shadow-yellow-500/20' :
+                  'border-pink-100 hover:shadow-xl hover:shadow-pink-500/20'
+                }`}
+                variants={staggerItem}
+                whileHover={{ y: -8 }}
+              >
+                <motion.div
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 shadow-lg ${
+                    item.color === 'yellow' ? 'bg-gradient-to-br from-koompi-accent-yellow to-yellow-600 shadow-yellow-500/30' :
+                    item.color === 'cyan' ? 'bg-gradient-to-br from-koompi-secondary to-cyan-600 shadow-koompi-secondary/30' :
+                    item.color === 'amber' ? 'bg-gradient-to-br from-yellow-500 to-pink-400 shadow-yellow-500/30' :
+                    'bg-gradient-to-br from-pink-500 to-pink-600 shadow-pink-500/30'
+                  }`}
+                  whileHover={{ scale: 1.1, rotate: 3 }}
+                >
+                  <span className="text-3xl">{item.icon}</span>
+                </motion.div>
+                <h3 className="text-lg font-bold text-koompi-primary mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Section Divider */}
@@ -308,82 +423,114 @@ const AboutPage = () => {
 
       {/* Vision & Mission */}
       <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
+        <motion.div
+          className="max-w-5xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
           <div className="grid md:grid-cols-2 gap-8">
             {/* Vision */}
-            <div className="bg-gradient-to-br from-koompi-primary to-secondary-700 rounded-2xl p-8 text-white">
+            <motion.div
+              className="bg-gradient-to-br from-koompi-primary to-secondary-700 rounded-2xl p-8 text-white"
+              variants={fadeInUp}
+            >
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-3xl">👁️</span>
+                <motion.span
+                  className="text-3xl"
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  👁️
+                </motion.span>
                 <h2 className="text-2xl font-bold">Our Vision</h2>
               </div>
               <p className="text-gray-200 leading-relaxed">
                 Our vision is to create a tech-driven education and innovation space that empowers individuals to unleash their full potential and drive positive progress.
               </p>
-            </div>
+            </motion.div>
 
             {/* Mission */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-koompi-accent-pink/20">
+            <motion.div
+              className="bg-white rounded-2xl p-8 shadow-lg border-2 border-koompi-accent-pink/20"
+              variants={fadeInUp}
+            >
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-3xl">🎯</span>
+                <motion.span
+                  className="text-3xl"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  🎯
+                </motion.span>
                 <h2 className="text-2xl font-bold text-koompi-primary">Our Mission</h2>
               </div>
               <p className="text-gray-700 leading-relaxed">
                 Our mission is to build tools and empower individuals with accessible computing solutions that drive progress, foster learning, and inspire innovation.
               </p>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Achievements / Stats */}
       <section className="py-16 px-4 bg-koompi-primary text-white">
-        <div className="max-w-6xl mx-auto">
+        <motion.div
+          className="max-w-6xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="relative inline-flex items-center justify-center">
-                <svg className="absolute w-24 h-24 text-white/20 animate-spin-slow" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="10 5" />
-                </svg>
-                <p className="text-4xl md:text-5xl font-bold relative z-10">65</p>
-              </div>
-              <p className="text-white/90 mt-3 font-medium">Schools Equipped</p>
-            </div>
-            <div className="text-center">
-              <div className="relative inline-flex items-center justify-center">
-                <svg className="absolute w-24 h-24 text-white/20 animate-spin-slow" viewBox="0 0 100 100" style={{ animationDelay: '0.5s' }}>
-                  <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="10 5" />
-                </svg>
-                <p className="text-4xl md:text-5xl font-bold relative z-10">13K</p>
-              </div>
-              <p className="text-white/90 mt-3 font-medium">Schools Without Labs</p>
-            </div>
-            <div className="text-center">
-              <div className="relative inline-flex items-center justify-center">
-                <svg className="absolute w-24 h-24 text-white/20 animate-spin-slow" viewBox="0 0 100 100" style={{ animationDelay: '1s' }}>
-                  <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="10 5" />
-                </svg>
-                <p className="text-4xl md:text-5xl font-bold relative z-10">24</p>
-              </div>
-              <p className="text-white/90 mt-3 font-medium">Provinces Reached</p>
-            </div>
-            <div className="text-center">
-              <div className="relative inline-flex items-center justify-center">
-                <svg className="absolute w-24 h-24 text-white/20 animate-spin-slow" viewBox="0 0 100 100" style={{ animationDelay: '1.5s' }}>
-                  <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="10 5" />
-                </svg>
-                <p className="text-4xl md:text-5xl font-bold relative z-10">2018</p>
-              </div>
-              <p className="text-white/90 mt-3 font-medium">Founded</p>
-            </div>
+            {[
+              { value: '65', label: 'Schools Equipped' },
+              { value: '13K', label: 'Schools Without Labs' },
+              { value: '24', label: 'Provinces Reached' },
+              { value: '2018', label: 'Founded' },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                variants={staggerItem}
+              >
+                <div className="relative inline-flex items-center justify-center">
+                  <motion.svg
+                    className="absolute w-24 h-24 text-white/20"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20 + index * 5, repeat: Infinity, ease: 'linear' }}
+                    viewBox="0 0 100 100"
+                  >
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="10 5" />
+                  </motion.svg>
+                  <motion.p
+                    className="text-4xl md:text-5xl font-bold relative z-10"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    {stat.value}
+                  </motion.p>
+                </div>
+                <p className="text-white/90 mt-3 font-medium">{stat.label}</p>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Our Story */}
       <section className="py-20 px-4 bg-white">
-        <div className="max-w-5xl mx-auto">
+        <motion.div
+          className="max-w-5xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div variants={fadeInUp}>
               <span className="text-accent-700 font-semibold">Our Story</span>
               <h2 className="text-3xl font-bold text-koompi-primary mt-2 mb-6">
                 From Vision to Reality
@@ -395,33 +542,43 @@ const AboutPage = () => {
                   internet connectivity, traditional digital learning solutions simply don't work.
                 </p>
                 <p>
-                  We built our solution from the ground up: low-power computers designed for
+                  We built our solution from ground up: low-power computers designed for
                   Cambodian conditions, an offline content server filled with educational
                   materials, and solar power systems for remote areas.
                 </p>
                 <p>
                   Today, we've equipped 65 of Cambodia's 13,000+ public schools. Fewer than 200
-                  have any computer lab at all. Our partnership with the Ministry of Education validates
-                  the approach, and we've open-sourced the blueprint. Whether you partner with us or build your own — every lab counts.
+                  have any computer lab at all. Our partnership with Ministry of Education validates
+                  approach, and we've open-sourced blueprint. Whether you partner with us or build your own — every lab counts.
                 </p>
               </div>
-            </div>
-            <div className="relative">
+            </motion.div>
+
+            <motion.div className="relative" variants={scaleIn}>
               {/* Layered shadow cards for depth */}
               <div className="absolute top-4 left-4 right-8 bottom-8 bg-koompi-accent-pink/20 rounded-2xl -z-10" />
               <div className="absolute top-8 left-8 right-4 bottom-4 bg-koompi-accent-blue/20 rounded-2xl -z-10" />
 
               {/* Main image container - polaroid style */}
-              <div className="relative bg-white p-3 rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 hover:scale-[1.02]">
+              <motion.div
+                className="relative bg-white p-3 rounded-2xl shadow-2xl"
+                whileHover={{ rotate: 0, scale: 1.02 }}
+                initial={{ rotate: 3 }}
+                transition={{ duration: 0.5 }}
+              >
                 <div className="relative aspect-square rounded-xl overflow-hidden">
                   <img
                     src="/media/images/vision-to-reality.JPG"
                     alt="From Vision to Reality"
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover"
                   />
 
-                  {/* Gradient overlay for depth */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent opacity-60" />
+                  {/* Image overlay */}
+                  <img
+                    src="/images/img/vision-to-reality.JPG"
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
 
                   {/* Caption overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
@@ -429,24 +586,38 @@ const AboutPage = () => {
                     <p className="text-white/80 text-xs">Building Cambodia's future</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Floating stats badges */}
-              <div className="absolute -top-2 -left-2 bg-white rounded-lg shadow-lg px-3 py-1.5 transform -rotate-6 border-2 border-koompi-accent-pink">
+              <motion.div
+                className="absolute -top-2 -left-2 bg-white rounded-lg shadow-lg px-3 py-1.5 border-2 border-koompi-accent-pink"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              >
                 <p className="text-koompi-primary font-bold text-xs">65 Schools</p>
-              </div>
-              <div className="absolute -bottom-2 -right-2 bg-koompi-primary rounded-lg shadow-lg px-3 py-1.5 transform rotate-6">
+              </motion.div>
+              <motion.div
+                className="absolute -bottom-2 -right-2 bg-koompi-primary rounded-lg shadow-lg px-3 py-1.5"
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+              >
                 <p className="text-white font-bold text-xs">Since 2018</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* What We Offer */}
       <section className="py-20 px-4 bg-gradient-to-b from-white to-cream">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+        <motion.div
+          className="max-w-7xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.div className="text-center mb-12" variants={fadeInUp}>
             <span className="inline-block px-4 py-1.5 bg-accent-700/10 text-accent-700 rounded-full text-sm font-medium mb-4">
               Our Solutions
             </span>
@@ -456,56 +627,97 @@ const AboutPage = () => {
             <p className="text-gray-600 max-w-2xl mx-auto">
               Complete digital education solutions designed for Cambodian schools
             </p>
-          </div>
+          </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-100 hover:border-blue-200 hover:-translate-y-2">
-              <div className="w-32 h-24 mx-auto mb-5 group-hover:scale-110 transition-transform flex items-center justify-center">
-                <img
-                  src="/images/products/ministation3.png"
-                  alt="KOOMPI Ministation"
-                  className="w-full h-full object-contain drop-shadow-lg"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-koompi-primary mb-3 group-hover:text-blue-600 transition-colors">KOOMPI Lab</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Complete computer lab setup with 10 KOOMPI Ministations, designed for low
-                power consumption and durability in Cambodian conditions.
-              </p>
-            </div>
-
-            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-100 hover:border-koompi-accent-pink/30 hover:-translate-y-2">
-              <div className="w-20 h-20 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-pink-500/30">
-                <span className="text-4xl">📚</span>
-              </div>
-              <h3 className="text-xl font-bold text-koompi-primary mb-3 group-hover:text-koompi-accent-pink transition-colors">Content Server</h3>
-              <p className="text-gray-600 leading-relaxed">
-                2TB of offline educational content including Khan Academy, Wikipedia,
-                interactive apps, and Cambodian curriculum materials.
-              </p>
-            </div>
-
-            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-100 hover:border-yellow-200 hover:-translate-y-2">
-              <div className="w-20 h-20 bg-gradient-to-br from-koompi-accent-yellow to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-yellow-500/30">
-                <span className="text-4xl">☀️</span>
-              </div>
-              <h3 className="text-xl font-bold text-koompi-primary mb-3 group-hover:text-yellow-600 transition-colors">Solar Power</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Complete solar power systems for schools without grid electricity, enabling
-                digital learning in the most remote locations.
-              </p>
-            </div>
+            {[
+              {
+                icon: 'img',
+                img: '/images/products/ministation3.png',
+                title: 'KOOMPI Lab',
+                desc: 'Complete computer lab setup with 10 KOOMPI Ministations, designed for low power consumption and durability in Cambodian conditions.',
+                color: 'blue'
+              },
+              {
+                icon: '📚',
+                title: 'Content Server',
+                desc: '2TB of offline educational content including Khan Academy, Wikipedia, interactive apps, and Cambodian curriculum materials.',
+                color: 'pink'
+              },
+              {
+                icon: '☀️',
+                title: 'Solar Power',
+                desc: 'Complete solar power systems for schools without grid electricity, enabling digital learning in most remote locations.',
+                color: 'yellow'
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className={`group bg-white rounded-2xl p-8 shadow-lg transition-all text-center border ${
+                  item.color === 'blue' ? 'border-gray-100 hover:border-blue-200' :
+                  item.color === 'pink' ? 'border-gray-100 hover:border-koompi-accent-pink/30' :
+                  'border-gray-100 hover:border-yellow-200'
+                }`}
+                variants={staggerItem}
+                whileHover={{ y: -8 }}
+              >
+                {item.icon === 'img' ? (
+                  <motion.div
+                    className="w-32 h-24 mx-auto mb-5"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-full h-full object-contain drop-shadow-lg"
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    className={`w-20 h-20 bg-gradient-to-br rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg ${
+                      item.color === 'pink' ? 'from-koompi-accent-pink to-pink-400 shadow-pink-500/30' :
+                      'from-koompi-accent-yellow to-yellow-600 shadow-yellow-500/30'
+                    }`}
+                    whileHover={{ scale: 1.1, rotate: 6 }}
+                  >
+                    <span className="text-4xl">{item.icon}</span>
+                  </motion.div>
+                )}
+                <h3 className={`text-xl font-bold mb-3 transition-colors ${
+                  item.color === 'blue' ? 'text-koompi-primary group-hover:text-blue-600' :
+                  item.color === 'pink' ? 'text-koompi-primary group-hover:text-koompi-accent-pink' :
+                  'text-koompi-primary group-hover:text-yellow-600'
+                }`}>
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Projects */}
       <section className="py-20 px-4 bg-white relative overflow-hidden">
         {/* Background decoration */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-pink/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-koompi-accent-blue/5 rounded-full blur-3xl" />
+        <motion.div
+          className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-pink/5 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], x: [0, 20, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-0 w-96 h-96 bg-koompi-accent-blue/5 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], x: [0, -20, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        />
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
+        <motion.div
+          className="max-w-7xl mx-auto relative z-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.div className="text-center mb-12" variants={fadeInUp}>
             <span className="inline-block px-4 py-1.5 bg-koompi-accent-yellow/15 text-yellow-700 rounded-full text-sm font-medium mb-4">
               Innovation Hub
             </span>
@@ -515,55 +727,90 @@ const AboutPage = () => {
             <p className="text-gray-600 max-w-2xl mx-auto">
               Innovative solutions transforming education across Cambodia
             </p>
-          </div>
+          </motion.div>
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) =>
               project.link.startsWith('http') ? (
-                <a
+                <motion.a
                   key={index}
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative bg-gradient-to-br from-cream to-white rounded-2xl p-6 border border-koompi-accent-blue/10 hover:shadow-2xl hover:border-koompi-accent-pink/40 transition-all duration-300 overflow-hidden"
+                  className="group relative bg-gradient-to-br from-cream to-white rounded-2xl p-6 border border-koompi-accent-blue/10 overflow-hidden"
+                  variants={staggerItem}
+                  whileHover={{ y: -4 }}
+                  initial={{ opacity: 0, x: -20 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-koompi-accent-pink/5 to-koompi-accent-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-koompi-accent-pink/5 to-koompi-accent-blue/5"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  />
                   <div className="relative flex items-start gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-pink-500/30">
+                    <motion.div
+                      className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30"
+                      whileHover={{ scale: 1.1, rotate: 6 }}
+                    >
                       <span className="text-3xl">{project.icon}</span>
-                    </div>
+                    </motion.div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-pink transition-colors">{project.name}</h3>
                       <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
                     </div>
-                    <svg className="w-6 h-6 text-gray-400 group-hover:text-koompi-accent-pink group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <motion.svg
+                      className="w-6 h-6 text-gray-400 flex-shrink-0"
+                      whileHover={{ x: 4, color: '#F16179' }}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                    </motion.svg>
                   </div>
-                </a>
+                </motion.a>
               ) : (
-                <Link
+                <motion.div
                   key={index}
-                  to={project.link}
-                  className="group relative bg-gradient-to-br from-cream to-white rounded-2xl p-6 border border-koompi-accent-blue/10 hover:shadow-2xl hover:border-koompi-accent-pink/40 transition-all duration-300 overflow-hidden"
+                  variants={staggerItem}
+                  whileHover={{ y: -4 }}
+                  initial={{ opacity: 0, x: -20 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-koompi-accent-pink/5 to-koompi-accent-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative flex items-start gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-pink-500/30">
-                      <span className="text-3xl">{project.icon}</span>
+                  <Link
+                    to={project.link}
+                    className="group relative bg-gradient-to-br from-cream to-white rounded-2xl p-6 border border-koompi-accent-blue/10 overflow-hidden"
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-koompi-accent-pink/5 to-koompi-accent-blue/5"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                    />
+                    <div className="relative flex items-start gap-4">
+                      <motion.div
+                        className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30"
+                        whileHover={{ scale: 1.1, rotate: 6 }}
+                      >
+                        <span className="text-3xl">{project.icon}</span>
+                      </motion.div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-pink transition-colors">{project.name}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
+                      </div>
+                      <motion.svg
+                        className="w-6 h-6 text-gray-400 flex-shrink-0"
+                        whileHover={{ x: 4, color: '#F16179' }}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </motion.svg>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-pink transition-colors">{project.name}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
-                    </div>
-                    <svg className="w-6 h-6 text-gray-400 group-hover:text-koompi-accent-pink group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </Link>
+                  </Link>
+                </motion.div>
               )
             )}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Section Divider */}
@@ -572,10 +819,20 @@ const AboutPage = () => {
       {/* Team */}
       <section className="py-20 px-4 bg-cream relative overflow-hidden">
         {/* Background decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-koompi-accent-pink/5 to-koompi-accent-blue/5 rounded-full blur-3xl" />
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-koompi-accent-pink/5 to-koompi-accent-blue/5 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
+        <motion.div
+          className="max-w-7xl mx-auto relative z-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.div className="text-center mb-12" variants={fadeInUp}>
             <span className="inline-block px-4 py-1.5 bg-accent-700/10 text-accent-700 rounded-full text-sm font-medium mb-4">
               The People Behind KOOMPI
             </span>
@@ -583,41 +840,57 @@ const AboutPage = () => {
               Our Talents
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              At KOOMPI, we believe in the power of talents to drive innovation and create exceptional experiences.
+              At KOOMPI, we believe in power of talents to drive innovation and create exceptional experiences.
             </p>
-          </div>
+          </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             {team.map((member, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-100 hover:border-koompi-accent-pink/30 hover:-translate-y-2"
+                className="group bg-white rounded-2xl p-6 shadow-lg text-center border border-gray-100"
+                variants={staggerItem}
+                whileHover={{ y: -8 }}
+                initial={{ opacity: 0, y: 30 }}
               >
                 <div className="relative mb-5">
                   {/* Glowing effect on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-koompi-accent-pink/20 to-koompi-accent-blue/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-110" />
-                  <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:border-koompi-accent-pink/50 transition-all duration-300 group-hover:scale-105">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-koompi-accent-pink/20 to-koompi-accent-blue/20 rounded-full blur-xl"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1, scale: 1.1 }}
+                  />
+                  <motion.div
+                    className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover"
                     />
-                  </div>
+                  </motion.div>
                 </div>
                 <h3 className="text-lg font-bold text-koompi-primary mb-1 group-hover:text-koompi-accent-pink transition-colors">
                   {member.name}
                 </h3>
                 <p className="text-accent-700 text-sm font-medium mb-3">{member.role}</p>
                 <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Partners */}
       <section className="py-20 px-4 bg-gradient-to-b from-white to-cream">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
+        <motion.div
+          className="max-w-5xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.div className="text-center mb-12" variants={fadeInUp}>
             <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-accent-700 rounded-full text-sm font-medium mb-4">
               Collaboration
             </span>
@@ -627,24 +900,30 @@ const AboutPage = () => {
             <p className="text-gray-600 max-w-xl mx-auto">
               Working together to transform education across Cambodia
             </p>
-          </div>
+          </motion.div>
           <div className="grid md:grid-cols-2 gap-6">
             {partners.map((partner, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group bg-white rounded-2xl p-8 flex items-center gap-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-koompi-accent-pink/30"
+                className="group bg-white rounded-2xl p-8 flex items-center gap-5 shadow-md border border-gray-100"
+                variants={staggerItem}
+                whileHover={{ y: -4, scale: 1.02 }}
+                initial={{ opacity: 0, x: -30 }}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-koompi-primary/10 to-secondary-600/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <motion.div
+                  className="w-16 h-16 bg-gradient-to-br from-koompi-primary/10 to-secondary-600/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                >
                   <span className="text-4xl">{partner.logo}</span>
-                </div>
+                </motion.div>
                 <div>
                   <p className="font-semibold text-koompi-primary text-lg">{partner.name}</p>
                   <p className="text-sm text-accent-700 font-medium">{partner.type}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* CTA */}
@@ -658,56 +937,93 @@ const AboutPage = () => {
         </div>
 
         {/* Floating accent circles */}
-        <div className="absolute top-10 left-10 w-32 h-32 bg-koompi-accent-pink/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-koompi-accent-blue/20 rounded-full blur-3xl" />
+        <motion.div
+          className="absolute top-10 left-10 w-32 h-32 bg-koompi-accent-pink/20 rounded-full blur-3xl"
+          animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-40 h-40 bg-koompi-accent-blue/20 rounded-full blur-3xl"
+          animate={{ y: [0, 20, 0], scale: [1, 1.15, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 bg-white/10 text-white rounded-full text-sm font-medium mb-6 border border-white/20">
+        <motion.div
+          className="relative z-10 max-w-4xl mx-auto text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.span
+            className="inline-block px-4 py-1.5 bg-white/10 text-white rounded-full text-sm font-medium mb-6 border border-white/20"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             Make a Difference
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          </motion.span>
+          <motion.h2
+            className="text-3xl md:text-5xl font-bold mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             Join Our Mission
-          </h2>
-          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             Over 13,000 public schools still have no computer lab. We've proven it works — now help us reach more, or start your own.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
             <Link
-              to="/schools"
-              className="px-10 py-4 bg-accent-700 text-white rounded-full font-semibold hover:bg-accent-800 hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 border-2 border-accent-500"
+              to="/fund"
+              className="px-10 py-4 bg-accent-700 text-white rounded-full font-semibold border-2 border-accent-500"
             >
               Fund a School
             </Link>
             <Link
               to="/contact"
-              className="px-10 py-4 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 hover:-translate-y-1 transition-all duration-300 border border-white/20"
+              className="px-10 py-4 bg-white/10 text-white rounded-full font-semibold border border-white/20"
             >
               Contact Us
             </Link>
-          </div>
+          </motion.div>
 
           {/* Impact indicator */}
-          <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm">
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-gray-300">100% Tax Deductible</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-gray-300">Transparent Reporting</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-gray-300">Direct Impact</span>
-            </div>
-          </div>
-        </div>
+          <motion.div
+            className="mt-12 flex flex-wrap justify-center gap-8 text-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            {[
+              { icon: <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>, text: '100% Tax Deductible' },
+              { icon: <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>, text: 'Transparent Reporting' },
+              { icon: <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>, text: 'Direct Impact' },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="flex items-center gap-2"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+              >
+                {item.icon}
+                <span className="text-gray-300">{item.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </section>
 
       <Footer />

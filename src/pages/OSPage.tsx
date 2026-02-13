@@ -18,8 +18,8 @@ const OSPage = () => {
     <div className="min-h-screen">
       {/* 1. Immersive Hero */}
       <ProductHero
-        variant="immersive"
-        backgroundImage="/images/os/bg.png"
+        variant="video"
+        videoSrc="/videos/Video-bg-hero-sec.mp4"
         badge="KOOMPI OS3"
         title="KOOMPI OS"
         glitchWord="KOOMPI OS"

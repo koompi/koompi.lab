@@ -1,4 +1,5 @@
 @import 'leaflet/dist/leaflet.css';
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -296,6 +297,11 @@ html {
   grid-auto-rows: minmax(180px, auto);
 }
 
+.bento-grid .bento-hero {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
 .bento-grid .bento-large {
   grid-column: span 2;
   grid-row: span 1;
@@ -308,6 +314,9 @@ html {
 @media (max-width: 768px) {
   .bento-grid {
     grid-template-columns: 1fr;
+  }
+  .bento-grid .bento-hero {
+    grid-column: span 1;
   }
   .bento-grid .bento-large {
     grid-column: span 1;
@@ -326,4 +335,132 @@ html {
 .step-line {
   height: 2px;
   background: linear-gradient(to right, #F16179 var(--progress), #e5e7eb var(--progress));
+}
+
+/* Background zoom and pan animation */
+@keyframes bg-zoom-pan {
+  0% {
+    background-size: 100% auto;
+    background-position: 50% 50%;
+  }
+  100% {
+    background-size: 115% auto;
+    background-position: 55% 45%;
+  }
+}
+
+/* WiFi pulse animation */
+@keyframes wifi-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(90deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1) rotate(90deg);
+  }
+}
+
+@media (min-width: 768px) {
+  @keyframes wifi-pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1) rotate(0deg);
+    }
+  }
+}
+
+.animate-wifi-pulse {
+  animation: wifi-pulse 2s ease-in-out infinite;
+}
+
+/* Glow pulse for Content Server box */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  50% {
+    box-shadow: 0 10px 25px -5px rgb(56 167 200 / 0.25), 0 8px 10px -6px rgb(56 167 200 / 0.15);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Shine effect for premium cards */
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+/* Slide-up animation */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+/* Scale-in animation for modals */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out forwards;
+}
+
+/* Slide-in from right for drawer */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out forwards;
+}
+
+/* Khmer text styling */
+.khmer-text {
+  font-family: 'Kantumruy Pro', 'Noto Serif Khmer', 'Khmer OS', 'Khmer OS Content', 'Leelawadee UI', 'Arial', sans-serif;
+  line-height: 1.4;
 }

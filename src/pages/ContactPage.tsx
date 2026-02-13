@@ -82,7 +82,21 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-koompi-primary via-koompi-primary to-secondary-600 text-white py-20 pt-32">
+      <section className="relative overflow-hidden text-white py-20 pt-32">
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/Video-bg-hero-sec.mp4" type="video/mp4" />
+        </video>
+
+        {/* Dark overlay with blur */}
+        <div className="absolute inset-0 bg-koompi-primary/80 backdrop-blur-[8px]" />
+
         {/* Subtle dot pattern overlay */}
         <div className="absolute inset-0 opacity-10" style={{
           backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',

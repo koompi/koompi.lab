@@ -3,13 +3,19 @@ export type SchoolStatus = 'none' | 'lab' | 'lab-content' | 'full-solar'
 export interface School {
   _id: string
   name: string
+  nameKh?: string
   province: string
+  provinceKh?: string
   district: string
+  districtKh?: string
+  schoolType?: string
   studentCount: number
   status: SchoolStatus
   fundedPercentage: number
   images?: string[]
   establishedAt?: string
+  source?: string
+  verificationStatus?: string
 }
 
 export interface Donation {

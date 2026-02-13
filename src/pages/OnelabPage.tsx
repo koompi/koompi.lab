@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ProductHero, FeatureCard, PricingSection, PricingCalculator, FAQ, ProductCTA } from '../components/Products'
+import { ProductHero, FeatureCard, PricingCalculator, FAQ, ProductCTA } from '../components/Products'
 import Footer from '../components/Shared/Footer'
 import { LAB_FEATURES, HOW_IT_WORKS_STEPS, ONELAB_FAQ } from '../data/products'
 
@@ -20,7 +20,7 @@ const OnelabPage = () => {
       {/* 1. Video Hero */}
       <ProductHero
         variant="video"
-        videoSrc="/videos/example2.mp4"
+        videoSrc="/videos/Video-bg-hero-sec.mp4"
         badge="KOOMPI Onelab"
         title="ONELAB"
         glitchWord="ONELAB"
@@ -35,19 +35,6 @@ const OnelabPage = () => {
           { label: 'Get a Quote', to: '#pricing', variant: 'ghost' },
         ]}
       />
-
-      {/* Floating CTA */}
-      {showFloatingCTA && (
-        <Link
-          to="/fund"
-          className="fixed bottom-6 right-6 z-50 px-6 py-3 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white rounded-full font-semibold shadow-2xl shadow-pink-500/30 hover:shadow-pink-500/50 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 border-2 border-accent-500"
-        >
-          Fund a School
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </Link>
-      )}
 
       {/* 2. Problem → Solution */}
       <section className="py-20 px-4 bg-white">
@@ -108,6 +95,8 @@ const OnelabPage = () => {
                 image={feature.image}
                 large={feature.large}
                 delay={i * 0.1}
+                link={feature.link}
+                linkLabel={feature.linkLabel}
               />
             ))}
           </div>
@@ -178,9 +167,6 @@ const OnelabPage = () => {
       <section id="pricing" className="py-20 px-4 bg-cream">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-medium mb-4">
-              Modular Pricing
-            </span>
             <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary mb-3">
               Build Your Lab
             </h2>
@@ -188,11 +174,23 @@ const OnelabPage = () => {
               Products are independent and combinable. Choose what your school needs.
             </p>
           </div>
-          <PricingSection />
 
-          <div className="mt-12">
-            <PricingCalculator />
+          {/* CTA Button */}
+          <div className="flex justify-center">
+            <Link
+              to="/fund"
+              className="group relative inline-flex items-center gap-3 px-12 py-6 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white rounded-2xl font-semibold text-lg hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95"
+            >
+              <span>Build Your Custom Lab</span>
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
+
+          <p className="text-center text-gray-500 mt-6">
+            Configure lab size, add-ons, and installation location
+          </p>
         </div>
       </section>
 
@@ -309,11 +307,10 @@ const OnelabPage = () => {
       <ProductCTA
         headline="Ready to bring digital education to your school?"
         subtitle="Over 13,000 public schools still have no computer lab. We've equipped 65 so far — partner with us or start your own."
-        primaryCTA={{ label: 'Fund a School', to: '/fund' }}
+        primaryCTA={{ label: 'Fund a School', to: '/fund#pricing' }}
         secondaryCTA={{ label: 'Contact Us', to: '/contact' }}
       />
 
-      <Footer />
     </div>
   )
 }

@@ -104,8 +104,8 @@ const HomePage = () => {
             </Link>
           </FadeInSection>
 
-          {/* Secondary Products — 3-Column Grid */}
-          <div className="grid md:grid-cols-3 gap-6">
+          {/* Secondary Products — 2-Column Grid */}
+          <div className="grid md:grid-cols-2 gap-6">
             {[
               {
                 name: 'Content Server',
@@ -120,13 +120,6 @@ const HomePage = () => {
                 image: '/images/os/bg.png',
                 to: '/os',
                 accent: 'border-t-koompi-accent-pink',
-              },
-              {
-                name: 'Edu Suite',
-                desc: 'Curriculum-aligned software for K-12 classrooms. Offline-ready, teacher-friendly.',
-                image: '/images/products/weteka-laptop.png',
-                to: '/edu-suite',
-                accent: 'border-t-koompi-accent-yellow',
               },
             ].map((product, i) => (
               <FadeInSection key={i} delay={0.1 + i * 0.1}>
@@ -217,9 +210,9 @@ const HomePage = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { image: '/images/products/students.png', caption: 'Students using KOOMPI Ministations at a rural school' },
+              { image: '/images/products/Students.JPG', caption: 'Students using KOOMPI Ministations at a rural school' },
               { image: '/images/products/computer-lab.png', caption: 'A fully installed KOOMPI Onelab computer room' },
-              { image: '/images/products/lab.jpg', caption: 'Teacher-led ICT class with KOOMPI equipment' },
+              { image: '/images/products/teacher.jpg', caption: 'Teacher-led ICT class with KOOMPI equipment' },
             ].map((photo, i) => (
               <FadeInSection key={i} delay={i * 0.1}>
                 <div className="rounded-2xl overflow-hidden shadow-lg group">
@@ -256,7 +249,7 @@ const HomePage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/fund"
+                to="/fund#pricing"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-koompi-accent-pink text-white rounded-full font-semibold text-lg hover:bg-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-accent-500"
               >
                 Fund a School

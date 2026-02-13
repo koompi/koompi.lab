@@ -16,6 +16,12 @@ export default {
           'accent-pink': '#F16179',    // Fiery Pink (10% accent)
           'accent-yellow': '#FFD700',  // Gold Yellow (10% accent)
         },
+        // Slate colors for glass effect
+        slate: {
+          50: '#f8fafc',      // slate-50
+          800: '#1e293b',     // slate-800
+          900: '#0f172a',     // slate-900
+        },
         // Primary Navy Blue Spectrum
         'primary': {
           50: '#EEF0F4',
@@ -68,18 +74,46 @@ export default {
         mono: ['SF Mono', 'ui-monospace', 'monospace'],
       },
       animation: {
-        'fade-in': 'fadeIn 0.6s ease-out',
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
         'slide-up': 'slideUp 0.6s ease-out',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'float-slow': 'floatSlow 8s ease-in-out infinite',
+        'bounce-slow': 'bounceSlow 2s ease-in-out infinite',
+        'gradient-shift': 'gradientShift 4s ease infinite',
+        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+        'spin-slow': 'spin 12s linear infinite',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         slideUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        floatSlow: {
+          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+          '25%': { transform: 'translateY(-10px) rotate(1deg)' },
+          '50%': { transform: 'translateY(-20px) rotate(0deg)' },
+          '75%': { transform: 'translateY(-10px) rotate(-1deg)' },
+        },
+        bounceSlow: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(8px)' },
+        },
+        gradientShift: {
+          '0%, 100%': { backgroundPosition: '0% center' },
+          '50%': { backgroundPosition: '100% center' },
         },
       },
     },

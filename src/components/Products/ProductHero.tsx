@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 interface StatItem {
   value: string
@@ -40,6 +41,34 @@ const ProductHero = ({
   backgroundImage,
   children,
 }: ProductHeroProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const location = useLocation()
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {})
+    }
+  }, [])
+
+  const handleCTAClick = (to: string) => (e: React.MouseEvent) => {
+    // Extract the path and hash from the 'to' prop
+    const [path, hash] = to.split('#')
+
+    // If we're already on the target page, just scroll to the element
+    if (location.pathname === path) {
+      e.preventDefault()
+      const element = hash ? document.getElementById(hash) : null
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      } else if (hash) {
+        // If hash is 'pricing' and element not found, try finding by section text
+        setTimeout(() => {
+          const el = document.getElementById(hash)
+          if (el) el.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
+    }
+  }
   const renderTitle = () => {
     if (glitchWord) {
       const parts = title.split(glitchWord)
@@ -61,6 +90,7 @@ const ProductHero = ({
       <Link
         key={i}
         to={cta.to}
+        onClick={handleCTAClick(cta.to)}
         className={
           cta.variant === 'primary'
             ? 'px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-accent-500'
@@ -91,6 +121,7 @@ const ProductHero = ({
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {videoSrc && (
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
@@ -103,13 +134,13 @@ const ProductHero = ({
         <div className="video-overlay bg-koompi-primary/80 backdrop-blur-[8px]" />
 
         {/* Dot pattern */}
-        <div className="absolute inset-0 z-[2] opacity-5">
+        <div className="absolute inset-0 z-[2] opacity-10">
           <div
             className="absolute inset-0"
             style={{
               backgroundImage:
                 'radial-gradient(circle, white 1px, transparent 1px)',
-              backgroundSize: '20px 20px',
+              backgroundSize: '24px 24px',
             }}
           />
         </div>
@@ -205,6 +236,7 @@ const ProductHero = ({
               backgroundImage: `url(${backgroundImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              animation: 'bg-zoom-pan 20s ease-in-out infinite alternate',
             }
           : undefined
       }

@@ -276,14 +276,15 @@ const ProductOverlayMenu = ({ isOpen, onClose }: ProductOverlayMenuProps) => {
                                     </div>
                                   )}
                                 </div>
-                              </Link>
-                            </motion.div>
-                          ))}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+                              </div>
+                            </Link>
+                          </motion.div>
+                        )
+                      })}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </HeroBackground>
         </motion.div>

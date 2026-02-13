@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import SchoolTable from '../components/Schools/SchoolTable'
 import Footer from '../components/Shared/Footer'
+import DonationModal from '../components/Donation/DonationModal'
 import { School } from '../types'
+import schoolsData from '../data/schools-generated'
 
 const SchoolsPage = () => {
   const [schools, setSchools] = useState<School[]>([])
@@ -24,8 +26,8 @@ const SchoolsPage = () => {
       setSchools(data)
     } catch (error) {
       console.error('Failed to fetch schools:', error)
-      // Use mock data for development
-      setSchools(generateMockSchools())
+      // Use generated school data from CSV
+      setSchools(schoolsData)
     } finally {
       setLoading(false)
     }
@@ -47,7 +49,21 @@ const SchoolsPage = () => {
   return (
     <div className="min-h-screen bg-cream">
       {/* Page Header */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-koompi-primary via-koompi-primary to-secondary-600 text-white py-20 pt-32">
+      <section className="relative overflow-hidden text-white py-20 pt-32">
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/Video-bg-hero-sec.mp4" type="video/mp4" />
+        </video>
+
+        {/* Dark overlay with blur */}
+        <div className="absolute inset-0 bg-koompi-primary/80 backdrop-blur-[8px]" />
+
         {/* Subtle dot pattern overlay */}
         <div className="absolute inset-0 opacity-10" style={{
           backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
@@ -222,35 +238,14 @@ const SchoolsPage = () => {
         </div>
       </section>
 
+      <DonationModal
+        school={isDonationModalOpen ? selectedSchool : null}
+        onClose={() => setIsDonationModalOpen(false)}
+      />
+
       <Footer />
     </div>
   )
-}
-
-// Generate mock schools for development
-const generateMockSchools = (): School[] => {
-  const provinces = [
-    'Phnom Penh', 'Siem Reap', 'Battambang', 'Preah Sihanouk', 'Pursat',
-    'Kampong Cham', 'Kampong Thom', 'Kampong Speu', 'Takeo', 'Kampot',
-  ]
-  const statuses = ['none', 'lab', 'lab-content', 'full-solar'] as const
-  const mockSchools: School[] = []
-
-  for (let i = 0; i < 100; i++) {
-    const status = statuses[i % 4]
-    mockSchools.push({
-      _id: `school-${i + 1}`,
-      name: `${provinces[i % provinces.length]} ${['Primary', 'Secondary', 'High'][i % 3]} School ${i + 1}`,
-      province: provinces[i % provinces.length],
-      district: `District ${((i % 10) + 1)}`,
-      studentCount: 200 + Math.floor(Math.random() * 1500),
-      status: status,
-      fundedPercentage: status === 'none' ? 0 : Math.floor(Math.random() * 100),
-      source: 'moeys',
-      verificationStatus: 'verified',
-    } as any)
-  }
-  return mockSchools
 }
 
 export default SchoolsPage

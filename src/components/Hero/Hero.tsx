@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -17,6 +18,11 @@ const Hero = () => {
     }
   }, [])
 
+  const handleFundClick = (e: React.MouseEvent) => {
+    // Already on homepage, navigating to /onelab#pricing will work via router
+    // The App.tsx useEffect handles the scrolling
+  }
+
   return (
     <section className="relative h-screen overflow-hidden">
       {/* Video Background */}
@@ -28,7 +34,7 @@ const Hero = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/example2.mp4" type="video/mp4" />
+        <source src="/videos/Video-bg-hero-sec.mp4" type="video/mp4" />
       </video>
 
       {/* Dark overlay with blur */}
@@ -40,6 +46,12 @@ const Hero = () => {
       {/* Gradient orbs */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-koompi-secondary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
+
+      {/* Dot pattern grid overlay */}
+      <div className="absolute inset-0 opacity-10" style={{
+        backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+      }} />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
@@ -55,7 +67,7 @@ const Hero = () => {
           <img
             src="/logo/koompi-logo-text-white.png"
             alt="KOOMPI"
-            className="h-16 md:h-24 lg:h-32 mx-auto mb-4"
+            className="h-14 md:h-20 lg:h-24 mx-auto mb-4"
           />
           <span className="block text-koompi-accent-pink text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide" style={{ letterSpacing: 'normal' }}>
             Digital Education
@@ -87,7 +99,8 @@ const Hero = () => {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <Link
-            to="/fund"
+            to="/fund#pricing"
+            onClick={handleFundClick}
             className="px-8 py-4 bg-koompi-accent-pink text-white rounded-full font-semibold text-lg hover:bg-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-accent-500"
           >
             Fund a School
