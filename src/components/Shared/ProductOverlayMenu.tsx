@@ -160,7 +160,8 @@ const ProductOverlayMenu = ({ isOpen, onClose }: ProductOverlayMenuProps) => {
 
             {/* Content */}
             <div
-              className="relative z-10 h-screen overflow-y-auto overflow-x-hidden px-6 sm:px-12 lg:px-24 py-24 max-w-7xl mx-auto"
+              className="relative z-10 h-screen overflow-y-auto overflow-x-hidden px-6 sm:px-12 lg:px-24 py-24 max-w-7xl mx-auto scrollbar-hide"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
