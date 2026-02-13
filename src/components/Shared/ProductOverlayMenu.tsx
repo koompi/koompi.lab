@@ -244,6 +244,7 @@ const ProductOverlayMenu = ({ isOpen, onClose }: ProductOverlayMenuProps) => {
                                       <span className="text-white text-xs font-medium">Current Page</span>
                                     </div>
                                   )}
+
                                 </div>
 
                                 {/* Product Info */}
