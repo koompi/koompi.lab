@@ -26,7 +26,7 @@ const productsBySection = {
       {
         name: 'KOOMPI Mini Station',
         path: '/ministation-v2',
-        image: '/images/products/koompi-mini-set.png',
+        image: '/images/products/ministation3.png',
         tagline: 'All-in-one lab solution.',
         description: 'Portable charging station for 20+ devices.'
       }
