@@ -91,7 +91,7 @@ const FeatureCard = ({
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-koompi-accent-pink text-white rounded-full text-sm font-semibold hover:bg-pink-600 transition-colors"
+                className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-koompi-accent-persimmon text-white rounded-full text-sm font-semibold hover:bg-pink-600 transition-colors"
               >
                 {linkLabel}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,7 +115,7 @@ const FeatureCard = ({
           )}
           <div className="flex items-start gap-3">
             {icon && (
-              <span className="text-3xl flex-shrink-0 bg-gradient-to-br from-koompi-accent-pink/10 to-koompi-accent-pink/5 w-12 h-12 rounded-xl flex items-center justify-center">
+              <span className="text-3xl flex-shrink-0 bg-gradient-to-br from-koompi-accent-persimmon/10 to-koompi-accent-persimmon/5 w-12 h-12 rounded-xl flex items-center justify-center">
                 {icon}
               </span>
             )}
@@ -142,7 +142,7 @@ const FeatureCard = ({
                     </span>
                   )}
                   {items && (
-                    <span className="inline-flex items-center px-2 py-1 bg-koompi-accent-pink/10 text-koompi-accent-pink text-xs font-medium rounded-full">
+                    <span className="inline-flex items-center px-2 py-1 bg-koompi-accent-persimmon/10 text-koompi-accent-persimmon text-xs font-medium rounded-full">
                       📊 {items}
                     </span>
                   )}
@@ -153,7 +153,7 @@ const FeatureCard = ({
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-3 px-4 py-2 bg-koompi-accent-pink text-white rounded-full text-sm font-semibold hover:bg-pink-600 transition-colors"
+                  className="inline-flex items-center gap-2 mt-3 px-4 py-2 bg-koompi-accent-persimmon text-white rounded-full text-sm font-semibold hover:bg-pink-600 transition-colors"
                 >
                   {linkLabel}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

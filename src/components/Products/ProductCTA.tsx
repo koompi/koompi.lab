@@ -29,7 +29,7 @@ const ProductCTA = ({
         />
       </div>
 
-      <div className="absolute top-10 left-10 w-32 h-32 bg-koompi-accent-pink/20 rounded-full blur-3xl" />
+      <div className="absolute top-10 left-10 w-32 h-32 bg-koompi-accent-persimmon/20 rounded-full blur-3xl" />
       <div className="absolute bottom-10 right-10 w-40 h-40 bg-koompi-accent-blue/20 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -42,7 +42,7 @@ const ProductCTA = ({
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             to={primaryCTA.to}
-            className="px-10 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-accent-500"
+            className="px-10 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-400 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-accent-500"
           >
             {primaryCTA.label}
           </Link>
@@ -60,7 +60,7 @@ const ProductCTA = ({
           <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm">
             {trustItems.map((item, i) => (
               <div key={i} className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-koompi-accent-persimmon" fill="currentColor" viewBox="0 0 20 20">
                   <path
                     fillRule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"

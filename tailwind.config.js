@@ -8,12 +8,12 @@ export default {
     extend: {
       colors: {
         // Official KOOMPI Brand Colors (from koompi-color-system.png)
-        // 60% Primary (navy/black/gray) | 30% Secondary (teal) | 10% Accent (pink/yellow)
+        // 60% Primary (navy/black/gray) | 30% Secondary (teal) | 10% Accent (persimmon/yellow)
         'koompi': {
           'primary': '#263c5c',        // Navy Blue (60% usage)
           'secondary': '#38A7C8',      // Teal/Cyan (30% usage)
           'accent-blue': '#38A7C8',    // Alias for secondary
-          'accent-pink': '#F16179',    // Fiery Pink (10% accent)
+          'accent-persimmon': '#FF6B35',  // Persimmon/Coral (10% accent) - warm, friendly, energetic
           'accent-yellow': '#FFD700',  // Gold Yellow (10% accent)
         },
         // Slate colors for glass effect
@@ -48,18 +48,18 @@ export default {
           800: '#174450',
           900: '#0C2328',
         },
-        // Accent Pink Spectrum
+        // Accent Persimmon Spectrum
         'accent': {
-          50: '#FDE8ED',
-          100: '#FBBFCB',
-          200: '#F896A9',
-          300: '#F56D87',
-          400: '#F34565',
-          500: '#F16179',    // Main accent (Fiery Pink)
-          600: '#D94E66',
-          700: '#B93D53',
-          800: '#992D40',
-          900: '#791D2D',
+          50: '#FFF0ED',
+          100: '#FFE0D2',
+          200: '#FFD0B8',
+          300: '#FFC09E',
+          400: '#FFB084',
+          500: '#FF6B35',    // Main accent (Persimmon/Coral)
+          600: '#E55A2D',
+          700: '#CC4A26',
+          800: '#B33C1F',
+          900: '#9A2F18',
         },
         'cream': '#f7f7f7',
         // Gradient colors from brand

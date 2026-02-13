@@ -104,7 +104,7 @@ const ContactPage = () => {
         }} />
 
         {/* Decorative gradient orbs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-koompi-accent-pink/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-koompi-accent-persimmon/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-koompi-accent-blue/20 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4">
@@ -170,7 +170,7 @@ const ContactPage = () => {
                   <a
                     key={social}
                     href="#"
-                    className="w-10 h-10 bg-white rounded-full shadow flex items-center justify-center text-koompi-primary hover:bg-koompi-accent-pink hover:text-white transition"
+                    className="w-10 h-10 bg-white rounded-full shadow flex items-center justify-center text-koompi-primary hover:bg-koompi-accent-persimmon hover:text-white transition"
                   >
                     <span className="text-xs font-medium">{social.slice(0, 2)}</span>
                   </a>
@@ -184,7 +184,7 @@ const ContactPage = () => {
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               {submitted ? (
                 <div className="text-center py-12">
-                  <div className="w-16 h-16 bg-koompi-accent-pink rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-koompi-accent-persimmon rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>

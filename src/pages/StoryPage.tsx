@@ -203,7 +203,7 @@ const StoryPage = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Stories of <span className="text-koompi-accent-pink">Change</span>
+              Stories of <span className="text-koompi-accent-persimmon">Change</span>
             </h1>
             <p className="text-xl text-gray-300">
               Real stories from schools, teachers, and donors making digital education accessible across Cambodia.
@@ -213,19 +213,19 @@ const StoryPage = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-pink">65</p>
+              <p className="text-4xl font-bold text-koompi-accent-persimmon">65</p>
               <p className="text-gray-300">Schools</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-pink">12K</p>
+              <p className="text-4xl font-bold text-koompi-accent-persimmon">12K</p>
               <p className="text-gray-300">Students</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-pink">24</p>
+              <p className="text-4xl font-bold text-koompi-accent-persimmon">24</p>
               <p className="text-gray-300">Provinces</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-pink">100+</p>
+              <p className="text-4xl font-bold text-koompi-accent-persimmon">100+</p>
               <p className="text-gray-300">Stories</p>
             </div>
           </div>
@@ -256,14 +256,14 @@ const StoryPage = () => {
                   <div
                     className={`hidden md:flex w-12 h-12 text-white rounded-full items-center justify-center font-bold z-10 shadow-lg ${
                       milestone.type === 'product'
-                        ? 'bg-gradient-to-br from-koompi-accent-pink to-koompi-primary w-16'
+                        ? 'bg-gradient-to-br from-koompi-accent-persimmon to-koompi-primary w-16'
                         : 'bg-koompi-primary'
                     }`}
                   >
                     {milestone.year.slice(-2)}
                   </div>
                   <div className="flex-1 p-6 bg-cream rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <span className="text-koompi-accent-pink font-semibold">{milestone.year}</span>
+                    <span className="text-koompi-accent-persimmon font-semibold">{milestone.year}</span>
                     <h3 className="text-lg font-bold text-koompi-primary mt-1">{milestone.title}</h3>
                     <p className="text-gray-600 text-sm mt-1">{milestone.description}</p>
 
@@ -279,7 +279,7 @@ const StoryPage = () => {
                           <div className="grid grid-cols-3 gap-2 mt-3">
                             {Object.entries(milestone.stats).map(([key, value]) => (
                               <div key={key} className="bg-white rounded-lg p-2 text-center">
-                                <p className="text-lg font-bold text-koompi-accent-pink">{value}</p>
+                                <p className="text-lg font-bold text-koompi-accent-persimmon">{value}</p>
                                 <p className="text-xs text-gray-500 capitalize">{key}</p>
                               </div>
                             ))}
@@ -301,7 +301,7 @@ const StoryPage = () => {
                             <div className="flex justify-between items-start">
                               <div>
                                 <h4 className="font-bold text-koompi-primary">{milestone.product.name}</h4>
-                                <p className="text-sm text-koompi-accent-pink">{milestone.product.tagline}</p>
+                                <p className="text-sm text-koompi-accent-persimmon">{milestone.product.tagline}</p>
                               </div>
                               <span className="text-lg font-bold text-koompi-primary">{milestone.product.price}</span>
                           </div>
@@ -351,7 +351,7 @@ const StoryPage = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-medium text-koompi-accent-pink uppercase tracking-wide">
+                  <span className="text-xs font-medium text-koompi-accent-persimmon uppercase tracking-wide">
                     {story.category}
                   </span>
                   <h3 className="text-xl font-bold text-koompi-primary mt-2 mb-2">
@@ -392,7 +392,7 @@ const StoryPage = () => {
             </div>
             <div className="p-8">
               <div className="flex items-center gap-4 mb-4">
-                <span className="px-3 py-1 bg-koompi-accent-pink/20 text-koompi-accent-pink rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-koompi-accent-persimmon/20 text-koompi-accent-persimmon rounded-full text-sm font-medium">
                   {selectedStory.category}
                 </span>
                 <span className="text-gray-500">{selectedStory.date}</span>

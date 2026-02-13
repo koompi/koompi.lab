@@ -45,7 +45,7 @@ const Hero = () => {
 
       {/* Gradient orbs */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-koompi-secondary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-persimmon/10 rounded-full blur-3xl" />
 
       {/* Dot pattern grid overlay */}
       <div className="absolute inset-0 opacity-10" style={{
@@ -69,7 +69,7 @@ const Hero = () => {
             alt="KOOMPI"
             className="h-14 md:h-20 lg:h-24 mx-auto mb-4"
           />
-          <span className="block text-koompi-accent-pink text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide" style={{ letterSpacing: 'normal' }}>
+          <span className="block text-koompi-accent-persimmon text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide" style={{ letterSpacing: 'normal' }}>
             Digital Education
           </span>
         </div>
@@ -101,7 +101,7 @@ const Hero = () => {
           <Link
             to="/fund#pricing"
             onClick={handleFundClick}
-            className="px-8 py-4 bg-koompi-accent-pink text-white rounded-full font-semibold text-lg hover:bg-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-accent-500"
+            className="px-8 py-4 bg-koompi-accent-persimmon text-white rounded-full font-semibold text-lg hover:bg-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-accent-500"
           >
             Fund a School
           </Link>

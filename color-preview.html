@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOOMPI Color Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            padding: 40px 20px;
+            background: #f7f7f7;
+        }
+        h1 {
+            color: #263c5c;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        .section {
+            margin-bottom: 50px;
+        }
+        .section-title {
+            font-size: 18px;
+            color: #263c5c;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .colors {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .color-card {
+            width: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .color-swatch {
+            height: 100px;
+            width: 100%;
+        }
+        .color-info {
+            padding: 12px;
+            background: white;
+        }
+        .color-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: #263c5c;
+            margin-bottom: 4px;
+        }
+        .color-hex {
+            font-size: 11px;
+            font-family: monospace;
+            color: #666;
+        }
+        .demo {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .nav-demo {
+            background: #263c5c;
+            padding: 20px;
+            border-radius: 50px;
+            display: inline-flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .current {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <h1>KOOMPI Color Preview</h1>
+
+    <!-- Current Colors -->
+    <div class="section">
+        <div class="section-title">Current Brand Colors</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary (Navy)</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary (Teal)</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #F16179"></div>
+                <div class="color-info">
+                    <div class="color-name">Accent Pink (Current)</div>
+                    <div class="color-hex">#F16179</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FFD700"></div>
+                <div class="color-info">
+                    <div class="color-name">Accent Yellow</div>
+                    <div class="color-hex">#FFD700</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #F16179; color: white;">Current</span>
+                <button class="btn" style="background: #F16179; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 1: Gold/Amber -->
+    <div class="section">
+        <div class="section-title">Option 1: Gold/Amber Accent (Warm + Cool Balance)</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #F59E0B"></div>
+                <div class="color-info">
+                    <div class="color-name">New Accent (Amber)</div>
+                    <div class="color-hex">#F59E0B</div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #F59E0B; color: white;">Current</span>
+                <button class="btn" style="background: #F59E0B; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 2: Coral Orange -->
+    <div class="section">
+        <div class="section-title">Option 2: Coral Orange (Energetic Warmth)</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FF6B35"></div>
+                <div class="color-info">
+                    <div class="color-name">New Accent (Coral)</div>
+                    <div class="color-hex">#FF6B35</div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #FF6B35; color: white;">Current</span>
+                <button class="btn" style="background: #FF6B35; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 3: Deep Magenta -->
+    <div class="section">
+        <div class="section-title">Option 3: Deep Magenta (Sophisticated)</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #D6336C"></div>
+                <div class="color-info">
+                    <div class="color-name">New Accent (Magenta)</div>
+                    <div class="color-hex">#D6336C</div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #D6336C; color: white;">Current</span>
+                <button class="btn" style="background: #D6336C; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 4: Brighter Teal -->
+    <div class="section">
+        <div class="section-title">Option 4: Brighter Teal (Monochromatic Harmony)</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #14B8A6"></div>
+                <div class="color-info">
+                    <div class="color-name">New Accent (Bright Teal)</div>
+                    <div class="color-hex">#14B8A6</div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #14B8A6; color: white;">Current</span>
+                <button class="btn" style="background: #14B8A6; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 5: Terra Cotta -->
+    <div class="section">
+        <div class="section-title">Option 5: Terra Cotta (Earthy, Sophisticated)</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #E07A5F"></div>
+                <div class="color-info">
+                    <div class="color-name">New Accent (Terra Cotta)</div>
+                    <div class="color-hex">#E07A5F</div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #E07A5F; color: white;">Current</span>
+                <button class="btn" style="background: #E07A5F; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 6: Persimmon -->
+    <div class="section">
+        <div class="section-title">Option 6: Persimmon (Warm, Friendly, Energetic)</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FF6B35"></div>
+                <div class="color-info">
+                    <div class="color-name">New Accent (Persimmon)</div>
+                    <div class="color-hex">#FF6B35</div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #FF6B35; color: white;">Current</span>
+                <button class="btn" style="background: #FF6B35; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 7: Sage Green -->
+    <div class="section">
+        <div class="section-title">Option 7: Sage Green (Natural, Educational, Calming)</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #7CB342"></div>
+                <div class="color-info">
+                    <div class="color-name">New Accent (Sage Green)</div>
+                    <div class="color-hex">#7CB342</div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #7CB342; color: white;">Current</span>
+                <button class="btn" style="background: #7CB342; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 8: Soft Rose -->
+    <div class="section">
+        <div class="section-title">Option 8: Soft Rose (Muted Pink - More Refined)</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #D4A5A5"></div>
+                <div class="color-info">
+                    <div class="color-name">New Accent (Soft Rose)</div>
+                    <div class="color-hex">#D4A5A5</div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #D4A5A5; color: white;">Current</span>
+                <button class="btn" style="background: #D4A5A5; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 9: Electric Blue -->
+    <div class="section">
+        <div class="section-title">Option 9: Electric Blue (Cool, Tech-Forward)</div>
+        <div class="colors">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #263c5c"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary</div>
+                    <div class="color-hex">#263c5c</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #38A7C8"></div>
+                <div class="color-info">
+                    <div class="color-name">Secondary</div>
+                    <div class="color-hex">#38A7C8</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #4F46E5"></div>
+                <div class="color-info">
+                    <div class="color-name">New Accent (Electric Blue)</div>
+                    <div class="color-hex">#4F46E5</div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="nav-demo">
+                <a href="#" class="nav-link">Apps</a>
+                <a href="#" class="nav-link">Schools</a>
+                <a href="#" class="nav-link">Story</a>
+                <span class="badge" style="background: #4F46E5; color: white;">Current</span>
+                <button class="btn" style="background: #4F46E5; color: white;">Fund a School</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

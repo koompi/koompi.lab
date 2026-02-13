@@ -67,7 +67,7 @@ const ImpactStats = () => {
     >
       {/* Background accents */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-koompi-secondary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-koompi-accent-pink/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-koompi-accent-persimmon/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">

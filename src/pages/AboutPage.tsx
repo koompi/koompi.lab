@@ -371,7 +371,7 @@ const AboutPage = () => {
           variants={containerVariants}
         >
           <motion.div className="text-center mb-12" variants={fadeInUp}>
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-accent-700 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 bg-koompi-accent-persimmon/10 text-accent-700 rounded-full text-sm font-medium mb-4">
               Our Foundation
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary mb-3">
@@ -453,7 +453,7 @@ const AboutPage = () => {
 
             {/* Mission */}
             <motion.div
-              className="bg-white rounded-2xl p-8 shadow-lg border-2 border-koompi-accent-pink/20"
+              className="bg-white rounded-2xl p-8 shadow-lg border-2 border-koompi-accent-persimmon/20"
               variants={fadeInUp}
             >
               <div className="flex items-center gap-3 mb-4">
@@ -556,7 +556,7 @@ const AboutPage = () => {
 
             <motion.div className="relative" variants={scaleIn}>
               {/* Layered shadow cards for depth */}
-              <div className="absolute top-4 left-4 right-8 bottom-8 bg-koompi-accent-pink/20 rounded-2xl -z-10" />
+              <div className="absolute top-4 left-4 right-8 bottom-8 bg-koompi-accent-persimmon/20 rounded-2xl -z-10" />
               <div className="absolute top-8 left-8 right-4 bottom-4 bg-koompi-accent-blue/20 rounded-2xl -z-10" />
 
               {/* Main image container - polaroid style */}
@@ -590,7 +590,7 @@ const AboutPage = () => {
 
               {/* Floating stats badges */}
               <motion.div
-                className="absolute -top-2 -left-2 bg-white rounded-lg shadow-lg px-3 py-1.5 border-2 border-koompi-accent-pink"
+                className="absolute -top-2 -left-2 bg-white rounded-lg shadow-lg px-3 py-1.5 border-2 border-koompi-accent-persimmon"
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               >
@@ -654,7 +654,7 @@ const AboutPage = () => {
                 key={index}
                 className={`group bg-white rounded-2xl p-8 shadow-lg transition-all text-center border ${
                   item.color === 'blue' ? 'border-gray-100 hover:border-blue-200' :
-                  item.color === 'pink' ? 'border-gray-100 hover:border-koompi-accent-pink/30' :
+                  item.color === 'pink' ? 'border-gray-100 hover:border-koompi-accent-persimmon/30' :
                   'border-gray-100 hover:border-yellow-200'
                 }`}
                 variants={staggerItem}
@@ -674,7 +674,7 @@ const AboutPage = () => {
                 ) : (
                   <motion.div
                     className={`w-20 h-20 bg-gradient-to-br rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg ${
-                      item.color === 'pink' ? 'from-koompi-accent-pink to-pink-400 shadow-pink-500/30' :
+                      item.color === 'pink' ? 'from-koompi-accent-persimmon to-pink-400 shadow-pink-500/30' :
                       'from-koompi-accent-yellow to-yellow-600 shadow-yellow-500/30'
                     }`}
                     whileHover={{ scale: 1.1, rotate: 6 }}
@@ -684,7 +684,7 @@ const AboutPage = () => {
                 )}
                 <h3 className={`text-xl font-bold mb-3 transition-colors ${
                   item.color === 'blue' ? 'text-koompi-primary group-hover:text-blue-600' :
-                  item.color === 'pink' ? 'text-koompi-primary group-hover:text-koompi-accent-pink' :
+                  item.color === 'pink' ? 'text-koompi-primary group-hover:text-koompi-accent-persimmon' :
                   'text-koompi-primary group-hover:text-yellow-600'
                 }`}>
                   {item.title}
@@ -700,7 +700,7 @@ const AboutPage = () => {
       <section className="py-20 px-4 bg-white relative overflow-hidden">
         {/* Background decoration */}
         <motion.div
-          className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-pink/5 rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-persimmon/5 rounded-full blur-3xl"
           animate={{ scale: [1, 1.2, 1], x: [0, 20, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -742,19 +742,19 @@ const AboutPage = () => {
                   initial={{ opacity: 0, x: -20 }}
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-koompi-accent-pink/5 to-koompi-accent-blue/5"
+                    className="absolute inset-0 bg-gradient-to-r from-koompi-accent-persimmon/5 to-koompi-accent-blue/5"
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                   />
                   <div className="relative flex items-start gap-4">
                     <motion.div
-                      className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30"
+                      className="w-16 h-16 bg-gradient-to-br from-koompi-accent-persimmon to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30"
                       whileHover={{ scale: 1.1, rotate: 6 }}
                     >
                       <span className="text-3xl">{project.icon}</span>
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-pink transition-colors">{project.name}</h3>
+                      <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-persimmon transition-colors">{project.name}</h3>
                       <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
                     </div>
                     <motion.svg
@@ -780,19 +780,19 @@ const AboutPage = () => {
                     className="group relative bg-gradient-to-br from-cream to-white rounded-2xl p-6 border border-koompi-accent-blue/10 overflow-hidden"
                   >
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-koompi-accent-pink/5 to-koompi-accent-blue/5"
+                      className="absolute inset-0 bg-gradient-to-r from-koompi-accent-persimmon/5 to-koompi-accent-blue/5"
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                     />
                     <div className="relative flex items-start gap-4">
                       <motion.div
-                        className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30"
+                        className="w-16 h-16 bg-gradient-to-br from-koompi-accent-persimmon to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30"
                         whileHover={{ scale: 1.1, rotate: 6 }}
                       >
                         <span className="text-3xl">{project.icon}</span>
                       </motion.div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-pink transition-colors">{project.name}</h3>
+                        <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-persimmon transition-colors">{project.name}</h3>
                         <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
                       </div>
                       <motion.svg
@@ -814,13 +814,13 @@ const AboutPage = () => {
       </section>
 
       {/* Section Divider */}
-      <div className="bg-gradient-to-r from-transparent via-koompi-accent-pink/20 to-transparent h-px" />
+      <div className="bg-gradient-to-r from-transparent via-koompi-accent-persimmon/20 to-transparent h-px" />
 
       {/* Team */}
       <section className="py-20 px-4 bg-cream relative overflow-hidden">
         {/* Background decoration */}
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-koompi-accent-pink/5 to-koompi-accent-blue/5 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-koompi-accent-persimmon/5 to-koompi-accent-blue/5 rounded-full blur-3xl"
           animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -855,7 +855,7 @@ const AboutPage = () => {
                 <div className="relative mb-5">
                   {/* Glowing effect on hover */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-koompi-accent-pink/20 to-koompi-accent-blue/20 rounded-full blur-xl"
+                    className="absolute inset-0 bg-gradient-to-br from-koompi-accent-persimmon/20 to-koompi-accent-blue/20 rounded-full blur-xl"
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1, scale: 1.1 }}
                   />
@@ -870,7 +870,7 @@ const AboutPage = () => {
                     />
                   </motion.div>
                 </div>
-                <h3 className="text-lg font-bold text-koompi-primary mb-1 group-hover:text-koompi-accent-pink transition-colors">
+                <h3 className="text-lg font-bold text-koompi-primary mb-1 group-hover:text-koompi-accent-persimmon transition-colors">
                   {member.name}
                 </h3>
                 <p className="text-accent-700 text-sm font-medium mb-3">{member.role}</p>
@@ -891,7 +891,7 @@ const AboutPage = () => {
           variants={containerVariants}
         >
           <motion.div className="text-center mb-12" variants={fadeInUp}>
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-accent-700 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 bg-koompi-accent-persimmon/10 text-accent-700 rounded-full text-sm font-medium mb-4">
               Collaboration
             </span>
             <h2 className="text-3xl font-bold text-koompi-primary mb-3">
@@ -938,7 +938,7 @@ const AboutPage = () => {
 
         {/* Floating accent circles */}
         <motion.div
-          className="absolute top-10 left-10 w-32 h-32 bg-koompi-accent-pink/20 rounded-full blur-3xl"
+          className="absolute top-10 left-10 w-32 h-32 bg-koompi-accent-persimmon/20 rounded-full blur-3xl"
           animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -1007,9 +1007,9 @@ const AboutPage = () => {
             transition={{ duration: 0.6, delay: 0.7 }}
           >
             {[
-              { icon: <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>, text: '100% Tax Deductible' },
-              { icon: <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>, text: 'Transparent Reporting' },
-              { icon: <svg className="w-5 h-5 text-koompi-accent-pink" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>, text: 'Direct Impact' },
+              { icon: <svg className="w-5 h-5 text-koompi-accent-persimmon" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>, text: '100% Tax Deductible' },
+              { icon: <svg className="w-5 h-5 text-koompi-accent-persimmon" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>, text: 'Transparent Reporting' },
+              { icon: <svg className="w-5 h-5 text-koompi-accent-persimmon" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>, text: 'Direct Impact' },
             ].map((item, index) => (
               <motion.div
                 key={index}

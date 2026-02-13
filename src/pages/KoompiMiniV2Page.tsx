@@ -138,14 +138,14 @@ const KoompiMiniV2Page = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-white">
-              <span className="inline-block px-4 py-2 bg-koompi-accent-pink/20 border border-koompi-accent-pink/30 rounded-full text-koompi-accent-pink text-sm font-semibold mb-6">
+              <span className="inline-block px-4 py-2 bg-koompi-accent-persimmon/20 border border-koompi-accent-persimmon/30 rounded-full text-koompi-accent-persimmon text-sm font-semibold mb-6">
                 NEW RELEASE
               </span>
               <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
                 KOOMPI Mini
-                <span className="text-koompi-accent-pink"> V2</span>
+                <span className="text-koompi-accent-persimmon"> V2</span>
               </h1>
-              <div className="text-4xl md:text-5xl font-black text-koompi-accent-pink mb-4">
+              <div className="text-4xl md:text-5xl font-black text-koompi-accent-persimmon mb-4">
                 $279
               </div>
               <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
@@ -154,7 +154,7 @@ const KoompiMiniV2Page = () => {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
-                  className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
+                  className="px-8 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
                 >
                   Get a Quote
                 </Link>
@@ -236,7 +236,7 @@ const KoompiMiniV2Page = () => {
                     onClick={() => setCurrentImageIndex(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentImageIndex
-                        ? 'bg-koompi-accent-pink w-8'
+                        ? 'bg-koompi-accent-persimmon w-8'
                         : 'bg-gray-300'
                     }`}
                   />
@@ -304,7 +304,7 @@ const KoompiMiniV2Page = () => {
                   onClick={() => setSelectedUseCase(useCase.name)}
                   className={`${
                     selectedUseCase === useCase.name
-                      ? 'bg-koompi-accent-pink text-white border-koompi-accent-pink'
+                      ? 'bg-koompi-accent-persimmon text-white border-koompi-accent-persimmon'
                       : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-slate-200'
                   } px-4 md:px-6 py-3 text-sm md:text-base font-bold rounded-xl cursor-pointer transition-all duration-300 flex items-center justify-center gap-2`}
                 >
@@ -333,7 +333,7 @@ const KoompiMiniV2Page = () => {
 
       {/* CTA Section */}
       <section className="relative py-24 px-4 bg-koompi-primary overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-pink/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-persimmon/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-koompi-secondary/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -346,7 +346,7 @@ const KoompiMiniV2Page = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
+              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
             >
               Contact Us
             </Link>

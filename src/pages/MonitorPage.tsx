@@ -113,7 +113,7 @@ const MonitorPage = () => {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
-                  className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
+                  className="px-8 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
                 >
                   Order Now
                 </Link>
@@ -128,7 +128,7 @@ const MonitorPage = () => {
             <div className="flex justify-center">
               <div className="relative">
                 {/* Glow effect behind monitor */}
-                <div className="absolute inset-0 bg-gradient-to-br from-koompi-accent-pink/20 to-koompi-secondary/20 rounded-full blur-3xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-koompi-accent-persimmon/20 to-koompi-secondary/20 rounded-full blur-3xl" />
                 <img
                   src="/images/products/monitor6.png"
                   alt="KOOMPI Monitor"
@@ -148,7 +148,7 @@ const MonitorPage = () => {
       </HeroBackground>
 
       {/* Price Banner */}
-      <section className="py-8 px-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500">
+      <section className="py-8 px-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-500">
         <div className="max-w-7xl mx-auto text-center">
           <span className="text-4xl md:text-5xl font-black text-white">
             Price: <span className="text-white">$199</span>
@@ -219,7 +219,7 @@ const MonitorPage = () => {
       <section className="py-24 px-4 bg-gradient-to-br from-koompi-primary to-[#0a0f1a]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-koompi-accent-pink/20 text-koompi-accent-pink rounded-full text-sm font-semibold mb-4">
+            <span className="inline-block px-4 py-2 bg-koompi-accent-persimmon/20 text-koompi-accent-persimmon rounded-full text-sm font-semibold mb-4">
               USE CASES
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
@@ -244,7 +244,7 @@ const MonitorPage = () => {
 
       {/* CTA Section */}
       <section className="relative py-24 px-4 bg-[#000000] overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-pink/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-persimmon/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-koompi-secondary/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -257,7 +257,7 @@ const MonitorPage = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
+              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
             >
               Order Now
             </Link>

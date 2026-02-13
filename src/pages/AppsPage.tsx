@@ -81,7 +81,7 @@ const AppsPage = () => {
       <section className="relative overflow-hidden bg-gradient-to-br from-koompi-primary via-blue-900 to-koompi-secondary">
         {/* Abstract shapes */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-koompi-accent-pink/20 rounded-full blur-3xl" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-koompi-accent-persimmon/20 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-koompi-secondary/30 rounded-full blur-3xl" />
         </div>
 
@@ -95,7 +95,7 @@ const AppsPage = () => {
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Discover Apps for
-                <span className="block text-koompi-accent-pink">Cambodia</span>
+                <span className="block text-koompi-accent-persimmon">Cambodia</span>
               </h1>
 
               <p className="text-lg text-white/70 max-w-xl mb-8 leading-relaxed">
@@ -119,7 +119,7 @@ const AppsPage = () => {
                     placeholder="Search apps..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 bg-white/95 backdrop-blur rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-koompi-accent-pink/50 shadow-xl"
+                    className="w-full pl-12 pr-4 py-4 bg-white/95 backdrop-blur rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-koompi-accent-persimmon/50 shadow-xl"
                   />
                 </div>
               </div>
@@ -144,10 +144,10 @@ const AppsPage = () => {
             {/* Right - Featured App Spotlight (Apple Style) */}
             {FEATURED_APPS.length > 0 && (
               <div className="relative">
-                <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-koompi-accent-pink/30 to-koompi-secondary/30 rounded-3xl blur-2xl" />
+                <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-koompi-accent-persimmon/30 to-koompi-secondary/30 rounded-3xl blur-2xl" />
                 <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="px-2 py-1 bg-koompi-accent-pink text-white text-xs font-bold rounded-full">
+                    <span className="px-2 py-1 bg-koompi-accent-persimmon text-white text-xs font-bold rounded-full">
                       FEATURED
                     </span>
                     <span className="text-white/60 text-sm">App of the Day</span>
@@ -155,7 +155,7 @@ const AppsPage = () => {
 
                   <div className="flex gap-6">
                     {/* App Icon */}
-                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-koompi-secondary/40 to-koompi-accent-pink/20 flex items-center justify-center text-4xl flex-shrink-0 shadow-xl">
+                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-koompi-secondary/40 to-koompi-accent-persimmon/20 flex items-center justify-center text-4xl flex-shrink-0 shadow-xl">
                       {FEATURED_APPS[0].category === 'education' ? '📚' : '⚽'}
                     </div>
 
@@ -375,7 +375,7 @@ const AppsPage = () => {
           </p>
           <a
             href="mailto:info@koompi.com?subject=Publish%20My%20App%20on%20KOOMPI"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-koompi-accent-pink text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-pink-500/30 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-koompi-accent-persimmon text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-pink-500/30 transition-all"
           >
             <span>Contact Us</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -416,7 +416,7 @@ const AppStoreCard = ({ app, onSelect, onDownload, isDownloading, isInstalled }:
       <div className="p-4">
         <div className="flex gap-4">
           {/* App Icon */}
-          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-koompi-secondary/20 to-koompi-accent-pink/10 flex items-center justify-center text-3xl flex-shrink-0 shadow-sm">
+          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-koompi-secondary/20 to-koompi-accent-persimmon/10 flex items-center justify-center text-3xl flex-shrink-0 shadow-sm">
             {app.category === 'education' ? '📚' : app.category === 'sports' ? '⚽' : '🔧'}
           </div>
 
@@ -571,7 +571,7 @@ const AppDetailModal = ({ app, onClose, onDownload, isDownloading, isInstalled }
           <div className="flex gap-6 items-start">
             {/* App Icon */}
             <div className="flex-shrink-0">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-koompi-secondary/20 to-koompi-accent-pink/10 flex items-center justify-center text-4xl shadow-lg">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-koompi-secondary/20 to-koompi-accent-persimmon/10 flex items-center justify-center text-4xl shadow-lg">
                 {app.category === 'education' ? '📚' : app.category === 'sports' ? '⚽' : '🔧'}
               </div>
             </div>

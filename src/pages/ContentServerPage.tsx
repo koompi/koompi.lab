@@ -47,7 +47,7 @@ const ContentServerPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <a
               href="/fund#pricing"
-              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-accent-500"
+              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-400 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-accent-500"
             >
               Get Content Server
             </a>

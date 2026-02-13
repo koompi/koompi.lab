@@ -47,7 +47,7 @@ const FundSchoolPage = () => {
         }} />
 
         {/* Gradient orbs */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-koompi-accent-pink/20 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-koompi-accent-persimmon/20 to-transparent rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-koompi-accent-blue/20 to-transparent rounded-full blur-3xl" />
 
         {/* Content */}
@@ -85,7 +85,7 @@ const FundSchoolPage = () => {
       <section id="pricing" className="py-20 px-4 bg-cream">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 bg-koompi-accent-persimmon/10 text-koompi-accent-persimmon rounded-full text-sm font-medium mb-4">
               Modular Pricing
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary mb-3">
@@ -115,7 +115,7 @@ const FundSchoolPage = () => {
                         onClick={() => setLabSize(option.sets as any)}
                         className={`p-4 rounded-xl border-2 text-center transition-all duration-200 ${
                           labSize === option.sets
-                            ? 'border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected'
+                            ? 'border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
@@ -140,7 +140,7 @@ const FundSchoolPage = () => {
                       onClick={() => setContentServer(!contentServer)}
                       className={`p-4 rounded-xl border-2 text-center transition-all duration-200 ${
                         contentServer
-                          ? 'border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected'
+                          ? 'border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -155,7 +155,7 @@ const FundSchoolPage = () => {
                       onClick={() => setMobileClassroom(!mobileClassroom)}
                       className={`p-4 rounded-xl border-2 text-center transition-all duration-200 ${
                         mobileClassroom
-                          ? 'border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected'
+                          ? 'border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -170,7 +170,7 @@ const FundSchoolPage = () => {
                       onClick={() => setSolarPower(!solarPower)}
                       className={`p-4 rounded-xl border-2 text-center transition-all duration-200 ${
                         solarPower
-                          ? 'border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected'
+                          ? 'border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -255,7 +255,7 @@ const FundSchoolPage = () => {
                   <div className="space-y-3 mt-4">
                     <Link
                       to="/contact"
-                      className="block w-full py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white text-center rounded-xl font-semibold hover:shadow-lg hover:shadow-pink-500/20 transition-all hover:scale-[1.02] active:scale-95"
+                      className="block w-full py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-400 text-white text-center rounded-xl font-semibold hover:shadow-lg hover:shadow-pink-500/20 transition-all hover:scale-[1.02] active:scale-95"
                     >
                       Complete Your Donation
                     </Link>

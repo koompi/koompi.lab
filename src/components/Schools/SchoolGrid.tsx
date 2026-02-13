@@ -82,7 +82,7 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
               Fewer than <strong>200</strong> have computer labs
             </span>
             <span className="text-gray-300">|</span>
-            <span className="text-koompi-accent-pink font-semibold">
+            <span className="text-koompi-accent-persimmon font-semibold">
               <strong>65</strong> equipped so far
             </span>
           </div>
@@ -111,7 +111,7 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
           >
             Community
             {stats.communityPending > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-koompi-accent-pink text-white text-[10px] rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-koompi-accent-persimmon text-white text-[10px] rounded-full flex items-center justify-center">
                 {stats.communityPending}
               </span>
             )}
@@ -164,7 +164,7 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => setShowSubmitForm(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-koompi-accent-pink text-white rounded-full font-semibold hover:bg-pink-700 transition"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-koompi-accent-persimmon text-white rounded-full font-semibold hover:bg-pink-700 transition"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />

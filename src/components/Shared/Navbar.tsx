@@ -139,7 +139,7 @@ const Navbar = () => {
                 >
                   {link.name}
                   {isActive(link.path) && (
-                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-koompi-accent-pink rounded-full" />
+                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-koompi-accent-persimmon rounded-full" />
                   )}
                 </Link>
               ))}
@@ -164,7 +164,7 @@ const Navbar = () => {
                 onClick={handleFundClick}
                 className={`px-4 py-2 text-sm rounded-full font-semibold transition-colors border-2 ${
                   isSolid
-                    ? 'bg-koompi-accent-pink text-koompi-primary border-accent-500 hover:bg-pink-500'
+                    ? 'bg-koompi-accent-persimmon text-koompi-primary border-accent-500 hover:bg-pink-500'
                     : 'bg-white/10 text-white border-white/30 hover:bg-white/20'
                 }`}
               >
@@ -210,7 +210,7 @@ const Navbar = () => {
                   >
                     <span className="font-medium">{link.name}</span>
                     {isActive(link.path) && (
-                      <span className="w-2 h-2 bg-koompi-accent-pink rounded-full" />
+                      <span className="w-2 h-2 bg-koompi-accent-persimmon rounded-full" />
                     )}
                   </Link>
                 ))}
@@ -235,7 +235,7 @@ const Navbar = () => {
                 <Link
                   to="/onelab#pricing"
                   onClick={handleFundClick}
-                  className="block w-full py-3 bg-koompi-accent-pink text-koompi-primary text-center rounded-xl font-semibold hover:bg-pink-500 transition-colors border-2 border-accent-500"
+                  className="block w-full py-3 bg-koompi-accent-persimmon text-koompi-primary text-center rounded-xl font-semibold hover:bg-pink-500 transition-colors border-2 border-accent-500"
                 >
                   Fund a School
                 </Link>
