@@ -23,7 +23,7 @@ const PricingCalculator = () => {
                 <span className="text-xs text-gray-500">15 Sets</span>
                 <span className="text-sm font-bold text-koompi-primary mt-2 block">$5,250</span>
               </button>
-              <button className="p-4 rounded-xl border-2 text-left transition-all duration-200 border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected">
+              <button className="p-4 rounded-xl border-2 text-left transition-all duration-200 border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected">
                 <span className="text-2xl block mb-2">🖥️</span>
                 <span className="font-semibold text-sm text-koompi-primary block">KOOMPI Lab</span>
                 <span className="text-xs text-gray-500">20 Sets</span>
@@ -38,7 +38,7 @@ const PricingCalculator = () => {
               2. Add-ons
             </label>
             <div className="grid grid-cols-2 gap-3">
-              <button className="p-4 rounded-xl border-2 text-left transition-all duration-200 border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected">
+              <button className="p-4 rounded-xl border-2 text-left transition-all duration-200 border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected">
                 <span className="text-2xl block mb-2">📡</span>
                 <span className="font-semibold text-sm text-koompi-primary block">Content Server</span>
                 <span className="text-xs text-gray-500">2TB educational content</span>
@@ -98,7 +98,7 @@ const PricingCalculator = () => {
             <div className="space-y-3">
               <Link
                 to="/contact"
-                className="block w-full py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-400 text-white text-center rounded-xl font-semibold hover:shadow-lg hover:shadow-pink-500/20 transition-all hover:scale-[1.02] active:scale-95"
+                className="block w-full py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white text-center rounded-xl font-semibold hover:shadow-lg hover:shadow-pink-500/20 transition-all hover:scale-[1.02] active:scale-95"
               >
                 Complete Your Donation
               </Link>

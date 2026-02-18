@@ -93,7 +93,7 @@ const ProductHero = ({
         onClick={handleCTAClick(cta.to)}
         className={
           cta.variant === 'primary'
-            ? 'px-8 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-400 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-accent-500'
+            ? 'px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-accent-500'
             : 'px-8 py-4 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 hover:-translate-y-1 transition-all duration-300 border border-white/20'
         }
       >
@@ -146,7 +146,7 @@ const ProductHero = ({
         </div>
 
         {/* Gradient orbs */}
-        <div className="absolute top-20 left-10 w-64 h-64 bg-koompi-accent-persimmon/20 rounded-full blur-3xl z-[2]" />
+        <div className="absolute top-20 left-10 w-64 h-64 bg-koompi-accent-pink/20 rounded-full blur-3xl z-[2]" />
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-blue/20 rounded-full blur-3xl z-[2]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 pt-32 pb-20 w-full">
@@ -188,7 +188,7 @@ const ProductHero = ({
           />
         </div>
 
-        <div className="absolute top-20 right-20 w-64 h-64 bg-koompi-accent-persimmon/10 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-20 w-64 h-64 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-koompi-accent-blue/10 rounded-full blur-3xl" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 pt-32 pb-20 w-full">

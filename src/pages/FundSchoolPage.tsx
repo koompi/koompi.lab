@@ -1,6 +1,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Shared/Footer'
+import {
+  LAB_PACKAGE_PRICES,
+  CONTENT_SERVER_ADDON_PRICE,
+  MOBILE_CLASSROOM_PRICE,
+  FUND_INSTALL_PHNOM_PENH,
+  FUND_INSTALL_PROVINCE,
+  IMPACT_STATS,
+} from '../data/products'
 
 const FundSchoolPage = () => {
   const [labSize, setLabSize] = useState<'10' | '15' | '20'>('20')
@@ -9,15 +17,12 @@ const FundSchoolPage = () => {
   const [mobileClassroom, setMobileClassroom] = useState(false)
   const [location, setLocation] = useState<'phnom-penh' | 'province'>('province')
 
-  const labPrices = { '10': 3500, '15': 5250, '20': 7000 }
-  const contentServerPrice = 1800
-  const mobileClassroomPrice = 2300
-  const installationPrices = { 'phnom-penh': 300, 'province': 500 }
+  const installationPrices = { 'phnom-penh': FUND_INSTALL_PHNOM_PENH, 'province': FUND_INSTALL_PROVINCE }
 
   const calculateTotal = () => {
-    let total = labPrices[labSize]
-    if (contentServer) total += contentServerPrice
-    if (mobileClassroom) total += mobileClassroomPrice
+    let total = LAB_PACKAGE_PRICES[labSize]
+    if (contentServer) total += CONTENT_SERVER_ADDON_PRICE
+    if (mobileClassroom) total += MOBILE_CLASSROOM_PRICE
     total += installationPrices[location]
     return total.toLocaleString()
   }
@@ -47,7 +52,7 @@ const FundSchoolPage = () => {
         }} />
 
         {/* Gradient orbs */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-koompi-accent-persimmon/20 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-koompi-accent-pink/20 to-transparent rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-koompi-accent-blue/20 to-transparent rounded-full blur-3xl" />
 
         {/* Content */}
@@ -65,9 +70,9 @@ const FundSchoolPage = () => {
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-12">
             {[
-              { value: '65', label: 'Labs Installed' },
-              { value: '13,000+', label: 'Schools Without Labs' },
-              { value: '24', label: 'Provinces' },
+              { value: String(IMPACT_STATS.labsInstalled), label: 'Labs Installed' },
+              { value: `${IMPACT_STATS.schoolsWithoutLabs.toLocaleString()}+`, label: 'Schools Without Labs' },
+              { value: String(IMPACT_STATS.provincesReached), label: 'Provinces' },
             ].map((stat, i) => (
               <div
                 key={i}
@@ -85,7 +90,7 @@ const FundSchoolPage = () => {
       <section id="pricing" className="py-20 px-4 bg-cream">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-persimmon/10 text-koompi-accent-persimmon rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-medium mb-4">
               Modular Pricing
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary mb-3">
@@ -105,25 +110,21 @@ const FundSchoolPage = () => {
                     1. Select Lab Size
                   </label>
                   <div className="grid grid-cols-3 gap-3">
-                    {[
-                      { sets: '10', price: 3500 },
-                      { sets: '15', price: 5250 },
-                      { sets: '20', price: 7000 },
-                    ].map((option) => (
+                    {(Object.entries(LAB_PACKAGE_PRICES) as ['10' | '15' | '20', number][]).map(([sets, price]) => (
                       <button
-                        key={option.sets}
-                        onClick={() => setLabSize(option.sets as any)}
+                        key={sets}
+                        onClick={() => setLabSize(sets)}
                         className={`p-4 rounded-xl border-2 text-center transition-all duration-200 ${
-                          labSize === option.sets
-                            ? 'border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected'
+                          labSize === sets
+                            ? 'border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
                         <img src="/images/products/onelab.png" alt="KOOMPI Lab" className="w-16 h-16 block mb-2 object-contain mx-auto" />
                         <span className="font-semibold text-sm text-koompi-primary block">KOOMPI Lab</span>
-                        <span className="text-xs text-gray-500">{option.sets} Sets</span>
+                        <span className="text-xs text-gray-500">{sets} Sets</span>
                         <span className="text-sm font-bold text-koompi-primary mt-2 block">
-                          ${option.price.toLocaleString()}
+                          ${price.toLocaleString()}
                         </span>
                       </button>
                     ))}
@@ -140,7 +141,7 @@ const FundSchoolPage = () => {
                       onClick={() => setContentServer(!contentServer)}
                       className={`p-4 rounded-xl border-2 text-center transition-all duration-200 ${
                         contentServer
-                          ? 'border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected'
+                          ? 'border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -148,14 +149,14 @@ const FundSchoolPage = () => {
                       <span className="font-semibold text-sm text-koompi-primary block">Content Server</span>
                       <span className="text-xs text-gray-500">2TB educational content</span>
                       <span className="text-sm font-bold text-koompi-primary mt-2 block">
-                        ${contentServerPrice.toLocaleString()}
+                        ${CONTENT_SERVER_ADDON_PRICE.toLocaleString()}
                       </span>
                     </button>
                     <button
                       onClick={() => setMobileClassroom(!mobileClassroom)}
                       className={`p-4 rounded-xl border-2 text-center transition-all duration-200 ${
                         mobileClassroom
-                          ? 'border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected'
+                          ? 'border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -163,21 +164,21 @@ const FundSchoolPage = () => {
                       <span className="font-semibold text-sm text-koompi-primary block">Mobile Classroom</span>
                       <span className="text-xs text-gray-500">Size 4x6m</span>
                       <span className="text-sm font-bold text-koompi-primary mt-2 block">
-                        ${mobileClassroomPrice.toLocaleString()}
+                        ${MOBILE_CLASSROOM_PRICE.toLocaleString()}
                       </span>
                     </button>
                     <button
                       onClick={() => setSolarPower(!solarPower)}
                       className={`p-4 rounded-xl border-2 text-center transition-all duration-200 ${
                         solarPower
-                          ? 'border-koompi-accent-persimmon bg-koompi-accent-persimmon/5 pricing-card-selected'
+                          ? 'border-koompi-accent-pink bg-koompi-accent-pink/5 pricing-card-selected'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
                       <img src="/images/products/solar.png" alt="Solar Power" className="w-16 h-16 block mb-2 object-contain mx-auto" />
                       <span className="font-semibold text-sm text-koompi-primary block">Solar Power</span>
                       <span className="text-xs text-gray-500">Energy-independent</span>
-                      <span className="text-sm font-bold text-yellow-600 mt-2 block">Contact Us</span>
+                      <span className="text-sm font-bold text-yellow-600 mt-2 block">Custom Quote</span>
                     </button>
                   </div>
                 </div>
@@ -197,7 +198,7 @@ const FundSchoolPage = () => {
                       }`}
                     >
                       <span className="font-medium text-sm block">Phnom Penh</span>
-                      <span className="text-xs text-gray-500">$300</span>
+                      <span className="text-xs text-gray-500">${FUND_INSTALL_PHNOM_PENH}</span>
                     </button>
                     <button
                       onClick={() => setLocation('province')}
@@ -208,7 +209,7 @@ const FundSchoolPage = () => {
                       }`}
                     >
                       <span className="font-medium text-sm block">Province</span>
-                      <span className="text-xs text-gray-500">$500</span>
+                      <span className="text-xs text-gray-500">${FUND_INSTALL_PROVINCE}</span>
                     </button>
                   </div>
                 </div>
@@ -221,18 +222,18 @@ const FundSchoolPage = () => {
                   <div className="space-y-4 flex-1">
                     <div className="flex justify-between text-base">
                       <span className="text-gray-600">{labSize}x Ministation</span>
-                      <span className="font-medium">${labPrices[labSize].toLocaleString()}</span>
+                      <span className="font-medium">${LAB_PACKAGE_PRICES[labSize].toLocaleString()}</span>
                     </div>
                     {contentServer && (
                       <div className="flex justify-between text-base">
                         <span className="text-gray-600">Content Server Package</span>
-                        <span className="font-medium">${contentServerPrice.toLocaleString()}</span>
+                        <span className="font-medium">${CONTENT_SERVER_ADDON_PRICE.toLocaleString()}</span>
                       </div>
                     )}
                     {mobileClassroom && (
                       <div className="flex justify-between text-base">
                         <span className="text-gray-600">Mobile Classroom (4x6m)</span>
-                        <span className="font-medium">${mobileClassroomPrice.toLocaleString()}</span>
+                        <span className="font-medium">${MOBILE_CLASSROOM_PRICE.toLocaleString()}</span>
                       </div>
                     )}
                     <div className="flex justify-between text-base">
@@ -242,28 +243,33 @@ const FundSchoolPage = () => {
                     {solarPower && (
                       <div className="flex justify-between text-base">
                         <span className="text-gray-600">Solar Power System</span>
-                        <span className="font-medium text-yellow-600">Contact Us</span>
+                        <span className="font-medium text-yellow-600">Custom Quote</span>
                       </div>
                     )}
                     <div className="border-t border-gray-200 pt-4 mt-auto">
-                      <div className="flex justify-between">
+                      <div className="flex justify-between items-baseline">
                         <span className="font-bold text-koompi-primary">Total</span>
-                        <span className="text-2xl font-bold text-koompi-primary">${calculateTotal()}</span>
+                        <div className="text-right">
+                          <span className="text-2xl font-bold text-koompi-primary">${calculateTotal()}</span>
+                          {solarPower && (
+                            <span className="text-sm text-yellow-600 block">+ solar (quote required)</span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div className="space-y-3 mt-4">
                     <Link
                       to="/contact"
-                      className="block w-full py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-400 text-white text-center rounded-xl font-semibold hover:shadow-lg hover:shadow-pink-500/20 transition-all hover:scale-[1.02] active:scale-95"
+                      className="block w-full py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white text-center rounded-xl font-semibold hover:shadow-lg hover:shadow-pink-500/20 transition-all hover:scale-[1.02] active:scale-95"
                     >
-                      Complete Your Donation
+                      Request a Quote
                     </Link>
                     <Link
                       to="/contact"
                       className="block w-full py-3 bg-white text-koompi-primary text-center rounded-xl font-semibold border border-gray-200 hover:bg-gray-50 transition-colors"
                     >
-                      Request Custom Quote
+                      Contact Us Directly
                     </Link>
                   </div>
                 </div>
@@ -283,7 +289,7 @@ const FundSchoolPage = () => {
             Your contribution brings digital education to students who have never had access to a computer before.
           </p>
           <Link
-            to="/impact"
+            to="/story"
             className="inline-block px-8 py-4 bg-white text-koompi-primary rounded-full font-semibold hover:bg-gray-100 transition-colors"
           >
             See Our Impact

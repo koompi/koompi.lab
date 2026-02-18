@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { IMPACT_STATS } from '../../data/products'
 
 interface StatItem {
   value: number
@@ -8,9 +9,9 @@ interface StatItem {
 }
 
 const targetStats: StatItem[] = [
-  { value: 65, suffix: '', label: 'Schools Equipped', description: 'Across 24 provinces so far' },
-  { value: 13000, suffix: '', label: 'Schools Without Labs', description: 'Fewer than 200 have a computer lab' },
-  { value: 12000, suffix: '', label: 'Students Reached', description: 'Learning with digital tools today' },
+  { value: IMPACT_STATS.labsInstalled, suffix: '', label: 'Schools Equipped', description: `Across ${IMPACT_STATS.provincesReached} provinces so far` },
+  { value: IMPACT_STATS.schoolsWithoutLabs, suffix: '', label: 'Schools Without Labs', description: 'Fewer than 200 have a computer lab' },
+  { value: IMPACT_STATS.studentsReached, suffix: '', label: 'Students Reached', description: 'Learning with digital tools today' },
 ]
 
 const AnimatedNumber = ({ value, suffix, isVisible }: { value: number; suffix: string; isVisible: boolean }) => {
@@ -67,7 +68,7 @@ const ImpactStats = () => {
     >
       {/* Background accents */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-koompi-secondary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-koompi-accent-persimmon/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-koompi-accent-pink/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">

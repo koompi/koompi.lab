@@ -37,7 +37,7 @@ const HeroBackground = ({ children, overlayOpacity = '80', disablePointerEvents 
 
       {/* Gradient orbs */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-koompi-secondary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-persimmon/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
 
       {/* Dot pattern grid overlay */}
       <div

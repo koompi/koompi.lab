@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { IMPACT_STATS } from '../../data/products'
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -8,7 +9,7 @@ const Hero = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -45,7 +46,7 @@ const Hero = () => {
 
       {/* Gradient orbs */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-koompi-secondary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-persimmon/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
 
       {/* Dot pattern grid overlay */}
       <div className="absolute inset-0 opacity-10" style={{
@@ -58,7 +59,7 @@ const Hero = () => {
         {/* Badge */}
         <div className="mb-6 animate-fade-in">
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-sm font-medium text-white/90">
-            65 of 13,000+ Schools Equipped — Join the Mission
+            {IMPACT_STATS.labsInstalled} of {IMPACT_STATS.schoolsWithoutLabs.toLocaleString()}+ Schools Equipped — Join the Mission
           </span>
         </div>
 
@@ -69,22 +70,22 @@ const Hero = () => {
             alt="KOOMPI"
             className="h-14 md:h-20 lg:h-24 mx-auto mb-4"
           />
-          <span className="block text-koompi-accent-persimmon text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide" style={{ letterSpacing: 'normal' }}>
+          <span className="block text-koompi-accent-pink text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide" style={{ letterSpacing: 'normal' }}>
             Digital Education
           </span>
         </div>
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/70 max-w-2xl text-center mb-10 animate-slide-up">
-          Over 13,000 public schools in Cambodia. Fewer than 200 have a computer lab. We've equipped 65 — partner with us or start your own.
+          Over {IMPACT_STATS.schoolsWithoutLabs.toLocaleString()}+ public schools in Cambodia. Fewer than 200 have a computer lab. We've equipped {IMPACT_STATS.labsInstalled} — partner with us or start your own.
         </p>
 
         {/* Stats Row - Glassmorphic */}
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {[
-            { value: '65', label: 'Labs Installed' },
-            { value: '13,000+', label: 'Without Labs' },
-            { value: '24', label: 'Provinces' },
+            { value: String(IMPACT_STATS.labsInstalled), label: 'Labs Installed' },
+            { value: `${IMPACT_STATS.schoolsWithoutLabs.toLocaleString()}+`, label: 'Without Labs' },
+            { value: String(IMPACT_STATS.provincesReached), label: 'Provinces' },
           ].map((stat, i) => (
             <div
               key={i}
@@ -101,7 +102,7 @@ const Hero = () => {
           <Link
             to="/fund#pricing"
             onClick={handleFundClick}
-            className="px-8 py-4 bg-koompi-accent-persimmon text-white rounded-full font-semibold text-lg hover:bg-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-accent-500"
+            className="px-8 py-4 bg-koompi-accent-pink text-white rounded-full font-semibold text-lg hover:bg-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-accent-500"
           >
             Fund a School
           </Link>

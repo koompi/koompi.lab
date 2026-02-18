@@ -54,12 +54,12 @@ const Mission = () => {
       <div className="max-w-7xl mx-auto">
         {/* Headline */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 bg-koompi-accent-persimmon/10 text-koompi-accent-persimmon rounded-full text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-medium mb-4">
             Our Mission
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-koompi-primary mb-6">
             Built to empower.
-            <span className="block text-koompi-accent-persimmon">Born to connect.</span>
+            <span className="block text-koompi-accent-pink">Born to connect.</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Our KOOMPI Lab and Content Server solutions are designed specifically

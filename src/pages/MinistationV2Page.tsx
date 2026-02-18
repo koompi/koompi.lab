@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Footer from '../components/Shared/Footer'
 
 const MinistationV2Page = () => {
@@ -48,9 +48,10 @@ const MinistationV2Page = () => {
       iconColor: 'bg-[#B794F4]',
       icon: (
         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18a2 2 0 100 4 2 2 0 000-4 2 2 0 000-4z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14c-2.2 0-4.2.9-5.7 2.3 1.5-2.3 5.7-2.3c0-2.2.9-4.2 5.7-2.3 5.7.2.3 0 5.7-2.3 5.7-5.7-.9-2.3-5.7-2.3-5.7-.9 2.3-5.7 5.7 2.3 0 5.7-2.3z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10c-3.3 0-6.3 1.3-8.5 3.5-1.3 8.5-3.5 8.5 1.3 8.5 3.5 8.5-8.5-1.3-3.5-8.5-3.5-1.3-3.5-8.5-3.5 3.5-1.3 3.5 8.5 8.5-8.5-1.3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 20h.01" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.929 12.929a9.95 9.95 0 0114.142 0" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
         </svg>
       ),
     },
@@ -90,12 +91,12 @@ const MinistationV2Page = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-white">
-              <span className="inline-block px-4 py-2 bg-koompi-accent-persimmon/20 border border-koompi-accent-persimmon/30 rounded-full text-koompi-accent-persimmon text-sm font-semibold mb-6">
+              <span className="inline-block px-4 py-2 bg-koompi-accent-pink/20 border border-koompi-accent-pink/30 rounded-full text-koompi-accent-pink text-sm font-semibold mb-6">
                 NEXT-GEN WORKSTATION
               </span>
               <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
                 Ministation
-                <span className="text-koompi-accent-persimmon"> Gen2</span>
+                <span className="text-koompi-accent-pink"> Gen2</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed">
                 The Ultimate Desk Setup. All-in-one solution engineered to elevate your productivity. Perfect for offices, classrooms, and creative studios.
@@ -108,7 +109,7 @@ const MinistationV2Page = () => {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
-                  className="px-8 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
+                  className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
                 >
                   Order Now
                 </Link>
@@ -122,7 +123,7 @@ const MinistationV2Page = () => {
             </div>
             <div className="flex justify-center">
               <div className="relative inline-block p-3 bg-white rounded-2xl shadow-2xl">
-                <div className="absolute -inset-2 border-4 border-koompi-accent-persimmon/30 rounded-2xl"></div>
+                <div className="absolute -inset-2 border-4 border-koompi-accent-pink/30 rounded-2xl"></div>
                 <div className="absolute -inset-1 border-2 border-white/50 rounded-xl"></div>
                 <img
                   src="/images/products/miniv2-study.jpg"
@@ -239,7 +240,7 @@ const MinistationV2Page = () => {
                   onClick={() => setSelectedUseCase(useCase.name)}
                   className={`${
                     selectedUseCase === useCase.name
-                      ? 'bg-koompi-accent-persimmon text-white border-koompi-accent-persimmon'
+                      ? 'bg-koompi-accent-pink text-white border-koompi-accent-pink'
                       : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-slate-200'
                   } px-4 md:px-6 py-3 text-sm md:text-base font-bold rounded-xl cursor-pointer transition-all duration-300 flex items-center justify-center gap-2`}
                 >
@@ -266,7 +267,7 @@ const MinistationV2Page = () => {
 
       {/* CTA Section */}
       <section className="relative py-24 px-4 bg-koompi-primary overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-persimmon/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-koompi-accent-pink/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-koompi-secondary/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -279,7 +280,7 @@ const MinistationV2Page = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
+              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
             >
               Contact Us
             </Link>
