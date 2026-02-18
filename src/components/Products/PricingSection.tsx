@@ -13,8 +13,10 @@ const PricingSection = () => {
         {/* Lab Card */}
         <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-koompi-secondary to-cyan-600 rounded-xl flex items-center justify-center">
-              <span className="text-2xl">🖥️</span>
+            <div className="w-12 h-12 bg-gradient-to-br from-koompi-secondary to-cyan-600 rounded-xl flex items-center justify-center text-white">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
             </div>
             <div>
               <h3 className="text-xl font-bold text-koompi-primary">
@@ -91,8 +93,10 @@ const PricingSection = () => {
         {/* Content Server Card */}
         <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center">
-              <span className="text-2xl">📡</span>
+            <div className="w-12 h-12 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center text-white">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+              </svg>
             </div>
             <div>
               <h3 className="text-xl font-bold text-koompi-primary">
@@ -149,7 +153,9 @@ const PricingSection = () => {
       <div className="bg-gradient-to-r from-koompi-primary to-koompi-primary rounded-2xl p-8 text-white">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="w-16 h-16 bg-koompi-accent-yellow/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-            <span className="text-4xl">☀️</span>
+            <svg className="w-8 h-8 text-koompi-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
           </div>
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-xl font-bold mb-2">
@@ -172,7 +178,10 @@ const PricingSection = () => {
       {/* Popular Configurations */}
       <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
         <h3 className="text-xl font-bold text-koompi-primary mb-6 flex items-center gap-2">
-          <span>📊</span> Popular Configurations
+          <svg className="w-6 h-6 text-koompi-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+          Popular Configurations
         </h3>
         <div className="space-y-4">
           {POPULAR_CONFIGS.map((config, i) => (

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Footer from '../components/Shared/Footer'
+import { getIcon } from '../components/Shared/Icons'
 import { APPS, APP_CATEGORIES, FEATURED_APPS, PLATFORM_ICONS } from '../data/apps'
 import type { App } from '../data/apps'
 
@@ -155,8 +156,8 @@ const AppsPage = () => {
 
                   <div className="flex gap-6">
                     {/* App Icon */}
-                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-koompi-secondary/40 to-koompi-accent-pink/20 flex items-center justify-center text-4xl flex-shrink-0 shadow-xl">
-                      {FEATURED_APPS[0].category === 'education' ? '📚' : '⚽'}
+                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-koompi-secondary/40 to-koompi-accent-pink/20 flex items-center justify-center text-koompi-accent-pink flex-shrink-0 shadow-xl">
+                      {getIcon(FEATURED_APPS[0].category === 'education' ? '📚' : '⚽')}
                     </div>
 
                     {/* App Info */}
@@ -236,7 +237,11 @@ const AppsPage = () => {
           </h2>
           {filteredApps.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-3xl">
-              <span className="text-6xl mb-4 block">🔍</span>
+              <span className="text-6xl mb-4 block text-koompi-secondary flex justify-center">
+                <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </span>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">No apps found</h3>
               <p className="text-gray-500">Try different keywords</p>
             </div>
@@ -417,7 +422,7 @@ const AppStoreCard = ({ app, onSelect, onDownload, isDownloading, isInstalled }:
         <div className="flex gap-4">
           {/* App Icon */}
           <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-koompi-secondary/20 to-koompi-accent-pink/10 flex items-center justify-center text-3xl flex-shrink-0 shadow-sm">
-            {app.category === 'education' ? '📚' : app.category === 'sports' ? '⚽' : '🔧'}
+            {getIcon(app.category === 'education' ? '📚' : app.category === 'sports' ? '⚽' : '🔧')}
           </div>
 
           {/* Content */}
@@ -746,8 +751,23 @@ const AppDetailModal = ({ app, onClose, onDownload, isDownloading, isInstalled }
                 >
                   <span
                     className="mb-1.5 text-gray-500 group-hover:text-koompi-primary transition-colors"
-                    dangerouslySetInnerHTML={{ __html: PLATFORM_ICONS[platform] }}
-                  />
+                  >
+                    {platform === 'linux' && (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2L2 7l10 5 10-5-10-5M12 12l2.286 6.857L21 12l-6.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                      </svg>
+                    )}
+                    {platform === 'windows' && (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    )}
+                    {platform === 'mac' && (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
+                      </svg>
+                    )}
+                  </span>
                   <span className="text-xs font-medium text-gray-700">
                     {platform.charAt(0).toUpperCase() + platform.slice(1)}
                   </span>

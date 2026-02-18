@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { getIcon } from '../Shared/Icons'
 
 interface FeatureCardProps {
   title: string
@@ -115,8 +116,8 @@ const FeatureCard = ({
           )}
           <div className="flex items-start gap-3">
             {icon && (
-              <span className="text-3xl flex-shrink-0 bg-gradient-to-br from-koompi-accent-pink/10 to-koompi-accent-pink/5 w-12 h-12 rounded-xl flex items-center justify-center">
-                {icon}
+              <span className="text-koompi-accent-pink flex-shrink-0 bg-gradient-to-br from-koompi-accent-pink/10 to-koompi-accent-pink/5 w-12 h-12 rounded-xl flex items-center justify-center">
+                {getIcon(icon)}
               </span>
             )}
             <div className="flex-1">
@@ -138,12 +139,14 @@ const FeatureCard = ({
                 <div className="flex flex-wrap gap-2">
                   {size && (
                     <span className="inline-flex items-center px-2 py-1 bg-koompi-accent-blue/10 text-koompi-accent-blue text-xs font-medium rounded-full">
-                      📦 {size}
+                      <span className="mr-1">{getIcon('📦')}</span>
+                      {size}
                     </span>
                   )}
                   {items && (
                     <span className="inline-flex items-center px-2 py-1 bg-koompi-accent-pink/10 text-koompi-accent-pink text-xs font-medium rounded-full">
-                      📊 {items}
+                      <span className="mr-1">{getIcon('📊')}</span>
+                      {items}
                     </span>
                   )}
                 </div>

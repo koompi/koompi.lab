@@ -32,7 +32,7 @@ const Navbar = () => {
   }, [])
 
   const handleFundClick = useCallback((e: React.MouseEvent) => {
-    const targetPath = '/onelab'
+    const targetPath = '/fund'
     if (location.pathname === targetPath) {
       e.preventDefault()
       const element = document.getElementById('pricing')
@@ -154,11 +154,11 @@ const Navbar = () => {
             {/* Right side: CTA + Hamburger */}
             <div className="flex items-center gap-3">
               <Link
-                to="/onelab#pricing"
+                to="/fund#pricing"
                 onClick={handleFundClick}
                 className={`px-4 py-2 text-sm rounded-full font-semibold transition-colors border-2 ${
                   isSolid
-                    ? 'bg-koompi-accent-pink text-koompi-primary border-accent-500 hover:bg-pink-500'
+                    ? 'bg-koompi-accent-pink text-white border-accent-500 hover:bg-pink-500'
                     : 'bg-white/10 text-white border-white/30 hover:bg-white/20'
                 }`}
               >

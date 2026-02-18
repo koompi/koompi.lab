@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { IMPACT_STATS } from '../../data/products'
+import { Link } from 'react-router-dom'
+import { useImpactStats } from '../../hooks/useImpactStats'
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const location = useLocation()
+  const { stats } = useImpactStats()
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -23,6 +23,12 @@ const Hero = () => {
     // Already on homepage, navigating to /onelab#pricing will work via router
     // The App.tsx useEffect handles the scrolling
   }
+
+  // Use API stats or fallback
+  const labsInstalled = stats?.schoolsEquipped || 65
+  const totalSchools = stats?.totalSchoolsInCambodia || 14522
+  const schoolsNeedLabs = (stats?.totalSchoolsInCambodia || 14522) - (stats?.schoolsEquipped || 65)
+  const provincesReached = 25 // Cambodia has 25 provinces
 
   return (
     <section className="relative h-screen overflow-hidden">
@@ -59,7 +65,7 @@ const Hero = () => {
         {/* Badge */}
         <div className="mb-6 animate-fade-in">
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-sm font-medium text-white/90">
-            {IMPACT_STATS.labsInstalled} of {IMPACT_STATS.schoolsWithoutLabs.toLocaleString()}+ Schools Equipped — Join the Mission
+            {labsInstalled} of {totalSchools.toLocaleString()}+ Schools Equipped — Join the Mission
           </span>
         </div>
 
@@ -77,15 +83,15 @@ const Hero = () => {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/70 max-w-2xl text-center mb-10 animate-slide-up">
-          Over {IMPACT_STATS.schoolsWithoutLabs.toLocaleString()}+ public schools in Cambodia. Fewer than 200 have a computer lab. We've equipped {IMPACT_STATS.labsInstalled} — partner with us or start your own.
+          Over {totalSchools.toLocaleString()}+ public schools in Cambodia. We've equipped {labsInstalled} schools with computer labs — partner with us or start your own.
         </p>
 
         {/* Stats Row - Glassmorphic */}
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {[
-            { value: String(IMPACT_STATS.labsInstalled), label: 'Labs Installed' },
-            { value: `${IMPACT_STATS.schoolsWithoutLabs.toLocaleString()}+`, label: 'Without Labs' },
-            { value: String(IMPACT_STATS.provincesReached), label: 'Provinces' },
+            { value: String(labsInstalled), label: 'Labs Installed' },
+            { value: String(schoolsNeedLabs.toLocaleString()), label: 'Schools Need Labs' },
+            { value: String(provincesReached), label: 'Provinces' },
           ].map((stat, i) => (
             <div
               key={i}

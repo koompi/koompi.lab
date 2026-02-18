@@ -80,7 +80,7 @@ const SchoolsPage = () => {
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Schools Across <span className="text-koompi-accent-pink">Cambodia</span>
             </h1>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
               Browse our complete database of schools. Explore by province, equipment status, or search for a specific school.
             </p>
           </div>
@@ -203,7 +203,7 @@ const SchoolsPage = () => {
               onChange={(e) => setStatusFilter(e.target.value)}
               className="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
             >
-              <option value="all">All Status</option>
+              <option value="all">All Statuses</option>
               <option value="none">Needs Support</option>
               <option value="lab">Lab Only</option>
               <option value="lab-content">Lab + Content</option>

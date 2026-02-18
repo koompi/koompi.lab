@@ -46,7 +46,7 @@ export default {
           500: '#38A7C8',    // Main secondary
           600: '#2D86A0',
           700: '#226578',
-          800: '#174450',
+          800: '#174250',
           900: '#0C2328',
         },
         // Accent Pink Spectrum

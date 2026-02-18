@@ -1,8 +1,17 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ProductHero, FeatureCard, PricingCalculator, FAQ, ProductCTA } from '../components/Products'
+import { ProductHero, FeatureCard, FAQ, ProductCTA } from '../components/Products'
 import Footer from '../components/Shared/Footer'
 import { LAB_FEATURES, HOW_IT_WORKS_STEPS, ONELAB_FAQ, IMPACT_STATS } from '../data/products'
+
+// Fallback data in case import fails
+const STATS = IMPACT_STATS || {
+  labsInstalled: 45,
+  schoolsWithoutLabs: 13000,
+  provincesReached: 12,
+  studentsImpacted: 15000,
+  teachersTrained: 320,
+}
 
 const OnelabPage = () => {
   const [showFloatingCTA, setShowFloatingCTA] = useState(false)
@@ -26,9 +35,9 @@ const OnelabPage = () => {
         glitchWord="ONELAB"
         subtitle="A complete computer lab for any school. We built it first — now anyone can bring one to life."
         stats={[
-          { value: String(IMPACT_STATS.labsInstalled), label: 'Labs Installed' },
-          { value: `${IMPACT_STATS.schoolsWithoutLabs.toLocaleString()}+`, label: 'Without Labs' },
-          { value: String(IMPACT_STATS.provincesReached), label: 'Provinces' },
+          { value: String(STATS.labsInstalled), label: 'Labs Installed' },
+          { value: `${STATS.schoolsWithoutLabs.toLocaleString()}+`, label: 'Without Labs' },
+          { value: String(STATS.provincesReached), label: 'Provinces' },
         ]}
         ctas={[
           { label: 'Fund a School', to: '/fund', variant: 'primary' },
@@ -128,7 +137,7 @@ const OnelabPage = () => {
                       {step.step}
                     </div>
                     <div className="mt-6">
-                      <span className="text-3xl block mb-3">{step.icon}</span>
+                      <span className="text-3xl block mb-3 text-koompi-accent-pink">{step.icon}</span>
                       <h3 className="text-lg font-bold text-koompi-primary mb-2">
                         {step.title}
                       </h3>
@@ -151,7 +160,7 @@ const OnelabPage = () => {
                   {step.step < 4 && <div className="w-0.5 flex-1 bg-gray-200 mt-2" />}
                 </div>
                 <div className="pb-8">
-                  <span className="text-2xl">{step.icon}</span>
+                  <span className="text-2xl text-koompi-accent-pink">{step.icon}</span>
                   <h3 className="text-lg font-bold text-koompi-primary mt-1 mb-1">
                     {step.title}
                   </h3>
@@ -167,6 +176,9 @@ const OnelabPage = () => {
       <section id="pricing" className="py-20 px-4 bg-cream">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-medium mb-4">
+              Modular Pricing
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary mb-3">
               Build Your Lab
             </h2>
@@ -178,7 +190,7 @@ const OnelabPage = () => {
           {/* CTA Button */}
           <div className="flex justify-center">
             <Link
-              to="/fund"
+              to="/fund#pricing"
               className="group relative inline-flex items-center gap-3 px-12 py-6 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white rounded-2xl font-semibold text-lg hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <span>Build Your Custom Lab</span>
@@ -200,8 +212,10 @@ const OnelabPage = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="w-20 h-20 bg-koompi-accent-yellow/20 rounded-2xl flex items-center justify-center mb-6">
-                <span className="text-5xl">☀️</span>
+              <div className="w-20 h-20 bg-koompi-accent-yellow/20 rounded-2xl flex items-center justify-center mb-6 text-koompi-accent-yellow">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Energy Independent
@@ -247,9 +261,9 @@ const OnelabPage = () => {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
-              { value: String(IMPACT_STATS.labsInstalled), label: 'Schools Equipped' },
-              { value: IMPACT_STATS.studentsReached.toLocaleString(), label: 'Students Learning' },
-              { value: String(IMPACT_STATS.provincesReached), label: 'Provinces Reached' },
+              { value: String(STATS.labsInstalled), label: 'Schools Equipped' },
+              { value: STATS.studentsImpacted.toLocaleString(), label: 'Students Learning' },
+              { value: String(STATS.provincesReached), label: 'Provinces Reached' },
             ].map((stat, i) => (
               <div key={i} className="text-center">
                 <p className="text-5xl md:text-6xl font-black text-white mb-2">

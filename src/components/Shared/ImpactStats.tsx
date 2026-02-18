@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { IMPACT_STATS } from '../../data/products'
+import { useImpactStats } from '../../hooks/useImpactStats'
 
 interface StatItem {
   value: number
@@ -7,12 +7,6 @@ interface StatItem {
   label: string
   description: string
 }
-
-const targetStats: StatItem[] = [
-  { value: IMPACT_STATS.labsInstalled, suffix: '', label: 'Schools Equipped', description: `Across ${IMPACT_STATS.provincesReached} provinces so far` },
-  { value: IMPACT_STATS.schoolsWithoutLabs, suffix: '', label: 'Schools Without Labs', description: 'Fewer than 200 have a computer lab' },
-  { value: IMPACT_STATS.studentsReached, suffix: '', label: 'Students Reached', description: 'Learning with digital tools today' },
-]
 
 const AnimatedNumber = ({ value, suffix, isVisible }: { value: number; suffix: string; isVisible: boolean }) => {
   const [count, setCount] = useState(0)
@@ -46,9 +40,19 @@ const AnimatedNumber = ({ value, suffix, isVisible }: { value: number; suffix: s
   )
 }
 
+// Loading skeleton
+const StatCardSkeleton = () => (
+  <div className="text-center p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl">
+    <div className="h-16 w-32 mx-auto bg-white/10 rounded-lg animate-pulse mb-4" />
+    <div className="h-6 w-24 mx-auto bg-white/10 rounded animate-pulse mb-2" />
+    <div className="h-4 w-full bg-white/10 rounded animate-pulse" />
+  </div>
+)
+
 const ImpactStats = () => {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const { stats, loading } = useImpactStats()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,6 +65,19 @@ const ImpactStats = () => {
     return () => observer.disconnect()
   }, [])
 
+  // Map API data to display cards
+  const getStatCards = (): StatItem[] | null => {
+    if (!stats) return null
+    return [
+      { value: stats.schoolsEquipped, suffix: '', label: 'Schools Equipped', description: 'With KOOMPI labs' },
+      { value: stats.studentsReached, suffix: '', label: 'Students Learning', description: 'With digital tools' },
+      { value: stats.totalSchoolsInCambodia - stats.schoolsEquipped, suffix: '', label: 'Schools Need Labs', description: 'Awaiting support' },
+      { value: 25, suffix: '', label: 'Provinces', description: 'Across Cambodia' },
+    ]
+  }
+
+  const statCards = getStatCards()
+
   return (
     <section
       ref={sectionRef}
@@ -72,31 +89,45 @@ const ImpactStats = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Our Impact in Numbers
-          </h2>
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              Our Impact in Numbers
+            </h2>
+            {/* Live indicator */}
+            <span className="flex items-center gap-1.5 px-3 py-1 bg-green-500/20 text-green-400 text-xs font-medium rounded-full">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              Live
+            </span>
+          </div>
           <p className="text-white/50 max-w-lg mx-auto">
-            Real results from real schools across Cambodia.
+            Live data from KOOMPI database.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {targetStats.map((stat, i) => (
-            <div
-              key={i}
-              className="text-center p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transitionDelay: `${i * 0.15}s`,
-                transition: 'all 0.6s ease-out',
-              }}
-            >
-              <AnimatedNumber value={stat.value} suffix={stat.suffix} isVisible={isVisible} />
-              <p className="text-koompi-secondary font-semibold mt-3 text-lg">{stat.label}</p>
-              <p className="text-white/40 text-sm mt-1">{stat.description}</p>
-            </div>
-          ))}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {loading ? (
+            Array.from({ length: 4 }).map((_, i) => <StatCardSkeleton key={i} />)
+          ) : statCards ? (
+            statCards.map((stat, i) => (
+              <div
+                key={i}
+                className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                  transitionDelay: `${i * 0.1}s`,
+                  transition: 'all 0.6s ease-out',
+                }}
+              >
+                <AnimatedNumber value={stat.value} suffix={stat.suffix} isVisible={isVisible} />
+                <p className="text-koompi-secondary font-semibold mt-3 text-base md:text-lg">{stat.label}</p>
+                <p className="text-white/40 text-sm mt-1">{stat.description}</p>
+              </div>
+            ))
+          ) : null}
         </div>
       </div>
     </section>

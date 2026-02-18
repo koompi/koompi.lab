@@ -67,22 +67,12 @@ const SchoolTable = ({ schools, onFundClick }: SchoolTableProps) => {
             >
               {/* School Name */}
               <td className="px-4 py-3">
-                <div>
-                  {school.nameKh && (
-                    <div className="font-medium text-gray-900 text-sm khmer-text">{school.nameKh}</div>
-                  )}
-                  <div className="text-xs text-gray-500">{school.name}</div>
-                </div>
+                <div className="font-medium text-gray-900 text-sm">{school.name}</div>
               </td>
 
               {/* Province */}
               <td className="px-4 py-3">
-                <div>
-                  {school.provinceKh && (
-                    <div className="text-sm text-gray-600 khmer-text">{school.provinceKh}</div>
-                  )}
-                  <div className="text-xs text-gray-400">{school.province}</div>
-                </div>
+                <div className="text-sm text-gray-600">{school.province}</div>
               </td>
 
               {/* Students */}

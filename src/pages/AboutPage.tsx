@@ -61,33 +61,65 @@ const team = [
 ]
 
 const partners = [
-  { name: 'Ministry of Education, Youth and Sport', type: 'Government Partner', logo: '🏛️' },
-  { name: 'Baray', type: 'Payment Partner', logo: '💳' },
+  {
+    name: 'Ministry of Education, Youth and Sport',
+    type: 'Government Partner',
+    logo: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    )
+  },
+  {
+    name: 'Baray',
+    type: 'Payment Partner',
+    logo: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      </svg>
+    )
+  },
 ]
 
 const projects = [
   {
     name: 'ONELAB',
     description: 'Advanced learning, teaching, work and study environments, centered around a local independent server at each school.',
-    icon: '🏫',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
     link: '/onelab',
   },
   {
     name: 'Content Server',
     description: 'Offline-first digital library and learning management systems for schools and institutions. Designed to help displaced students continue their education anytime, anywhere.',
-    icon: '📚',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+      </svg>
+    ),
     link: '/content-server',
   },
   {
     name: 'KOOMPI OS',
     description: 'A multi-purpose OS for both desktop and enterprise servers. Our R&D team continues to advance features in Blockchain, P2P, and AI.',
-    icon: '💻',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
     link: '/os',
   },
   {
     name: 'Weteka',
     description: 'A virtual platform for students, teachers, and professionals to share their knowledge with other students.',
-    icon: '🎓',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
     link: 'https://weteka.org',
   },
 ]
@@ -383,10 +415,49 @@ const AboutPage = () => {
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: '💡', title: 'Innovation', desc: 'Building technology solutions tailored for Cambodian schools and communities.', color: 'yellow' },
-              { icon: '🌍', title: 'Accessibility', desc: 'Making digital education available to every student, regardless of location.', color: 'cyan' },
-              { icon: '☀️', title: 'Sustainability', desc: 'Solar-powered solutions that work off-grid and built to last.', color: 'amber' },
-              { icon: '🤝', title: 'Community', desc: 'Working closely with local communities, teachers, and Ministry of Education.', color: 'pink' },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                ),
+                title: 'Innovation',
+                desc: 'Building technology solutions tailored for Cambodian schools and communities.',
+                color: 'yellow'
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3" strokeWidth={1.5} />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 12a5 5 0 015-5m-5 5a5 5 0 01-5-5" />
+                  </svg>
+                ),
+                title: 'Accessibility',
+                desc: 'Making digital education available to every student, regardless of location.',
+                color: 'cyan'
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6l4 2" />
+                  </svg>
+                ),
+                title: 'Sustainability',
+                desc: 'Solar-powered solutions that work off-grid and built to last.',
+                color: 'amber'
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                ),
+                title: 'Community',
+                desc: 'Working closely with local communities, teachers, and Ministry of Education.',
+                color: 'pink'
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -400,7 +471,7 @@ const AboutPage = () => {
                 whileHover={{ y: -8 }}
               >
                 <motion.div
-                  className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 shadow-lg ${
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 shadow-lg text-white ${
                     item.color === 'yellow' ? 'bg-gradient-to-br from-koompi-accent-yellow to-yellow-600 shadow-yellow-500/30' :
                     item.color === 'cyan' ? 'bg-gradient-to-br from-koompi-secondary to-cyan-600 shadow-koompi-secondary/30' :
                     item.color === 'amber' ? 'bg-gradient-to-br from-yellow-500 to-pink-400 shadow-yellow-500/30' :
@@ -408,7 +479,7 @@ const AboutPage = () => {
                   }`}
                   whileHover={{ scale: 1.1, rotate: 3 }}
                 >
-                  <span className="text-3xl">{item.icon}</span>
+                  {item.icon}
                 </motion.div>
                 <h3 className="text-lg font-bold text-koompi-primary mb-2">{item.title}</h3>
                 <p className="text-gray-600 text-sm">{item.desc}</p>
@@ -437,13 +508,16 @@ const AboutPage = () => {
               variants={fadeInUp}
             >
               <div className="flex items-center gap-3 mb-4">
-                <motion.span
-                  className="text-3xl"
+                <motion.div
+                  className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center"
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  👁️
-                </motion.span>
+                  <svg className="w-6 h-6 text-koompi-accent-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                </motion.div>
                 <h2 className="text-2xl font-bold">Our Vision</h2>
               </div>
               <p className="text-gray-200 leading-relaxed">
@@ -457,13 +531,15 @@ const AboutPage = () => {
               variants={fadeInUp}
             >
               <div className="flex items-center gap-3 mb-4">
-                <motion.span
-                  className="text-3xl"
+                <motion.div
+                  className="w-10 h-10 bg-koompi-accent-pink/10 rounded-xl flex items-center justify-center"
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  🎯
-                </motion.span>
+                  <svg className="w-6 h-6 text-koompi-accent-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </motion.div>
                 <h2 className="text-2xl font-bold text-koompi-primary">Our Mission</h2>
               </div>
               <p className="text-gray-700 leading-relaxed">
@@ -638,13 +714,22 @@ const AboutPage = () => {
                 color: 'blue'
               },
               {
-                icon: '📚',
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                ),
                 title: 'Content Server',
                 desc: '2TB of offline educational content including Khan Academy, Wikipedia, interactive apps, and Cambodian curriculum materials.',
                 color: 'pink'
               },
               {
-                icon: '☀️',
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                ),
                 title: 'Solar Power',
                 desc: 'Complete solar power systems for schools without grid electricity, enabling digital learning in most remote locations.',
                 color: 'yellow'
@@ -673,13 +758,13 @@ const AboutPage = () => {
                   </motion.div>
                 ) : (
                   <motion.div
-                    className={`w-20 h-20 bg-gradient-to-br rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg ${
+                    className={`w-20 h-20 bg-gradient-to-br rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg text-white ${
                       item.color === 'pink' ? 'from-koompi-accent-pink to-pink-400 shadow-pink-500/30' :
                       'from-koompi-accent-yellow to-yellow-600 shadow-yellow-500/30'
                     }`}
                     whileHover={{ scale: 1.1, rotate: 6 }}
                   >
-                    <span className="text-4xl">{item.icon}</span>
+                    {item.icon}
                   </motion.div>
                 )}
                 <h3 className={`text-xl font-bold mb-3 transition-colors ${
@@ -748,10 +833,10 @@ const AboutPage = () => {
                   />
                   <div className="relative flex items-start gap-4">
                     <motion.div
-                      className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30"
+                      className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30 text-white"
                       whileHover={{ scale: 1.1, rotate: 6 }}
                     >
-                      <span className="text-3xl">{project.icon}</span>
+                      {project.icon}
                     </motion.div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-pink transition-colors">{project.name}</h3>
@@ -786,10 +871,10 @@ const AboutPage = () => {
                     />
                     <div className="relative flex items-start gap-4">
                       <motion.div
-                        className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30"
+                        className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30 text-white"
                         whileHover={{ scale: 1.1, rotate: 6 }}
                       >
-                        <span className="text-3xl">{project.icon}</span>
+                        {project.icon}
                       </motion.div>
                       <div className="flex-1">
                         <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-pink transition-colors">{project.name}</h3>
@@ -911,10 +996,10 @@ const AboutPage = () => {
                 initial={{ opacity: 0, x: -30 }}
               >
                 <motion.div
-                  className="w-16 h-16 bg-gradient-to-br from-koompi-primary/10 to-secondary-600/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-16 h-16 bg-gradient-to-br from-koompi-primary/10 to-secondary-600/10 rounded-xl flex items-center justify-center flex-shrink-0 text-koompi-secondary"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
-                  <span className="text-4xl">{partner.logo}</span>
+                  {partner.logo}
                 </motion.div>
                 <div>
                   <p className="font-semibold text-koompi-primary text-lg">{partner.name}</p>

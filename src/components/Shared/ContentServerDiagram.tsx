@@ -10,19 +10,27 @@ const ContentServerDiagram = () => {
         {/* Left Devices */}
         <div className="grid grid-cols-2 gap-4 order-2 lg:order-1 flex-1 justify-items-center">
           <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 text-center hover:shadow-lg hover:-translate-y-1 transition-all w-32">
-            <span className="text-3xl block mb-2">📱</span>
+            <svg className="w-8 h-8 mx-auto mb-2 text-koompi-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
             <p className="text-sm text-gray-600 font-medium">Phones</p>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 text-center hover:shadow-lg hover:-translate-y-1 transition-all w-32">
-            <span className="text-3xl block mb-2">📋</span>
+            <svg className="w-8 h-8 mx-auto mb-2 text-koompi-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
             <p className="text-sm text-gray-600 font-medium">Tablets</p>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 text-center hover:shadow-lg hover:-translate-y-1 transition-all w-32">
-            <span className="text-3xl block mb-2">💻</span>
+            <svg className="w-8 h-8 mx-auto mb-2 text-koompi-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
             <p className="text-sm text-gray-600 font-medium">Laptops</p>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 text-center hover:shadow-lg hover:-translate-y-1 transition-all w-32">
-            <span className="text-3xl block mb-2">🖥️</span>
+            <svg className="w-8 h-8 mx-auto mb-2 text-koompi-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
             <p className="text-sm text-gray-600 font-medium">Ministations</p>
           </div>
         </div>
@@ -61,7 +69,9 @@ const ContentServerDiagram = () => {
         {/* Right Devices - Only show on large screens for balance */}
         <div className="hidden lg:grid grid-cols-2 gap-3 order-4 opacity-60">
           <div className="bg-white/50 rounded-xl p-4 border border-gray-100 text-center">
-            <span className="text-2xl block mb-1 grayscale">📱</span>
+            <svg className="w-6 h-6 mx-auto mb-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
             <p className="text-xs text-gray-400">More...</p>
           </div>
         </div>

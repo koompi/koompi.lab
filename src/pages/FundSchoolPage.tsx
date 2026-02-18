@@ -10,6 +10,15 @@ import {
   IMPACT_STATS,
 } from '../data/products'
 
+// Fallback data in case import fails
+const STATS = IMPACT_STATS || {
+  labsInstalled: 45,
+  schoolsWithoutLabs: 13000,
+  provincesReached: 12,
+  studentsImpacted: 15000,
+  teachersTrained: 320,
+}
+
 const FundSchoolPage = () => {
   const [labSize, setLabSize] = useState<'10' | '15' | '20'>('20')
   const [contentServer, setContentServer] = useState(false)
@@ -70,9 +79,9 @@ const FundSchoolPage = () => {
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-12">
             {[
-              { value: String(IMPACT_STATS.labsInstalled), label: 'Labs Installed' },
-              { value: `${IMPACT_STATS.schoolsWithoutLabs.toLocaleString()}+`, label: 'Schools Without Labs' },
-              { value: String(IMPACT_STATS.provincesReached), label: 'Provinces' },
+              { value: String(STATS.labsInstalled), label: 'Labs Installed' },
+              { value: `${STATS.schoolsWithoutLabs.toLocaleString()}+`, label: 'Schools Without Labs' },
+              { value: String(STATS.provincesReached), label: 'Provinces' },
             ].map((stat, i) => (
               <div
                 key={i}
@@ -102,7 +111,7 @@ const FundSchoolPage = () => {
           </div>
 
           <div className="p-6 md:p-8">
-            <div className="grid md:grid-cols-3 gap-8">
+            <div id="pricing-form" className="grid md:grid-cols-3 gap-8">
               <div className="md:col-span-2 space-y-6">
                 {/* Step 1: Lab Size */}
                 <div>

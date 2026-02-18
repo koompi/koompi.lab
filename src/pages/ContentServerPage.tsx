@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FeatureCard, SpecTable, FAQ, ProductCTA } from '../components/Products'
 import Footer from '../components/Shared/Footer'
+import { getIcon } from '../components/Shared/Icons'
 import {
   CONTENT_CATEGORIES,
   CONTENT_SERVER_SPECS,
@@ -168,7 +169,7 @@ const ContentServerPage = () => {
                   key={i}
                   className="bg-white rounded-xl p-4 shadow border border-gray-100 text-center"
                 >
-                  <span className="text-2xl block mb-1">{device.icon}</span>
+                  <span className="text-2xl block mb-1 text-koompi-secondary">{getIcon(device.icon)}</span>
                   <p className="text-xs text-gray-600">{device.label}</p>
                 </div>
               ))}
