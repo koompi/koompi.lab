@@ -1,3 +1,4 @@
 export { default as Navbar } from './Navbar'
 export { default as Footer } from './Footer'
 export { default as ImpactStats } from './ImpactStats'
+export { default as FadeInSection } from './FadeInSection'

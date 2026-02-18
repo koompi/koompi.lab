@@ -1,6 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { Navbar } from './components/Shared'
-import { DonationModal } from './components/Donation'
 import HomePage from './pages/HomePage'
 import SchoolsPage from './pages/SchoolsPage'
 import StoryPage from './pages/StoryPage'
@@ -14,15 +13,13 @@ import MonitorPage from './pages/MonitorPage'
 import OSPage from './pages/OSPage'
 import AppsPage from './pages/AppsPage'
 import FundSchoolPage from './pages/FundSchoolPage'
-import { useState, useEffect } from 'react'
-import type { School } from './types'
+import NotFoundPage from './pages/NotFoundPage'
+import { useEffect } from 'react'
 
 function App() {
-  const [selectedSchool, setSelectedSchool] = useState<School | null>(null)
-  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false)
   const location = useLocation()
 
-  // Handle hash scrolling
+  // Handle hash scrolling after navigation
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '')
@@ -53,18 +50,8 @@ function App() {
         <Route path="/monitor" element={<MonitorPage />} />
         <Route path="/os" element={<OSPage />} />
         <Route path="/apps" element={<AppsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
-
-      {/* Global donation modal - can be triggered from any page */}
-      {isDonationModalOpen && (
-        <DonationModal
-          school={selectedSchool}
-          onClose={() => {
-            setIsDonationModalOpen(false)
-            setSelectedSchool(null)
-          }}
-        />
-      )}
     </>
   )
 }

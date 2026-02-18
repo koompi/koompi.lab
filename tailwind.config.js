@@ -7,14 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Official KOOMPI Brand Colors (from koompi-color-system.png)
-        // 60% Primary (navy/black/gray) | 30% Secondary (teal) | 10% Accent (persimmon/yellow)
+        // Official KOOMPI Brand Colors (from koompi.com source)
+        // 60% Primary (near-black navy) | 30% Secondary (teal) | 10% Accent (pink/purple)
         'koompi': {
-          'primary': '#263c5c',        // Navy Blue (60% usage)
+          'primary': '#011228',        // Near-black navy (60% usage)
           'secondary': '#38A7C8',      // Teal/Cyan (30% usage)
           'accent-blue': '#38A7C8',    // Alias for secondary
-          'accent-persimmon': '#FF6B35',  // Persimmon/Coral (10% accent) - warm, friendly, energetic
-          'accent-yellow': '#FFD700',  // Gold Yellow (10% accent)
+          'accent-pink': '#F16179',    // Fiery Pink (CTAs, badges, highlights)
+          'accent-purple': '#8d47ff',  // Purple accent
+          'accent-yellow': '#FFD700',  // Gold Yellow (sparingly)
         },
         // Slate colors for glass effect
         slate: {
@@ -22,18 +23,18 @@ export default {
           800: '#1e293b',     // slate-800
           900: '#0f172a',     // slate-900
         },
-        // Primary Navy Blue Spectrum
+        // Primary Near-Black Navy Spectrum
         'primary': {
-          50: '#EEF0F4',
-          100: '#D5DAE3',
-          200: '#ABB5C7',
-          300: '#8190AB',
-          400: '#576B8F',
-          500: '#263c5c',    // Main primary
-          600: '#1F3250',
-          700: '#192843',
-          800: '#131E37',
-          900: '#0D142A',
+          50: '#E0E8F0',
+          100: '#B3C4D6',
+          200: '#809FBC',
+          300: '#4D7AA2',
+          400: '#1A5588',
+          500: '#011228',    // Main primary
+          600: '#010E20',
+          700: '#010A18',
+          800: '#000710',
+          900: '#000408',
         },
         // Secondary Teal Spectrum
         'secondary': {
@@ -48,25 +49,25 @@ export default {
           800: '#174450',
           900: '#0C2328',
         },
-        // Accent Persimmon Spectrum
+        // Accent Pink Spectrum
         'accent': {
-          50: '#FFF0ED',
-          100: '#FFE0D2',
-          200: '#FFD0B8',
-          300: '#FFC09E',
-          400: '#FFB084',
-          500: '#FF6B35',    // Main accent (Persimmon/Coral)
-          600: '#E55A2D',
-          700: '#CC4A26',
-          800: '#B33C1F',
-          900: '#9A2F18',
+          50: '#FEF0F2',
+          100: '#FCD9DF',
+          200: '#F9B3BD',
+          300: '#F68D9B',
+          400: '#F47285',
+          500: '#F16179',    // Main accent (Fiery Pink)
+          600: '#D94F67',
+          700: '#C03D55',
+          800: '#A72B43',
+          900: '#8E1931',
         },
         'cream': '#f7f7f7',
         // Gradient colors from brand
         'gradient': {
           'light': '#38A7C8',
           'mid': '#2D6F8E',
-          'dark': '#263c5c',
+          'dark': '#011228',
         },
       },
       fontFamily: {

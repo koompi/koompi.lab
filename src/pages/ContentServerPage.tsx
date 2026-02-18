@@ -45,12 +45,12 @@ const ContentServerPage = () => {
             The KOOMPI Content Server brings a world-class educational library to any school, with or without internet connectivity.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <a
-              href="/fund#pricing"
-              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-persimmon to-pink-400 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-accent-500"
+            <Link
+              to="/fund#pricing"
+              className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-400 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-accent-500"
             >
               Get Content Server
-            </a>
+            </Link>
             <Link
               to="#content"
               className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-full font-semibold hover:bg-white/20 transition-all duration-300 hover:scale-105 active:scale-95"

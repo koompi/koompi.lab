@@ -1,7 +1,35 @@
 import Footer from '../components/Shared/Footer'
 import { useState } from 'react'
+import { IMPACT_STATS } from '../data/products'
 
-// Story data
+// Render simple markdown: **bold** and • bullet lines
+const renderMarkdown = (text: string) => {
+  const lines = text.trim().split('\n')
+  return lines.map((line, i) => {
+    const trimmed = line.trim()
+    if (!trimmed) return <br key={i} />
+
+    const parts = trimmed.split(/(\*\*[^*]+\*\*)/)
+    const rendered = parts.map((part, j) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={j}>{part.slice(2, -2)}</strong>
+      }
+      return part
+    })
+
+    if (trimmed.startsWith('•')) {
+      return (
+        <div key={i} className="flex gap-2 items-start">
+          <span className="text-koompi-accent-pink mt-0.5 flex-shrink-0">•</span>
+          <span>{rendered.map((p, j) => typeof p === 'string' ? p.replace(/^•\s*/, '') : p)}</span>
+        </div>
+      )
+    }
+
+    return <p key={i}>{rendered}</p>
+  })
+}
+
 const stories = [
   {
     id: 1,
@@ -91,26 +119,25 @@ const stories = [
   },
 ]
 
-// Timeline with E13, E11, Mini milestones
 const milestones = [
   {
     year: '2030',
     title: 'Goal: Every School',
     description: 'A shared vision for 13,000+ public schools equipped with digital education',
-    type: 'goal',
+    type: 'goal' as const,
   },
   {
     year: '2025',
     title: 'First Solar Lab',
     description: 'Milestone: First fully solar-powered lab in Mondulkiri province',
-    type: 'milestone',
+    type: 'milestone' as const,
     image: '/images/products/solar-in-school.jpg',
   },
   {
     year: '2024',
     title: '65 Schools Reached',
     description: 'Expanded to 65 schools with 12,000 students learning daily across Cambodia',
-    type: 'milestone',
+    type: 'milestone' as const,
     image: '/images/products/onelab-class.jpg',
     stats: { schools: '65', students: '12,000+', provinces: '24' },
   },
@@ -118,7 +145,7 @@ const milestones = [
     year: '2023',
     title: 'Content Server Launch',
     description: 'Introduced offline digital library for schools without internet. 2TB of STEM videos, Wiki Khmer, and educational content.',
-    type: 'milestone',
+    type: 'milestone' as const,
     image: '/images/products/content-server-device.png',
     stats: { storage: '2TB', content: '3000+ Books', offline: 'No Internet Needed' },
   },
@@ -126,7 +153,7 @@ const milestones = [
     year: '2022',
     title: 'First Lab Deployed',
     description: 'Pilot program equipped 5 schools with computer labs. KOOMPI Onelab brings modern ICT education to Cambodian schools.',
-    type: 'milestone',
+    type: 'milestone' as const,
     image: '/images/products/onelab-lab.jpg',
     stats: { labs: '5', pcs: '120+', students: '1,500+' },
   },
@@ -134,7 +161,7 @@ const milestones = [
     year: '2021',
     title: 'KOOMPI Mini Launch',
     description: 'Compact power for any workspace. Mini PC with Intel Alder Lake N95, 8GB RAM, perfect for computer labs and home offices.',
-    type: 'product',
+    type: 'product' as const,
     product: {
       name: 'KOOMPI Mini',
       tagline: 'Compact Power',
@@ -154,8 +181,8 @@ const milestones = [
   {
     year: '2020',
     title: 'KOOMPI E13 Launch',
-    description: 'The classic 13.3" laptop with 8GB RAM, SSD storage, and slim design. Cambodia\'s first locally designed laptop brand.',
-    type: 'product',
+    description: "The classic 13.3\" laptop with 8GB RAM, SSD storage, and slim design. Cambodia's first locally designed laptop brand.",
+    type: 'product' as const,
     product: {
       name: 'KOOMPI E13',
       tagline: 'The Classic Choice',
@@ -173,194 +200,269 @@ const milestones = [
   },
 ]
 
+type Milestone = typeof milestones[0]
+
+const dotStyle = (type: Milestone['type']) => {
+  if (type === 'goal') return 'bg-gradient-to-br from-koompi-accent-pink to-pink-400'
+  if (type === 'product') return 'bg-gradient-to-br from-koompi-secondary to-koompi-primary'
+  return 'bg-koompi-primary'
+}
+
+const MilestoneCard = ({ milestone }: { milestone: Milestone }) => {
+  if (milestone.type === 'goal') {
+    return (
+      <div className="border-2 border-dashed border-koompi-accent-pink/40 bg-gradient-to-br from-pink-50 to-white rounded-2xl p-6">
+        <span className="inline-block px-2.5 py-1 bg-koompi-accent-pink/10 text-koompi-accent-pink text-xs font-semibold rounded-full mb-3">
+          Future Goal
+        </span>
+        <h3 className="text-xl font-bold text-koompi-primary mb-2">{milestone.title}</h3>
+        <p className="text-gray-500 text-sm leading-relaxed">{milestone.description}</p>
+      </div>
+    )
+  }
+
+  if (milestone.type === 'product') {
+    const p = milestone.product!
+    return (
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="px-6 pt-6 pb-4">
+          <span className="inline-block px-2.5 py-1 bg-koompi-secondary/10 text-koompi-secondary text-xs font-semibold rounded-full mb-3">
+            Product Launch
+          </span>
+          <h3 className="text-xl font-bold text-koompi-primary mb-1">{milestone.title}</h3>
+          <p className="text-gray-500 text-sm leading-relaxed">{milestone.description}</p>
+        </div>
+        <div className="mx-6 mb-6 rounded-xl bg-cream overflow-hidden">
+          <div className="flex items-center gap-5 p-5 border-b border-gray-100">
+            <img
+              src={p.image}
+              alt={p.name}
+              className="w-20 h-16 object-contain flex-shrink-0"
+            />
+            <div>
+              <p className="font-bold text-koompi-primary text-lg">{p.name}</p>
+              <p className="text-koompi-accent-pink text-sm">{p.tagline}</p>
+              <p className="text-2xl font-black text-koompi-primary mt-1">{p.price}</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2 p-5">
+            {Object.entries(p.specs).map(([key, val]) => (
+              <div key={key} className="flex gap-2 items-baseline">
+                <span className="text-gray-400 text-[10px] uppercase font-semibold tracking-wide w-14 flex-shrink-0">{key}</span>
+                <span className="text-gray-700 text-xs font-medium">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // milestone type
+  return (
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+      <div className="px-6 pt-6 pb-4">
+        <span className="inline-block px-2.5 py-1 bg-koompi-primary/8 text-koompi-primary text-xs font-semibold rounded-full mb-3 bg-koompi-primary/10">
+          Milestone
+        </span>
+        <h3 className="text-xl font-bold text-koompi-primary mb-2">{milestone.title}</h3>
+        <p className="text-gray-500 text-sm leading-relaxed">{milestone.description}</p>
+      </div>
+      {milestone.image && (
+        <div className="px-6">
+          <img
+            src={milestone.image}
+            alt={milestone.title}
+            className="w-full h-44 object-cover rounded-xl"
+          />
+        </div>
+      )}
+      {milestone.stats && (
+        <div className="grid grid-cols-3 divide-x divide-gray-100 border-t border-gray-100 mt-4">
+          {Object.entries(milestone.stats).map(([key, value]) => (
+            <div key={key} className="py-4 text-center">
+              <p className="text-lg font-bold text-koompi-accent-pink">{value}</p>
+              <p className="text-xs text-gray-400 capitalize mt-0.5">{key}</p>
+            </div>
+          ))}
+        </div>
+      )}
+      {!milestone.stats && <div className="pb-2" />}
+    </div>
+  )
+}
+
 const StoryPage = () => {
   const [selectedStory, setSelectedStory] = useState<typeof stories[0] | null>(null)
 
   return (
-    <div className="min-h-screen bg-cream scroll-smooth">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden text-white py-20 pt-32 min-h-[600px]">
-        {/* Video Background */}
+    <div className="min-h-screen bg-cream">
+
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden text-white pt-32 pb-20 min-h-[580px] flex items-end">
         <video
-          autoPlay
-          muted
-          loop
-          playsInline
+          autoPlay muted loop playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/videos/Video-bg-hero-sec.mp4" type="video/mp4" />
         </video>
-
-        {/* Dark overlay with blur */}
         <div className="absolute inset-0 bg-koompi-primary/80 backdrop-blur-[8px]" />
-
-        {/* Subtle dot pattern overlay */}
         <div className="absolute inset-0 opacity-10" style={{
           backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
           backgroundSize: '24px 24px',
         }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Stories of <span className="text-koompi-accent-persimmon">Change</span>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
+          <div className="max-w-2xl mb-12">
+            <span className="inline-block px-4 py-1.5 bg-white/10 border border-white/20 rounded-full text-sm font-medium mb-5">
+              Impact Stories
+            </span>
+            <h1 className="text-5xl md:text-6xl font-black mb-4 leading-tight">
+              Stories of <span className="text-koompi-accent-pink">Change</span>
             </h1>
-            <p className="text-xl text-gray-300">
+            <p className="text-lg text-white/70">
               Real stories from schools, teachers, and donors making digital education accessible across Cambodia.
             </p>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-persimmon">65</p>
-              <p className="text-gray-300">Schools</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-persimmon">12K</p>
-              <p className="text-gray-300">Students</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-persimmon">24</p>
-              <p className="text-gray-300">Provinces</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <p className="text-4xl font-bold text-koompi-accent-persimmon">100+</p>
-              <p className="text-gray-300">Stories</p>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { value: String(IMPACT_STATS.labsInstalled), label: 'Schools Equipped' },
+              { value: `${(IMPACT_STATS.studentsReached / 1000).toFixed(0)}K`, label: 'Students' },
+              { value: String(IMPACT_STATS.provincesReached), label: 'Provinces' },
+              { value: '100+', label: 'Stories' },
+            ].map((s, i) => (
+              <div key={i} className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl px-5 py-5">
+                <p className="text-3xl font-black text-koompi-accent-pink">{s.value}</p>
+                <p className="text-sm text-white/60 mt-1">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Timeline - Reversed: 2018 at bottom, 2030 at top - with E11/E13 products */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-koompi-primary text-center mb-4">
-            Our Journey
-          </h2>
-          <p className="text-gray-500 text-center mb-12">
-            From Cambodia's first laptop brand to transforming education across the country.
-          </p>
+      {/* ── Journey ──────────────────────────────────────────────────────── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-6">
+
+          {/* Section header */}
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-semibold mb-4">
+              Since 2020
+            </span>
+            <h2 className="text-4xl font-black text-koompi-primary mb-4">Our Journey</h2>
+            <p className="text-gray-500 max-w-md mx-auto text-base leading-relaxed">
+              From Cambodia's first laptop brand to transforming digital education across the country.
+            </p>
+          </div>
+
+          {/* Timeline */}
           <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-200 hidden md:block" />
 
-            {/* Timeline items - mapped in order (2030 first/top, 2018 last/bottom) */}
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <div
-                  key={milestone.year}
-                  className={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  <div className="flex-1" />
-                  <div
-                    className={`hidden md:flex w-12 h-12 text-white rounded-full items-center justify-center font-bold z-10 shadow-lg ${
-                      milestone.type === 'product'
-                        ? 'bg-gradient-to-br from-koompi-accent-persimmon to-koompi-primary w-16'
-                        : 'bg-koompi-primary'
-                    }`}
-                  >
-                    {milestone.year.slice(-2)}
-                  </div>
-                  <div className="flex-1 p-6 bg-cream rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <span className="text-koompi-accent-persimmon font-semibold">{milestone.year}</span>
-                    <h3 className="text-lg font-bold text-koompi-primary mt-1">{milestone.title}</h3>
-                    <p className="text-gray-600 text-sm mt-1">{milestone.description}</p>
+            {/* Desktop vertical spine */}
+            <div
+              className="hidden md:block absolute top-0 bottom-0 w-px -translate-x-1/2 pointer-events-none"
+              style={{
+                left: '50%',
+                background: 'linear-gradient(to bottom, #F16179 0%, #38A7C8 50%, #e5e7eb 100%)',
+              }}
+            />
 
-                    {/* Milestone image and stats */}
-                    {milestone.image && !milestone.product && (
-                      <div className="mt-4">
-                        <img
-                          src={milestone.image}
-                          alt={milestone.title}
-                          className="w-full h-40 object-cover rounded-lg"
-                        />
-                        {milestone.stats && (
-                          <div className="grid grid-cols-3 gap-2 mt-3">
-                            {Object.entries(milestone.stats).map(([key, value]) => (
-                              <div key={key} className="bg-white rounded-lg p-2 text-center">
-                                <p className="text-lg font-bold text-koompi-accent-persimmon">{value}</p>
-                                <p className="text-xs text-gray-500 capitalize">{key}</p>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+            <div className="space-y-0">
+              {milestones.map((milestone, index) => {
+                const cardOnRight = index % 2 === 0
+
+                return (
+                  <div key={milestone.year}>
+
+                    {/* ── Desktop layout ── */}
+                    <div className="hidden md:grid grid-cols-[1fr_80px_1fr] items-start py-8">
+
+                      {/* Left slot */}
+                      <div className="pr-10 flex justify-end">
+                        {!cardOnRight && <MilestoneCard milestone={milestone} />}
                       </div>
-                    )}
 
-                    {/* Product card for E11/E13 */}
-                    {milestone.product && (
-                      <div className="mt-4 bg-white rounded-xl p-4 border-2 border-gray-100">
-                        <div className="flex items-start gap-4">
-                          <img
-                            src={milestone.product.image}
-                            alt={milestone.product.name}
-                            className="w-24 h-16 object-contain rounded-lg flex-shrink-0 bg-gray-50 p-2"
-                          />
-                          <div className="flex-1">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <h4 className="font-bold text-koompi-primary">{milestone.product.name}</h4>
-                                <p className="text-sm text-koompi-accent-persimmon">{milestone.product.tagline}</p>
-                              </div>
-                              <span className="text-lg font-bold text-koompi-primary">{milestone.product.price}</span>
-                          </div>
-                          </div>
-                          <div className="grid grid-cols-3 gap-2 mt-3 text-xs">
-                            <div>
-                              <p className="text-gray-400">{milestone.product.specs.screen || milestone.product.specs.size || '-'}</p>
-                              <p className="text-gray-400">{milestone.product.specs.processor}</p>
-                              <p className="text-gray-400">{milestone.product.specs.ram}</p>
-                              <p className="text-gray-400">{milestone.product.specs.storage}</p>
-                              <p className="text-gray-400">{milestone.product.specs.weight || milestone.product.specs.os || '-'}</p>
-                              <p className="text-gray-400">{milestone.product.specs.battery || milestone.product.specs.ports || '-'}</p>
-                            </div>
-                          </div>
+                      {/* Center: year badge */}
+                      <div className="flex flex-col items-center pt-1">
+                        <div className={`w-14 h-14 rounded-full flex items-center justify-center text-white font-black text-[11px] tracking-tight shadow-lg z-10 relative ${dotStyle(milestone.type)}`}>
+                          {milestone.year}
                         </div>
                       </div>
-                    )}
+
+                      {/* Right slot */}
+                      <div className="pl-10">
+                        {cardOnRight && <MilestoneCard milestone={milestone} />}
+                      </div>
+                    </div>
+
+                    {/* ── Mobile layout ── */}
+                    <div className="md:hidden flex gap-5 pb-10">
+                      {/* Left: dot + connecting line */}
+                      <div className="flex flex-col items-center flex-shrink-0 w-10">
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-[9px] tracking-tight shadow-md z-10 flex-shrink-0 ${dotStyle(milestone.type)}`}>
+                          {milestone.year.slice(2)}
+                        </div>
+                        {index < milestones.length - 1 && (
+                          <div className="w-px flex-1 bg-gray-200 mt-2" />
+                        )}
+                      </div>
+
+                      {/* Right: card */}
+                      <div className="flex-1 min-w-0 pt-1">
+                        <MilestoneCard milestone={milestone} />
+                      </div>
+                    </div>
+
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stories */}
-      <section className="py-20 px-4">
+      {/* ── Featured Stories ─────────────────────────────────────────────── */}
+      <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary text-center mb-4">
-            Featured Stories
-          </h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Real stories from the schools, teachers, and donors making change happen.
-          </p>
+          <div className="text-center mb-14">
+            <span className="inline-block px-4 py-1.5 bg-koompi-secondary/10 text-koompi-secondary rounded-full text-sm font-semibold mb-4">
+              From the Field
+            </span>
+            <h2 className="text-4xl font-black text-koompi-primary mb-4">Featured Stories</h2>
+            <p className="text-gray-500 max-w-xl mx-auto leading-relaxed">
+              Real stories from the schools, teachers, and donors making change happen.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {stories.map((story) => (
               <article
                 key={story.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
                 onClick={() => setSelectedStory(story)}
               >
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={story.image}
                     alt={story.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-medium text-koompi-accent-persimmon uppercase tracking-wide">
-                    {story.category}
-                  </span>
-                  <h3 className="text-xl font-bold text-koompi-primary mt-2 mb-2">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-semibold text-koompi-accent-pink uppercase tracking-wider">
+                      {story.category}
+                    </span>
+                    <span className="text-xs text-gray-400">{story.date}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-koompi-primary mb-2 leading-snug">
                     {story.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">{story.excerpt}</p>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500">{story.province}</span>
-                    <span className="text-koompi-accent-yellow font-bold">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{story.excerpt}</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <span className="text-xs text-gray-400">{story.province}</span>
+                    <span className="text-xs font-bold text-koompi-accent-pink">
                       {story.students.toLocaleString()} students
                     </span>
                   </div>
@@ -373,17 +475,17 @@ const StoryPage = () => {
 
       <Footer />
 
-      {/* Story Modal */}
+      {/* ── Story Modal ──────────────────────────────────────────────────── */}
       {selectedStory && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
           onClick={() => setSelectedStory(null)}
         >
           <div
-            className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="aspect-video overflow-hidden">
+            <div className="aspect-video overflow-hidden rounded-t-2xl">
               <img
                 src={selectedStory.image}
                 alt={selectedStory.title}
@@ -391,21 +493,21 @@ const StoryPage = () => {
               />
             </div>
             <div className="p-8">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="px-3 py-1 bg-koompi-accent-persimmon/20 text-koompi-accent-persimmon rounded-full text-sm font-medium">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="px-3 py-1 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-semibold">
                   {selectedStory.category}
                 </span>
-                <span className="text-gray-500">{selectedStory.date}</span>
+                <span className="text-sm text-gray-400">{selectedStory.date}</span>
               </div>
-              <h2 className="text-2xl font-bold text-koompi-primary mb-4">
+              <h2 className="text-2xl font-bold text-koompi-primary mb-5 leading-snug">
                 {selectedStory.title}
               </h2>
-              <div className="prose prose-gray max-w-none text-gray-600 whitespace-pre-line">
-                {selectedStory.content}
+              <div className="text-gray-600 text-sm leading-relaxed space-y-2">
+                {renderMarkdown(selectedStory.content)}
               </div>
               <button
                 onClick={() => setSelectedStory(null)}
-                className="mt-6 w-full py-3 bg-koompi-primary text-white rounded-lg font-semibold hover:bg-blue-900 transition"
+                className="mt-8 w-full py-3 bg-koompi-primary text-white rounded-xl font-semibold hover:bg-koompi-primary/80 transition-colors"
               >
                 Close
               </button>
@@ -413,6 +515,7 @@ const StoryPage = () => {
           </div>
         </div>
       )}
+
     </div>
   )
 }

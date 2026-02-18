@@ -167,31 +167,31 @@ const OSPage = () => {
             </div>
 
             {/* Personal Edition */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-koompi-accent-persimmon/30 hover:shadow-xl transition-all">
-              <div className="w-14 h-14 bg-koompi-accent-persimmon/10 rounded-xl flex items-center justify-center mb-4">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-koompi-accent-pink/30 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-koompi-accent-pink/10 rounded-xl flex items-center justify-center mb-4">
                 <span className="text-3xl">⬇️</span>
               </div>
               <h3 className="text-2xl font-bold text-koompi-primary mb-2">
                 Personal Edition
               </h3>
-              <p className="text-koompi-accent-persimmon font-medium text-sm mb-4">
+              <p className="text-koompi-accent-pink font-medium text-sm mb-4">
                 Free download
               </p>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li className="flex items-center gap-2">
-                  <span className="text-koompi-accent-persimmon">&#9679;</span>
+                  <span className="text-koompi-accent-pink">&#9679;</span>
                   Full-featured OS
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-koompi-accent-persimmon">&#9679;</span>
+                  <span className="text-koompi-accent-pink">&#9679;</span>
                   Fully customizable
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-koompi-accent-persimmon">&#9679;</span>
+                  <span className="text-koompi-accent-pink">&#9679;</span>
                   Multi-distro support
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-koompi-accent-persimmon">&#9679;</span>
+                  <span className="text-koompi-accent-pink">&#9679;</span>
                   Developer friendly
                 </li>
               </ul>

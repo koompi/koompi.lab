@@ -328,13 +328,13 @@ html {
 
 /* Pricing card glow effect */
 .pricing-card-selected {
-  box-shadow: 0 0 0 2px #FF6B35, 0 0 20px rgba(255, 107, 53, 0.15);
+  box-shadow: 0 0 0 2px #F16179, 0 0 20px rgba(241, 97, 121, 0.15);
 }
 
 /* Step progress bar */
 .step-line {
   height: 2px;
-  background: linear-gradient(to right, #FF6B35 var(--progress), #e5e7eb var(--progress));
+  background: linear-gradient(to right, #F16179 var(--progress), #e5e7eb var(--progress));
 }
 
 /* Background zoom and pan animation */

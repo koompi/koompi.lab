@@ -4,37 +4,8 @@ import Mission from '../components/Mission/Mission'
 import SchoolMap from '../components/Map/SchoolMap'
 import ImpactStats from '../components/Shared/ImpactStats'
 import Footer from '../components/Shared/Footer'
-import { useState, useEffect, useRef } from 'react'
-
-
-const FadeInSection = ({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true) },
-      { threshold: 0.1 }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-        transitionDelay: `${delay}s`,
-        transition: 'all 0.7s ease-out',
-      }}
-    >
-      {children}
-    </div>
-  )
-}
+import FadeInSection from '../components/Shared/FadeInSection'
+import { useState } from 'react'
 
 const HomePage = () => {
   const [provinceFilter, setProvinceFilter] = useState('all')
@@ -54,7 +25,7 @@ const HomePage = () => {
       <section className="py-24 px-4 bg-cream">
         <div className="max-w-7xl mx-auto">
           <FadeInSection className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-persimmon/10 text-koompi-accent-persimmon rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-medium mb-4">
               Our Products
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-koompi-primary mb-4">
@@ -73,7 +44,7 @@ const HomePage = () => {
             >
               {/* Gradient orbs */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-koompi-secondary/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-koompi-accent-persimmon/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
 
               <div className="relative flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 p-8 md:p-12 lg:p-16">
@@ -119,7 +90,7 @@ const HomePage = () => {
                 desc: 'Lightweight Linux OS built for education. Runs on minimal hardware, easy for teachers.',
                 image: '/images/os/bg.png',
                 to: '/os',
-                accent: 'border-t-koompi-accent-persimmon',
+                accent: 'border-t-koompi-accent-pink',
               },
             ].map((product, i) => (
               <FadeInSection key={i} delay={0.1 + i * 0.1}>
@@ -157,7 +128,7 @@ const HomePage = () => {
       <section className="py-24 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
           <FadeInSection className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-persimmon/10 text-koompi-accent-persimmon rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-medium mb-4">
               How It Works
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary">
@@ -167,7 +138,7 @@ const HomePage = () => {
 
           <div className="grid md:grid-cols-4 gap-8 relative">
             {/* Connecting line (desktop only) */}
-            <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-koompi-secondary via-koompi-accent-persimmon to-koompi-secondary" />
+            <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-koompi-secondary via-koompi-accent-pink to-koompi-secondary" />
 
             {[
               { step: '01', title: 'Choose School', desc: 'Select a school that needs support from our verified list.', icon: '🏫' },
@@ -237,7 +208,7 @@ const HomePage = () => {
       <section className="relative py-24 bg-koompi-primary text-white overflow-hidden">
         {/* Background accents */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-koompi-secondary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-koompi-accent-persimmon/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <FadeInSection>
@@ -250,7 +221,7 @@ const HomePage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/fund#pricing"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-koompi-accent-persimmon text-white rounded-full font-semibold text-lg hover:bg-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-accent-500"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-koompi-accent-pink text-white rounded-full font-semibold text-lg hover:bg-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-accent-500"
               >
                 Fund a School
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
