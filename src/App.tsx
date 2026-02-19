@@ -13,6 +13,7 @@ import MonitorPage from './pages/MonitorPage'
 import OSPage from './pages/OSPage'
 import AppsPage from './pages/AppsPage'
 import FundSchoolPage from './pages/FundSchoolPage'
+import GetQuotePage from './pages/GetQuotePage'
 import NotFoundPage from './pages/NotFoundPage'
 import { useEffect } from 'react'
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/fund" element={<FundSchoolPage />} />
+        <Route path="/quote" element={<GetQuotePage />} />
         <Route path="/onelab" element={<OnelabPage />} />
         <Route path="/content-server" element={<ContentServerPage />} />
         <Route path="/koompi-mini-v2" element={<KoompiMiniV2Page />} />

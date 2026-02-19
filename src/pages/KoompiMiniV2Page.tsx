@@ -151,10 +151,10 @@ const KoompiMiniV2Page = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  to="/contact"
+                  to="/quote"
                   className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
                 >
-                  Get a Quote
+                  Order Now
                 </Link>
                 <Link
                   to="#specs"

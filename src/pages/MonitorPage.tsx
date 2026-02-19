@@ -148,7 +148,7 @@ const MonitorPage = () => {
               </div>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  to="/contact"
+                  to="/quote"
                   className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
                 >
                   Order Now
@@ -285,7 +285,7 @@ const MonitorPage = () => {
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              to="/contact"
+              to="/quote"
               className="px-8 py-4 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-1 transition-all duration-300"
             >
               Order Now

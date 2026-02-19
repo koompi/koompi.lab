@@ -91,6 +91,12 @@ function MapBoundsController({ markers }: { markers: typeof SCHOOL_LOCATIONS }) 
 
 const SchoolMap = ({ onProvinceSelect }: SchoolMapProps) => {
   const [selectedProvince, setSelectedProvince] = useState<string | null>(null)
+  const [mapKey, setMapKey] = useState(Date.now())
+
+  // Remount map when component mounts to ensure clean state
+  useEffect(() => {
+    setMapKey(Date.now())
+  }, [])
 
   const handleMarkerClick = (province: string) => {
     if (selectedProvince === province) {
@@ -108,7 +114,7 @@ const SchoolMap = ({ onProvinceSelect }: SchoolMapProps) => {
   }
 
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-16 px-4 bg-white relative isolate">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary mb-3">
@@ -121,8 +127,9 @@ const SchoolMap = ({ onProvinceSelect }: SchoolMapProps) => {
         </div>
 
         {/* Map Container */}
-        <div className="relative rounded-2xl overflow-hidden shadow-lg" style={{ height: '600px' }}>
+        <div className="relative rounded-2xl overflow-hidden shadow-lg" style={{ height: '600px', zIndex: 0 }}>
           <MapContainer
+            key={mapKey}
             center={[12.5, 105.0]}
             zoom={7}
             style={{ height: '100%', width: '100%' }}
@@ -182,7 +189,7 @@ const SchoolMap = ({ onProvinceSelect }: SchoolMapProps) => {
           </MapContainer>
 
           {/* Map Legend */}
-          <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-3 border border-gray-100 z-[1000]">
+          <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-3 border border-gray-100 z-10">
             <h5 className="font-semibold text-koompi-primary mb-2 text-xs">Funding Progress</h5>
             <div className="space-y-1.5 text-xs">
               <div className="flex items-center gap-2">
@@ -205,7 +212,7 @@ const SchoolMap = ({ onProvinceSelect }: SchoolMapProps) => {
           </div>
 
           {/* Stats Summary */}
-          <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-4 border border-gray-100 z-[1000]">
+          <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-4 border border-gray-100 z-10">
             <div className="text-sm">
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-gray-600">Total Schools:</span>

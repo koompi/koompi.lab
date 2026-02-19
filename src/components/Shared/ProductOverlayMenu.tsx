@@ -131,7 +131,7 @@ const ProductOverlayMenu = ({ isOpen, onClose }: ProductOverlayMenuProps) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[100]"
+          className="fixed inset-0 z-[9999]"
           variants={overlayVariants}
           initial="closed"
           animate="open"
