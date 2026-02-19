@@ -19,7 +19,7 @@ const Mission = () => {
   const valueProps = [
     {
       icon: (
-        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 6V4a1 1 0 011-1h6a1 1 0 011 1v2" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 10h8M8 14h5" />
@@ -27,11 +27,11 @@ const Mission = () => {
       ),
       title: 'Offline-first',
       description: 'Content works without internet. Students access educational materials anytime, anywhere.',
-      color: 'from-koompi-secondary to-koompi-secondary',
+      color: 'text-koompi-secondary',
     },
     {
       icon: (
-        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="4" strokeWidth={1.5} />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6l4 2" />
@@ -39,11 +39,11 @@ const Mission = () => {
       ),
       title: 'Solar-powered',
       description: 'Labs run anywhere. Solar panels enable digital education in remote areas without grid power.',
-      color: 'from-koompi-accent-yellow to-yellow-600',
+      color: 'text-koompi-accent-yellow',
     },
     {
       icon: (
-        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 9l3 3-3 3" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 12H9" />
@@ -51,7 +51,7 @@ const Mission = () => {
       ),
       title: 'MoEYS Approved',
       description: 'Official partnership with Ministry of Education, Youth and Sport. Curriculum-aligned content.',
-      color: 'from-green-500 to-emerald-600',
+      color: 'text-emerald-600',
     },
   ]
 
@@ -79,7 +79,7 @@ const Mission = () => {
           {valueProps.map((prop, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
+              className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group text-center"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -87,7 +87,7 @@ const Mission = () => {
                 transition: 'all 0.6s ease-out',
               }}
             >
-              <div className={`w-14 h-14 bg-gradient-to-br ${prop.color} rounded-2xl flex items-center justify-center text-white mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg`}>
+              <div className={`mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all ${prop.color} flex justify-center`}>
                 {prop.icon}
               </div>
               <h3 className="text-xl font-bold text-koompi-primary mb-3">{prop.title}</h3>

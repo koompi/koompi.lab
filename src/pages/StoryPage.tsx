@@ -1,6 +1,7 @@
 import Footer from '../components/Shared/Footer'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { IMPACT_STATS } from '../data/products'
+import { Link } from 'react-router-dom'
 
 // Render simple markdown: **bold** and • bullet lines
 const renderMarkdown = (text: string) => {
@@ -33,6 +34,7 @@ const renderMarkdown = (text: string) => {
 const stories = [
   {
     id: 1,
+    year: '2026',
     title: 'Digital Classrooms for Displaced Students',
     excerpt: 'MoEYS and KOOMPI bring digital education to 757 displaced students in Thma Puok district affected by border conflicts.',
     province: 'Thma Puok, Banteay Meanchey',
@@ -66,6 +68,7 @@ const stories = [
   },
   {
     id: 2,
+    year: '2024',
     title: 'Local Content Server Reaches 10 Schools',
     excerpt: 'KOOMPI completes installation of Local Content Server in 10 schools across 10 provinces, bringing offline education to thousands.',
     province: '10 Provinces',
@@ -92,6 +95,7 @@ const stories = [
   },
   {
     id: 3,
+    year: '2024',
     title: 'Prek Leap High School Digital Deployment',
     excerpt: 'KOOMPI deploys 36 Ministation and 45 Mini PCs to empower students and teachers for seamless digital learning.',
     province: 'Prek Leap, Phnom Penh',
@@ -294,6 +298,51 @@ const MilestoneCard = ({ milestone }: { milestone: Milestone }) => {
 
 const StoryPage = () => {
   const [selectedStory, setSelectedStory] = useState<typeof stories[0] | null>(null)
+  const [activeYear, setActiveYear] = useState<string | null>(null)
+
+  // Scroll to milestone when hash changes
+  useEffect(() => {
+    const hash = window.location.hash.slice(1) // Remove the #
+    const targetYear = hash || '2020' // Default to 2020 if no hash
+
+    setActiveYear(targetYear)
+    const element = document.getElementById(targetYear)
+    if (element) {
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    }
+  }, [])
+
+  // Handle hash change from browser navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1)
+      if (hash) {
+        setActiveYear(hash)
+        const element = document.getElementById(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      } else {
+        setActiveYear(null)
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  const handleMilestoneClick = (year: string) => {
+    window.location.hash = year
+    setActiveYear(year)
+  }
+
+  const scrollToTimeline = () => {
+    window.location.hash = ''
+    setActiveYear(null)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <div className="min-h-screen bg-cream">
@@ -328,9 +377,9 @@ const StoryPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { value: String(IMPACT_STATS.labsInstalled), label: 'Schools Equipped' },
-              { value: `${(IMPACT_STATS.studentsReached / 1000).toFixed(0)}K`, label: 'Students' },
+              { value: `${(IMPACT_STATS.studentsImpacted / 1000).toFixed(0)}K`, label: 'Students' },
               { value: String(IMPACT_STATS.provincesReached), label: 'Provinces' },
-              { value: '100+', label: 'Stories' },
+              { value: `${IMPACT_STATS.teachersTrained}+`, label: 'Teachers Trained' },
             ].map((s, i) => (
               <div key={i} className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl px-5 py-5">
                 <p className="text-3xl font-black text-koompi-accent-pink">{s.value}</p>
@@ -341,8 +390,62 @@ const StoryPage = () => {
         </div>
       </section>
 
+      {/* ── Featured Stories ─────────────────────────────────────────────── */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-koompi-secondary/10 text-koompi-secondary rounded-full text-sm font-semibold mb-4">
+              From the Field
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-koompi-primary mb-4">Featured Stories</h2>
+            <p className="text-gray-500 max-w-xl mx-auto leading-relaxed">
+              Real stories from the schools, teachers, and donors making change happen.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {stories.map((story) => (
+              <article
+                key={story.id}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
+                onClick={() => handleMilestoneClick(story.year)}
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={story.image}
+                    alt={story.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-semibold text-koompi-accent-pink uppercase tracking-wider">
+                      {story.category}
+                    </span>
+                    <span className="text-xs text-gray-400">{story.date}</span>
+                  </div>
+                  <h3 className="text-base font-bold text-koompi-primary mb-2 leading-snug">
+                    {story.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4">{story.excerpt}</p>
+                  <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                    <span className="text-xs text-gray-400">{story.province}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-koompi-accent-pink">
+                        {story.students.toLocaleString()} students
+                      </span>
+                      <span className="text-xs text-koompi-secondary font-medium">→ {story.year}</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Journey ──────────────────────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-cream">
         <div className="max-w-5xl mx-auto px-6">
 
           {/* Section header */}
@@ -371,12 +474,13 @@ const StoryPage = () => {
             <div className="space-y-0">
               {milestones.map((milestone, index) => {
                 const cardOnRight = index % 2 === 0
+                const isActive = activeYear === milestone.year
 
                 return (
-                  <div key={milestone.year}>
+                  <div key={milestone.year} id={milestone.year} className="scroll-mt-32">
 
                     {/* ── Desktop layout ── */}
-                    <div className="hidden md:grid grid-cols-[1fr_80px_1fr] items-start py-8">
+                    <div className={`hidden md:grid grid-cols-[1fr_80px_1fr] items-start py-8 transition-all duration-500 ${isActive ? 'bg-koompi-accent-pink/5 -mx-8 px-8 rounded-3xl' : ''}`}>
 
                       {/* Left slot */}
                       <div className="pr-10 flex justify-end">
@@ -385,9 +489,23 @@ const StoryPage = () => {
 
                       {/* Center: year badge */}
                       <div className="flex flex-col items-center pt-1">
-                        <div className={`w-14 h-14 rounded-full flex items-center justify-center text-white font-black text-[11px] tracking-tight shadow-lg z-10 relative ${dotStyle(milestone.type)}`}>
+                        <button
+                          onClick={() => handleMilestoneClick(milestone.year)}
+                          className={`w-14 h-14 rounded-full flex items-center justify-center text-white font-black text-[11px] tracking-tight shadow-lg z-10 relative transition-all duration-300 hover:scale-110 cursor-pointer ${dotStyle(milestone.type)} ${isActive ? 'ring-4 ring-koompi-accent-pink/30 scale-110' : ''}`}
+                        >
                           {milestone.year}
-                        </div>
+                        </button>
+                        {isActive && (
+                          <button
+                            onClick={scrollToTimeline}
+                            className="mt-3 text-xs text-koompi-accent-pink font-medium hover:underline flex items-center gap-1"
+                          >
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                            </svg>
+                            Top
+                          </button>
+                        )}
                       </div>
 
                       {/* Right slot */}
@@ -397,14 +515,27 @@ const StoryPage = () => {
                     </div>
 
                     {/* ── Mobile layout ── */}
-                    <div className="md:hidden flex gap-5 pb-10">
+                    <div className={`md:hidden flex gap-5 pb-10 transition-all duration-500 ${isActive ? 'bg-koompi-accent-pink/5 -mx-4 px-4 py-4 rounded-2xl' : ''}`}>
                       {/* Left: dot + connecting line */}
                       <div className="flex flex-col items-center flex-shrink-0 w-10">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-[9px] tracking-tight shadow-md z-10 flex-shrink-0 ${dotStyle(milestone.type)}`}>
+                        <button
+                          onClick={() => handleMilestoneClick(milestone.year)}
+                          className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-[9px] tracking-tight shadow-md z-10 flex-shrink-0 transition-all duration-300 hover:scale-110 ${dotStyle(milestone.type)} ${isActive ? 'ring-3 ring-koompi-accent-pink/30 scale-105' : ''}`}
+                        >
                           {milestone.year.slice(2)}
-                        </div>
+                        </button>
                         {index < milestones.length - 1 && (
                           <div className="w-px flex-1 bg-gray-200 mt-2" />
+                        )}
+                        {isActive && (
+                          <button
+                            onClick={scrollToTimeline}
+                            className="mt-2 text-koompi-accent-pink"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                            </svg>
+                          </button>
                         )}
                       </div>
 
@@ -418,57 +549,6 @@ const StoryPage = () => {
                 )
               })}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Featured Stories ─────────────────────────────────────────────── */}
-      <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 bg-koompi-secondary/10 text-koompi-secondary rounded-full text-sm font-semibold mb-4">
-              From the Field
-            </span>
-            <h2 className="text-4xl font-black text-koompi-primary mb-4">Featured Stories</h2>
-            <p className="text-gray-500 max-w-xl mx-auto leading-relaxed">
-              Real stories from the schools, teachers, and donors making change happen.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {stories.map((story) => (
-              <article
-                key={story.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
-                onClick={() => setSelectedStory(story)}
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={story.image}
-                    alt={story.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-semibold text-koompi-accent-pink uppercase tracking-wider">
-                      {story.category}
-                    </span>
-                    <span className="text-xs text-gray-400">{story.date}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-koompi-primary mb-2 leading-snug">
-                    {story.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{story.excerpt}</p>
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span className="text-xs text-gray-400">{story.province}</span>
-                    <span className="text-xs font-bold text-koompi-accent-pink">
-                      {story.students.toLocaleString()} students
-                    </span>
-                  </div>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
       </section>
