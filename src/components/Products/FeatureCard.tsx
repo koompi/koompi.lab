@@ -116,8 +116,10 @@ const FeatureCard = ({
           )}
           <div className="flex items-start gap-3">
             {icon && (
-              <span className="text-koompi-accent-pink flex-shrink-0 bg-gradient-to-br from-koompi-accent-pink/10 to-koompi-accent-pink/5 w-12 h-12 rounded-xl flex items-center justify-center">
-                {getIcon(icon)}
+              <span className="flex-shrink-0 bg-gradient-to-br from-koompi-accent-pink/10 to-koompi-secondary/10 w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span className="text-koompi-accent-pink w-8 h-8">
+                  {getIcon(icon, 'filled')}
+                </span>
               </span>
             )}
             <div className="flex-1">

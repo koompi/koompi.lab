@@ -4,10 +4,8 @@ import HeroBackground from './HeroBackground'
 import ProductOverlayMenu from './ProductOverlayMenu'
 
 const navLinks = [
-  { name: 'Apps', path: '/apps' },
-  { name: 'Schools', path: '/schools' },
-  { name: 'Story', path: '/story' },
   { name: 'About', path: '/about' },
+  { name: 'Story', path: '/story' },
   { name: 'Contact', path: '/contact' },
 ]
 
@@ -117,6 +115,18 @@ const Navbar = () => {
 
             {/* Desktop Nav Links */}
             <div className="hidden lg:flex items-center gap-1 relative">
+              {/* Products Button */}
+              <button
+                onClick={() => setIsProductsOverlayOpen(true)}
+                className={`relative px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
+                  isSolid
+                    ? 'text-gray-600 hover:text-koompi-primary'
+                    : 'text-white/70 hover:text-white'
+                }`}
+              >
+                Products
+              </button>
+
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -137,18 +147,6 @@ const Navbar = () => {
                   )}
                 </Link>
               ))}
-
-              {/* Products Button */}
-              <button
-                onClick={() => setIsProductsOverlayOpen(true)}
-                className={`relative px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
-                  isSolid
-                    ? 'text-gray-600 hover:text-koompi-primary'
-                    : 'text-white/70 hover:text-white'
-                }`}
-              >
-                Products
-              </button>
             </div>
 
             {/* Right side: CTA + Hamburger */}
@@ -191,6 +189,20 @@ const Navbar = () => {
           {isMobileMenuOpen && (
             <div className="lg:hidden bg-white rounded-2xl shadow-xl mt-2 overflow-hidden">
               <div className="py-2">
+                {/* Products Button in Mobile Menu */}
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false)
+                    setIsProductsOverlayOpen(true)
+                  }}
+                  className="w-full flex items-center justify-between px-5 py-3 transition-colors text-gray-800 hover:bg-gray-50"
+                >
+                  <span className="font-medium">Products</span>
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
@@ -208,20 +220,6 @@ const Navbar = () => {
                     )}
                   </Link>
                 ))}
-
-                {/* Products Button in Mobile Menu */}
-                <button
-                  onClick={() => {
-                    setIsMobileMenuOpen(false)
-                    setIsProductsOverlayOpen(true)
-                  }}
-                  className="w-full flex items-center justify-between px-5 py-3 transition-colors text-gray-800 hover:bg-gray-50"
-                >
-                  <span className="font-medium">Products</span>
-                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
               </div>
 
               {/* Bottom CTA */}

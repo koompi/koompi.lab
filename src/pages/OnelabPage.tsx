@@ -26,24 +26,78 @@ const OnelabPage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* 1. Video Hero */}
-      <ProductHero
-        variant="video"
-        videoSrc="/videos/Video-bg-hero-sec.mp4"
-        badge="KOOMPI Onelab"
-        title="ONELAB"
-        glitchWord="ONELAB"
-        subtitle="A complete computer lab for any school. We built it first — now anyone can bring one to life."
-        stats={[
-          { value: String(STATS.labsInstalled), label: 'Labs Installed' },
-          { value: `${STATS.schoolsWithoutLabs.toLocaleString()}+`, label: 'Without Labs' },
-          { value: String(STATS.provincesReached), label: 'Provinces' },
-        ]}
-        ctas={[
-          { label: 'Fund a School', to: '/fund', variant: 'primary' },
-          { label: 'Get a Quote', to: '#pricing', variant: 'ghost' },
-        ]}
-      />
+      {/* 1. Hero - Content Server Style */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{
+        background: 'linear-gradient(180deg, #1a2a4a 0%, #263c5c 50%, #2d4a6c 100%)'
+      }}>
+        {/* Dot pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div style={{
+            backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+            backgroundSize: '20px 20px',
+          }} className="absolute inset-0" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 pt-32 pb-20 flex flex-col items-center justify-center text-center">
+          {/* In Collaboration With */}
+          <div className="flex flex-col items-center mb-8">
+            <img src="/images/products/moeys-logo.png" alt="MoEYS" className="h-[250px]" />
+            <div className="w-full max-w-5xl mx-auto flex justify-center">
+              <span className="text-white text-[17px] font-semibold tracking-[1em] uppercase mt-6 mb-4">
+                In Collaboration With
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-[18px]">
+              <img src="/images/products/saladigital.png" alt="Sala Digital" className="h-[45px]" />
+              <img src="/images/products/plp.png" alt="PLP" className="h-[45px]" />
+              <img src="/images/products/moeys-edtech.png" alt="EdTech" className="h-[45px]" />
+            </div>
+          </div>
+
+          {/* Title */}
+          <h1 className="text-[48px] md:text-[72px] font-black text-white mb-6 leading-tight">
+            KOOMPI <span style={{ color: '#F16179' }}>ONELAB</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-xl text-white/70 max-w-2xl mx-auto mb-10">
+            A complete computer lab for any school. Turn-key solution with hardware, software, content, and training — everything a school needs for digital education.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/fund#pricing"
+              className="px-8 py-4 bg-koompi-accent-pink text-white rounded-full font-semibold text-lg hover:bg-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Fund a School
+            </Link>
+            <Link
+              to="#pricing"
+              className="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300"
+            >
+              Get a Quote
+            </Link>
+          </div>
+
+          {/* Stats */}
+          <div className="flex flex-wrap justify-center gap-4 mt-12">
+            {[
+              { value: String(STATS.labsInstalled), label: 'Labs Installed' },
+              { value: `${STATS.schoolsWithoutLabs.toLocaleString()}+`, label: 'Without Labs' },
+              { value: String(STATS.provincesReached), label: 'Provinces' },
+            ].map((stat, i) => (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 text-center min-w-[140px]"
+              >
+                <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                <p className="text-sm text-gray-300">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 2. Problem → Solution */}
       <section className="py-20 px-4 bg-white">
