@@ -18,7 +18,7 @@ const SchoolCard = ({ school, onFund }: SchoolCardProps) => {
   const needs = getNeedsList()
 
   return (
-    <div className="school-card bg-white rounded-xl overflow-hidden shadow-md">
+    <div className="school-card bg-cream rounded-2xl overflow-hidden shadow-lg border border-gray-100">
       {/* Status Badge */}
       <div className="px-4 pt-4">
         <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${config.color}`}>

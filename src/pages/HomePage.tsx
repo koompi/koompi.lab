@@ -95,7 +95,7 @@ const HomePage = () => {
               <FadeInSection key={i} delay={0.1 + i * 0.1}>
                 <Link
                   to={product.to}
-                  className={`group block h-full bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-t-4 ${product.accent}`}
+                  className={`group block h-full bg-cream rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 border-t-4 ${product.accent}`}
                 >
                   <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-cream overflow-hidden flex items-center justify-center p-6">
                     <img
@@ -222,7 +222,7 @@ const HomePage = () => {
               { image: '/images/products/teacher.jpg', caption: 'Teacher-led ICT class with KOOMPI equipment' },
             ].map((photo, i) => (
               <FadeInSection key={i} delay={i * 0.1}>
-                <div className="rounded-2xl overflow-hidden shadow-lg group">
+                <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 group">
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={photo.image}
@@ -230,7 +230,7 @@ const HomePage = () => {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-4 bg-white">
+                  <div className="p-4 bg-cream">
                     <p className="text-sm text-gray-600">{photo.caption}</p>
                   </div>
                 </div>

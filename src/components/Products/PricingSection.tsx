@@ -11,7 +11,7 @@ const PricingSection = () => {
       {/* Two Product Cards */}
       <div className="grid md:grid-cols-2 gap-6">
         {/* Lab Card */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+        <div className="bg-cream rounded-2xl p-8 md:p-12 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 bg-gradient-to-br from-koompi-secondary to-cyan-600 rounded-xl flex items-center justify-center text-white">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ const PricingSection = () => {
         </div>
 
         {/* Content Server Card */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+        <div className="bg-cream rounded-2xl p-8 md:p-12 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center text-white">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

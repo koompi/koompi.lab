@@ -84,42 +84,39 @@ const projects = [
   {
     name: 'ONELAB',
     description: 'Advanced learning, teaching, work and study environments, centered around a local independent server at each school.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
+    shortDesc: 'Local server-based learning environments',
+    tag: 'Lab Solution',
     link: '/onelab',
+    gradient: 'from-koompi-accent-pink to-pink-500',
+    bgGradient: 'from-pink-50 to-white',
   },
   {
     name: 'Content Server',
     description: 'Offline-first digital library and learning management systems for schools and institutions. Designed to help displaced students continue their education anytime, anywhere.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-      </svg>
-    ),
+    shortDesc: 'Offline digital library systems',
+    tag: 'Education',
     link: '/content-server',
+    gradient: 'from-koompi-secondary to-cyan-500',
+    bgGradient: 'from-cyan-50 to-white',
   },
   {
     name: 'KOOMPI OS',
     description: 'A multi-purpose OS for both desktop and enterprise servers. Our R&D team continues to advance features in Blockchain, P2P, and AI.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
+    shortDesc: 'Desktop & enterprise operating system',
+    tag: 'Software',
     link: '/os',
+    gradient: 'from-koompi-primary to-secondary-600',
+    bgGradient: 'from-blue-50 to-white',
   },
   {
     name: 'Weteka',
     description: 'A virtual platform for students, teachers, and professionals to share their knowledge with other students.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
+    shortDesc: 'Knowledge sharing platform',
+    tag: 'Platform',
     link: 'https://weteka.org',
+    external: true,
+    gradient: 'from-koompi-accent-yellow to-amber-500',
+    bgGradient: 'from-yellow-50 to-white',
   },
 ]
 
@@ -282,8 +279,8 @@ const AboutPage = () => {
                   alt="Students in computer lab"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
+                <div className="absolute top-6 left-6 right-6 text-center">
                   <p className="text-white font-semibold text-lg">Digital Learning</p>
                   <p className="text-white/70 text-sm">65 schools equipped</p>
                 </div>
@@ -301,8 +298,8 @@ const AboutPage = () => {
                   alt="Content Server"
                   className="w-full h-full object-cover bg-white"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
+                <div className="absolute top-6 left-6 right-6 text-center">
                   <p className="text-white font-semibold text-lg">Offline Library</p>
                   <p className="text-white/70 text-sm">3000+ educational resources</p>
                 </div>
@@ -392,96 +389,132 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Our Values */}
-      <section className="py-20 px-4 bg-white">
+      {/* Our Values - Redesigned */}
+      <section className="py-24 px-4 bg-gradient-to-b from-white via-[#fafafa] to-white relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, #263c5c 1px, transparent 0)`,
+          backgroundSize: '32px 32px'
+        }} />
+
         <motion.div
-          className="max-w-7xl mx-auto"
+          className="max-w-7xl mx-auto relative z-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
-          <motion.div className="text-center mb-12" variants={fadeInUp}>
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-accent-700 rounded-full text-sm font-medium mb-4">
+          <motion.div className="text-center mb-16" variants={fadeInUp}>
+            <motion.span
+              className="inline-block px-5 py-2 bg-gradient-to-r from-[#F16179]/10 to-[#38A7C8]/10 text-[#263c5c] rounded-2xl text-sm font-semibold mb-6 tracking-wide border border-[#263c5c]/10"
+              whileHover={{ scale: 1.05 }}
+            >
               Our Foundation
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary mb-3">
+            </motion.span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#263c5c] mb-4 tracking-tight">
               Our Values
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-500 max-w-xl mx-auto text-lg">
               The principles that guide everything we do
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {/* Value Cards with distinctive design */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                ),
                 title: 'Innovation',
                 desc: 'Building technology solutions tailored for Cambodian schools and communities.',
-                color: 'yellow'
+                color: '#F59E0B',
+                gradient: 'from-amber-50 to-orange-50',
               },
               {
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3" strokeWidth={1.5} />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 12a5 5 0 015-5m-5 5a5 5 0 01-5-5" />
-                  </svg>
-                ),
                 title: 'Accessibility',
                 desc: 'Making digital education available to every student, regardless of location.',
-                color: 'cyan'
+                color: '#3B82F6',
+                gradient: 'from-blue-50 to-indigo-50',
               },
               {
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6l4 2" />
-                  </svg>
-                ),
                 title: 'Sustainability',
                 desc: 'Solar-powered solutions that work off-grid and built to last.',
-                color: 'amber'
+                color: '#10B981',
+                gradient: 'from-emerald-50 to-green-50',
               },
               {
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                ),
                 title: 'Community',
                 desc: 'Working closely with local communities, teachers, and Ministry of Education.',
-                color: 'pink'
+                color: '#EF4444',
+                gradient: 'from-rose-50 to-red-50',
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className={`group bg-white rounded-2xl p-6 border transition-all ${
-                  item.color === 'yellow' ? 'border-yellow-200 hover:shadow-xl hover:shadow-yellow-500/20' :
-                  item.color === 'cyan' ? 'border-koompi-secondary/20 hover:shadow-xl hover:shadow-koompi-secondary/20' :
-                  item.color === 'amber' ? 'border-yellow-100 hover:shadow-xl hover:shadow-yellow-500/20' :
-                  'border-pink-100 hover:shadow-xl hover:shadow-pink-500/20'
-                }`}
+                className="group relative"
                 variants={staggerItem}
-                whileHover={{ y: -8 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <motion.div
-                  className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 shadow-lg text-white ${
-                    item.color === 'yellow' ? 'bg-gradient-to-br from-koompi-accent-yellow to-yellow-600 shadow-yellow-500/30' :
-                    item.color === 'cyan' ? 'bg-gradient-to-br from-koompi-secondary to-cyan-600 shadow-koompi-secondary/30' :
-                    item.color === 'amber' ? 'bg-gradient-to-br from-yellow-500 to-pink-400 shadow-yellow-500/30' :
-                    'bg-gradient-to-br from-pink-500 to-pink-600 shadow-pink-500/30'
-                  }`}
-                  whileHover={{ scale: 1.1, rotate: 3 }}
-                >
-                  {item.icon}
-                </motion.div>
-                <h3 className="text-lg font-bold text-koompi-primary mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
+                {/* Card container */}
+                <div className="relative h-full">
+                  {/* Background card with gradient */}
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-br ${item.gradient} rounded-2xl`}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  />
+
+                  {/* Main white card - asymmetric design */}
+                  <motion.div
+                    className="relative h-full bg-white rounded-2xl p-6 shadow-sm border border-gray-100 overflow-hidden"
+                    whileHover={{
+                      y: -4,
+                      boxShadow: `0 20px 40px -15px ${item.color}20`,
+                      borderColor: `${item.color}30`
+                    }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  >
+                    {/* Geometric pattern decoration - unique per card */}
+                    <svg className="absolute -top-8 -right-8 w-32 h-32 opacity-5" viewBox="0 0 100 100">
+                      {index === 0 && (
+                        <path d="M50 0 L100 50 L50 100 L0 50 Z" fill={item.color} />
+                      )}
+                      {index === 1 && (
+                        <circle cx="50" cy="50" r="50" fill={item.color} />
+                      )}
+                      {index === 2 && (
+                        <polygon points="50,0 100,80 0,80" fill={item.color} />
+                      )}
+                      {index === 3 && (
+                        <rect x="10" y="10" width="80" height="80" rx="10" fill={item.color} />
+                      )}
+                    </svg>
+
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <h3
+                        className="text-lg font-bold text-gray-900 mb-3 group-hover:tracking-wide transition-all duration-300"
+                      >
+                        {item.title}
+                      </h3>
+
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* Animated bottom accent */}
+                    <motion.div
+                      className="absolute bottom-0 left-0 h-0.5"
+                      style={{ backgroundColor: item.color }}
+                      initial={{ width: '20%' }}
+                      whileInView={{ width: '60%' }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
+                    />
+                  </motion.div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -492,58 +525,114 @@ const AboutPage = () => {
       <div className="bg-gradient-to-r from-transparent via-koompi-accent-blue/20 to-transparent h-px" />
 
       {/* Vision & Mission */}
-      <section className="py-20 px-4">
+      <section className="py-24 px-4 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-koompi-secondary/5 rounded-full blur-3xl -translate-x-1/2" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-koompi-accent-pink/5 rounded-full blur-3xl translate-x-1/2" />
+
         <motion.div
-          className="max-w-5xl mx-auto"
+          className="max-w-5xl mx-auto relative z-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Vision */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+            {/* Vision - Dark Premium Card */}
             <motion.div
-              className="bg-gradient-to-br from-koompi-primary to-secondary-700 rounded-2xl p-8 text-white"
+              className="group relative bg-gradient-to-br from-koompi-primary via-koompi-primary to-secondary-700 rounded-3xl p-10 md:p-14 text-white overflow-hidden"
               variants={fadeInUp}
+              whileHover={{ y: -8 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <motion.div
-                  className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center"
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                >
-                  <svg className="w-6 h-6 text-koompi-accent-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                </motion.div>
-                <h2 className="text-2xl font-bold">Our Vision</h2>
+              {/* Animated background pattern */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-0 right-0 w-64 h-64 border border-white/20 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 border border-white/20 rounded-full translate-y-1/2 -translate-x-1/2" />
               </div>
-              <p className="text-gray-200 leading-relaxed">
-                Our vision is to create a tech-driven education and innovation space that empowers individuals to unleash their full potential and drive positive progress.
-              </p>
+
+              {/* Side accent line */}
+              <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-transparent via-koompi-accent-pink to-transparent rounded-full" />
+
+              {/* Label */}
+              <motion.span
+                className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium text-koompi-accent-pink mb-6 border border-white/10"
+                whileHover={{ scale: 1.05 }}
+              >
+                Vision
+              </motion.span>
+
+              {/* Large decorative V */}
+              <div className="absolute top-8 right-8 text-8xl font-bold text-white/5 select-none">
+                V
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+                  Our Vision
+                </h2>
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  Our vision is to create a tech-driven education and innovation space that empowers individuals to unleash their full potential and drive positive progress.
+                </p>
+
+                {/* Decorative quote-like element */}
+                <div className="flex items-center gap-2 text-koompi-accent-pink">
+                  <span className="text-2xl font-light opacity-50">"</span>
+                  <span className="text-sm font-medium">Empowering Potential</span>
+                  <span className="text-2xl font-light opacity-50">"</span>
+                </div>
+              </div>
+
+              {/* Gradient glow on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-koompi-accent-pink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
 
-            {/* Mission */}
+            {/* Mission - Light Premium Card */}
             <motion.div
-              className="bg-white rounded-2xl p-8 shadow-lg border-2 border-koompi-accent-pink/20"
+              className="group relative bg-gradient-to-br from-cream to-white rounded-3xl p-10 md:p-14 shadow-xl border border-gray-100 overflow-hidden"
               variants={fadeInUp}
+              whileHover={{ y: -8 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <motion.div
-                  className="w-10 h-10 bg-koompi-accent-pink/10 rounded-xl flex items-center justify-center"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <svg className="w-6 h-6 text-koompi-accent-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </motion.div>
-                <h2 className="text-2xl font-bold text-koompi-primary">Our Mission</h2>
+              {/* Decorative corner */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-koompi-accent-pink/10 to-transparent rounded-bl-full" />
+
+              {/* Top accent line */}
+              <div className="absolute top-0 left-8 right-8 h-0.5 bg-gradient-to-r from-transparent via-koompi-accent-pink/30 to-transparent" />
+
+              {/* Label */}
+              <motion.span
+                className="inline-block px-4 py-1.5 bg-gradient-to-r from-koompi-accent-pink/10 to-pink-500/10 rounded-full text-sm font-medium text-koompi-accent-pink mb-6 border border-koompi-accent-pink/20"
+                whileHover={{ scale: 1.05 }}
+              >
+                Mission
+              </motion.span>
+
+              {/* Large decorative M */}
+              <div className="absolute top-8 right-8 text-8xl font-bold text-koompi-primary/5 select-none">
+                M
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                Our mission is to build tools and empower individuals with accessible computing solutions that drive progress, foster learning, and inspire innovation.
-              </p>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary mb-6 leading-tight">
+                  Our Mission
+                </h2>
+                <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                  Our mission is to build tools and empower individuals with accessible computing solutions that drive progress, foster learning, and inspire innovation.
+                </p>
+
+                {/* Action statement */}
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-koompi-secondary rounded-full animate-pulse" />
+                  <span className="text-sm font-semibold text-koompi-secondary">Building Tomorrow</span>
+                </div>
+              </div>
+
+              {/* Bottom accent line - grows on hover */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-32 h-0.5 bg-gradient-to-r from-transparent via-koompi-secondary to-transparent transition-all duration-500 ease-out" />
+
+              {/* Hover glow */}
+              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl shadow-koompi-secondary/10" />
             </motion.div>
           </div>
         </motion.div>
@@ -704,78 +793,123 @@ const AboutPage = () => {
             </p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: 'img',
-                img: '/images/products/ministation3.png',
-                title: 'KOOMPI Lab',
-                desc: 'Complete computer lab setup with 10 KOOMPI Ministations, designed for low power consumption and durability in Cambodian conditions.',
-                color: 'blue'
-              },
-              {
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                ),
-                title: 'Content Server',
-                desc: '2TB of offline educational content including Khan Academy, Wikipedia, interactive apps, and Cambodian curriculum materials.',
-                color: 'pink'
-              },
-              {
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                ),
-                title: 'Solar Power',
-                desc: 'Complete solar power systems for schools without grid electricity, enabling digital learning in most remote locations.',
-                color: 'yellow'
-              },
-            ].map((item, index) => (
+            {/* KOOMPI Lab Card - With Image */}
+            <motion.div
+              className="group bg-cream rounded-3xl p-8 md:p-12 shadow-lg transition-all text-center border border-gray-100 hover:border-koompi-secondary/30 relative overflow-hidden"
+              variants={staggerItem}
+              whileHover={{ y: -8 }}
+            >
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-koompi-secondary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Top accent line */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-gradient-to-r from-transparent via-koompi-secondary to-transparent rounded-full" />
+
               <motion.div
-                key={index}
-                className={`group bg-white rounded-2xl p-8 shadow-lg transition-all text-center border ${
-                  item.color === 'blue' ? 'border-gray-100 hover:border-blue-200' :
-                  item.color === 'pink' ? 'border-gray-100 hover:border-koompi-accent-pink/30' :
-                  'border-gray-100 hover:border-yellow-200'
-                }`}
-                variants={staggerItem}
-                whileHover={{ y: -8 }}
+                className="w-32 h-24 mx-auto mb-6 relative z-10"
+                whileHover={{ scale: 1.1 }}
               >
-                {item.icon === 'img' ? (
-                  <motion.div
-                    className="w-32 h-24 mx-auto mb-5"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      className="w-full h-full object-contain drop-shadow-lg"
-                    />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    className={`w-20 h-20 bg-gradient-to-br rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg text-white ${
-                      item.color === 'pink' ? 'from-koompi-accent-pink to-pink-400 shadow-pink-500/30' :
-                      'from-koompi-accent-yellow to-yellow-600 shadow-yellow-500/30'
-                    }`}
-                    whileHover={{ scale: 1.1, rotate: 6 }}
-                  >
-                    {item.icon}
-                  </motion.div>
-                )}
-                <h3 className={`text-xl font-bold mb-3 transition-colors ${
-                  item.color === 'blue' ? 'text-koompi-primary group-hover:text-blue-600' :
-                  item.color === 'pink' ? 'text-koompi-primary group-hover:text-koompi-accent-pink' :
-                  'text-koompi-primary group-hover:text-yellow-600'
-                }`}>
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                <img
+                  src="/images/products/ministation3.png"
+                  alt="KOOMPI Lab"
+                  className="w-full h-full object-contain drop-shadow-lg"
+                />
               </motion.div>
-            ))}
+
+              <h3 className="text-xl font-bold mb-3 transition-colors text-koompi-primary group-hover:text-koompi-secondary relative z-10">
+                KOOMPI Lab
+              </h3>
+              <p className="text-gray-600 leading-relaxed relative z-10">
+                Complete computer lab setup with 10 KOOMPI Ministations, designed for low power consumption and durability in Cambodian conditions.
+              </p>
+
+              {/* Bottom accent line - grows on hover */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-16 h-0.5 bg-gradient-to-r from-transparent via-koompi-secondary to-transparent transition-all duration-500 ease-out" />
+            </motion.div>
+
+            {/* Content Server Card - With Image */}
+            <motion.div
+              className="group bg-gradient-to-br from-cream to-white rounded-3xl p-8 md:p-12 shadow-lg transition-all text-center border border-gray-100 hover:border-koompi-accent-pink/30 relative overflow-hidden"
+              variants={staggerItem}
+              whileHover={{ y: -8 }}
+            >
+              {/* Decorative corner */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-koompi-accent-pink/10 to-transparent rounded-bl-full" />
+
+              {/* Top accent line */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-gradient-to-r from-transparent via-koompi-accent-pink/50 to-transparent rounded-full" />
+
+              {/* Product Image */}
+              <motion.div
+                className="w-32 h-24 mx-auto mb-6 relative z-10"
+                whileHover={{ scale: 1.1 }}
+              >
+                <img
+                  src="/images/products/content-server.png"
+                  alt="Content Server"
+                  className="w-full h-full object-contain drop-shadow-lg"
+                />
+              </motion.div>
+
+              <h3 className="text-xl font-bold mb-3 transition-colors text-koompi-primary group-hover:text-koompi-accent-pink relative z-10">
+                Content Server
+              </h3>
+              <p className="text-gray-600 leading-relaxed relative z-10 mb-4">
+                2TB of offline educational content including Khan Academy, Wikipedia, interactive apps, and Cambodian curriculum materials.
+              </p>
+
+              {/* Feature tags */}
+              <div className="flex flex-wrap justify-center gap-2 relative z-10">
+                <span className="text-xs px-3 py-1 bg-white rounded-full border border-gray-200 text-gray-600">Khan Academy</span>
+                <span className="text-xs px-3 py-1 bg-white rounded-full border border-gray-200 text-gray-600">Wiki Khmer</span>
+                <span className="text-xs px-3 py-1 bg-white rounded-full border border-gray-200 text-gray-600">+1000 Apps</span>
+              </div>
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-16 h-0.5 bg-gradient-to-r from-transparent via-koompi-accent-pink/50 to-transparent transition-all duration-500 ease-out" />
+            </motion.div>
+
+            {/* Solar Power Card - With Image */}
+            <motion.div
+              className="group bg-gradient-to-br from-cream to-white rounded-3xl p-8 md:p-12 shadow-lg transition-all text-center border border-gray-100 hover:border-yellow-300/50 relative overflow-hidden"
+              variants={staggerItem}
+              whileHover={{ y: -8 }}
+            >
+              {/* Decorative corner */}
+              <div className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-koompi-accent-yellow/10 to-transparent rounded-br-full" />
+
+              {/* Top accent line */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-gradient-to-r from-transparent via-koompi-accent-yellow/70 to-transparent rounded-full" />
+
+              {/* Product Image */}
+              <motion.div
+                className="w-32 h-24 mx-auto mb-6 relative z-10"
+                whileHover={{ scale: 1.1 }}
+              >
+                <img
+                  src="/images/products/solar.png"
+                  alt="Solar Power"
+                  className="w-full h-full object-contain drop-shadow-lg"
+                />
+              </motion.div>
+
+              <h3 className="text-xl font-bold mb-3 transition-colors text-koompi-primary group-hover:text-yellow-600 relative z-10">
+                Solar Power
+              </h3>
+              <p className="text-gray-600 leading-relaxed relative z-10 mb-4">
+                Complete solar power systems for schools without grid electricity, enabling digital learning in most remote locations.
+              </p>
+
+              {/* Feature highlight */}
+              <div className="flex items-center justify-center gap-2 relative z-10">
+                <span className="text-lg font-bold text-koompi-accent-yellow">100% Off-Grid</span>
+                <span className="text-gray-400">•</span>
+                <span className="text-sm text-gray-500">Eco-Friendly</span>
+              </div>
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-16 h-0.5 bg-gradient-to-r from-transparent via-koompi-accent-yellow/70 to-transparent transition-all duration-500 ease-out" />
+            </motion.div>
           </div>
         </motion.div>
       </section>
@@ -813,86 +947,68 @@ const AboutPage = () => {
             </p>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project, index) =>
-              project.link.startsWith('http') ? (
-                <motion.a
-                  key={index}
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative bg-gradient-to-br from-cream to-white rounded-2xl p-6 border border-koompi-accent-blue/10 overflow-hidden"
-                  variants={staggerItem}
-                  whileHover={{ y: -4 }}
-                  initial={{ opacity: 0, x: -20 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-koompi-accent-pink/5 to-koompi-accent-blue/5"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  />
-                  <div className="relative flex items-start gap-4">
-                    <motion.div
-                      className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30 text-white"
-                      whileHover={{ scale: 1.1, rotate: 6 }}
-                    >
-                      {project.icon}
-                    </motion.div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-pink transition-colors">{project.name}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
-                    </div>
-                    <motion.svg
-                      className="w-6 h-6 text-gray-400 flex-shrink-0"
-                      whileHover={{ x: 4, color: '#F16179' }}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </motion.svg>
-                  </div>
-                </motion.a>
-              ) : (
+            {projects.map((project, index) => {
+              const Wrapper = project.external ? 'a' : Link
+              const wrapperProps = project.external
+                ? { href: project.link, target: '_blank', rel: 'noopener noreferrer' }
+                : { to: project.link }
+
+              const projectColor = project.gradient.includes('pink') ? '#F16179' :
+                project.gradient.includes('cyan') ? '#38A7C8' :
+                project.gradient.includes('yellow') ? '#F59E0B' : '#263c5c'
+
+              const projectBgColor = project.gradient.includes('pink') ? 'rgba(241, 97, 121, 0.08)' :
+                project.gradient.includes('cyan') ? 'rgba(56, 167, 200, 0.08)' :
+                project.gradient.includes('yellow') ? 'rgba(245, 158, 11, 0.08)' :
+                'rgba(38, 60, 92, 0.08)'
+
+              return (
                 <motion.div
                   key={index}
                   variants={staggerItem}
-                  whileHover={{ y: -4 }}
+                  whileHover={{ y: -2 }}
                   initial={{ opacity: 0, x: -20 }}
                 >
-                  <Link
-                    to={project.link}
-                    className="group relative bg-gradient-to-br from-cream to-white rounded-2xl p-6 border border-koompi-accent-blue/10 overflow-hidden"
+                  <Wrapper
+                    {...wrapperProps}
+                    className="block group"
                   >
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-koompi-accent-pink/5 to-koompi-accent-blue/5"
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                    />
-                    <div className="relative flex items-start gap-4">
-                      <motion.div
-                        className="w-16 h-16 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30 text-white"
-                        whileHover={{ scale: 1.1, rotate: 6 }}
-                      >
-                        {project.icon}
-                      </motion.div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-accent-pink transition-colors">{project.name}</h3>
-                        <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
+                    <div className="relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                      {/* Top colored bar */}
+                      <div className="h-1" style={{ backgroundColor: projectColor }} />
+
+                      {/* Content */}
+                      <div className="p-6 relative z-10">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-koompi-accent-pink transition-colors">
+                              {project.name}
+                            </h3>
+                            <p className="text-gray-500 text-sm mb-2">{project.shortDesc}</p>
+                            <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
+                          </div>
+                          {/* Arrow */}
+                          <svg className="w-5 h-5 text-gray-400 group-hover:text-koompi-accent-pink group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
                       </div>
-                      <motion.svg
-                        className="w-6 h-6 text-gray-400 flex-shrink-0"
-                        whileHover={{ x: 4, color: '#F16179' }}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </motion.svg>
+
+                      {/* Bottom colored gradient overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style={{ background: `linear-gradient(to top, ${projectBgColor}, transparent)` }} />
+
+                      {/* Right side curved decoration */}
+                      <svg className="absolute top-0 right-0 w-16 h-full pointer-events-none text-gray-300/20" viewBox="0 0 60 200" preserveAspectRatio="none">
+                        <path
+                          d="M 0,0 C 30,40 60,60 60,0 L 60,200 C 60,140 30,120 0,200 Z"
+                          fill="currentColor"
+                        />
+                      </svg>
                     </div>
-                  </Link>
+                  </Wrapper>
                 </motion.div>
               )
-            )}
+            })}
           </div>
         </motion.div>
       </section>
@@ -931,7 +1047,7 @@ const AboutPage = () => {
             {team.map((member, index) => (
               <motion.div
                 key={index}
-                className="group bg-white rounded-2xl p-6 shadow-lg text-center border border-gray-100"
+                className="group bg-cream rounded-2xl p-6 md:p-8 shadow-lg text-center border border-gray-100"
                 variants={staggerItem}
                 whileHover={{ y: -8 }}
                 initial={{ opacity: 0, y: 30 }}
@@ -989,7 +1105,7 @@ const AboutPage = () => {
             {partners.map((partner, index) => (
               <motion.div
                 key={index}
-                className="group bg-white rounded-2xl p-8 flex items-center gap-5 shadow-md border border-gray-100"
+                className="group bg-cream rounded-2xl p-8 md:p-12 flex items-center gap-5 shadow-lg border border-gray-100"
                 variants={staggerItem}
                 whileHover={{ y: -4, scale: 1.02 }}
                 initial={{ opacity: 0, x: -30 }}

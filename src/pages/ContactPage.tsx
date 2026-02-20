@@ -180,7 +180,7 @@ const ContactPage = () => {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-cream rounded-2xl p-8 md:p-12 shadow-lg border border-gray-100">
               {submitted ? (
                 <div className="text-center py-12">
                   <div className="w-16 h-16 bg-koompi-accent-pink rounded-full flex items-center justify-center mx-auto mb-4">
@@ -306,7 +306,7 @@ const ContactPage = () => {
             {faqs.map((faq, index) => (
               <details
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-sm group"
+                className="bg-cream rounded-2xl p-6 shadow-sm border border-gray-100 group"
               >
                 <summary className="font-semibold text-koompi-primary cursor-pointer list-none flex items-center justify-between">
                   {faq.q}

@@ -225,7 +225,7 @@ const FundSchoolPage = () => {
 
               {/* Summary */}
               <div className="h-full">
-                <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-32 flex flex-col mt-8" style={{ minHeight: 'calc(100% - 2rem)' }}>
+                <div className="bg-cream rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 sticky top-32 flex flex-col mt-8" style={{ minHeight: 'calc(100% - 2rem)' }}>
                   <h4 className="font-bold text-koompi-primary text-lg mb-4">Estimated Quote</h4>
                   <div className="space-y-4 flex-1">
                     <div className="flex justify-between text-base">

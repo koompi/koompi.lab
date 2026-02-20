@@ -19,7 +19,7 @@ const FAQ = ({ title = 'Frequently Asked Questions', items, columns = 2 }: FAQPr
   const col2 = columns === 2 ? items.slice(midpoint) : []
 
   const renderItem = (item: FAQItem, index: number) => (
-    <div key={index} className="border border-gray-100 rounded-xl overflow-hidden">
+    <div key={index} className="bg-cream border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
       <button
         onClick={() => toggle(index)}
         className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"

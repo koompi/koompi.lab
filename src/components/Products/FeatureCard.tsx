@@ -49,12 +49,12 @@ const FeatureCard = ({
   const bgClasses =
     variant === 'gradient'
       ? 'bg-gradient-to-br from-koompi-primary to-secondary-600 text-white'
-      : 'bg-white border border-gray-100'
+      : 'bg-cream border border-gray-100'
 
   return (
     <div
       ref={cardRef}
-      className={`${baseClasses} ${bgClasses} rounded-2xl p-6 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group overflow-hidden relative`}
+      className={`${baseClasses} ${bgClasses} rounded-3xl p-8 md:p-12 hover:-translate-y-1 hover:shadow-2xl transition-all duration-500 group overflow-hidden relative border-0 shadow-lg`}
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -62,10 +62,13 @@ const FeatureCard = ({
         transition: 'all 0.6s ease-out',
       }}
     >
+      {/* Decorative corner accent */}
+      <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-koompi-secondary/10 to-transparent rounded-br-full" />
+
       {hero && image ? (
         // Hero layout: horizontal with larger image on left
         <div className="flex gap-8 items-center">
-          <div className="flex-1 rounded-xl overflow-hidden">
+          <div className="flex-1 rounded-2xl overflow-hidden">
             <img
               src={image}
               alt={title}
@@ -92,7 +95,7 @@ const FeatureCard = ({
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-koompi-accent-pink text-white rounded-full text-sm font-semibold hover:bg-pink-600 transition-colors"
+                className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-koompi-accent-pink text-white rounded-full text-sm font-semibold hover:bg-pink-600 transition-colors shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/40"
               >
                 {linkLabel}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,67 +109,56 @@ const FeatureCard = ({
         // Standard layout: stacked
         <>
           {image && !size && !items && (
-            <div className="mb-4 rounded-xl overflow-hidden">
+            <div className="mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
               <img
                 src={image}
                 alt={title}
-                className="w-full h-40 object-contain group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-48 object-contain group-hover:scale-110 transition-transform duration-500"
               />
             </div>
           )}
-          <div className="flex items-start gap-3">
-            {icon && (
-              <span className="flex-shrink-0 bg-gradient-to-br from-koompi-accent-pink/10 to-koompi-secondary/10 w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <span className="text-koompi-accent-pink w-8 h-8">
-                  {getIcon(icon, 'filled')}
-                </span>
-              </span>
+          <div>
+            <h3
+              className={`text-xl font-bold mb-3 ${
+                variant === 'gradient' ? 'text-white' : 'text-koompi-primary'
+              }`}
+            >
+              {title}
+            </h3>
+            <p
+              className={`text-sm mb-4 leading-relaxed ${
+                variant === 'gradient' ? 'text-gray-300' : 'text-gray-600'
+              }`}
+            >
+              {description}
+            </p>
+            {(size || items) && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {size && (
+                  <span className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-koompi-secondary/20 to-koompi-secondary/10 text-koompi-secondary text-sm font-semibold rounded-full border border-koompi-secondary/20">
+                    {size}
+                  </span>
+                )}
+                {items && (
+                  <span className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-koompi-accent-pink/20 to-pink-500/10 text-koompi-accent-pink text-sm font-semibold rounded-full border border-koompi-accent-pink/20">
+                    {items}
+                  </span>
+                )}
+              </div>
             )}
-            <div className="flex-1">
-              <h3
-                className={`text-lg font-bold mb-1 ${
-                  variant === 'gradient' ? 'text-white' : 'text-koompi-primary'
-                }`}
+            {link && linkLabel && (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-koompi-accent-pink to-pink-500 text-white rounded-full text-sm font-semibold hover:from-pink-600 hover:to-pink-600 transition-all shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/40 hover:-translate-x-1"
               >
-                {title}
-              </h3>
-              <p
-                className={`text-sm mb-3 ${
-                  variant === 'gradient' ? 'text-gray-300' : 'text-gray-600'
-                }`}
-              >
-                {description}
-              </p>
-              {(size || items) && (
-                <div className="flex flex-wrap gap-2">
-                  {size && (
-                    <span className="inline-flex items-center px-2 py-1 bg-koompi-accent-blue/10 text-koompi-accent-blue text-xs font-medium rounded-full">
-                      <span className="mr-1">{getIcon('📦')}</span>
-                      {size}
-                    </span>
-                  )}
-                  {items && (
-                    <span className="inline-flex items-center px-2 py-1 bg-koompi-accent-pink/10 text-koompi-accent-pink text-xs font-medium rounded-full">
-                      <span className="mr-1">{getIcon('📊')}</span>
-                      {items}
-                    </span>
-                  )}
-                </div>
-              )}
-              {link && linkLabel && (
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-3 px-4 py-2 bg-koompi-accent-pink text-white rounded-full text-sm font-semibold hover:bg-pink-600 transition-colors"
-                >
-                  {linkLabel}
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              )}
-            </div>
+                {linkLabel}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            )}
           </div>
         </>
       )}

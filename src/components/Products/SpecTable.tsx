@@ -9,7 +9,7 @@ interface SpecTableProps {
 const SpecTable = ({ specs, productImage, productImageAlt }: SpecTableProps) => {
   return (
     <div className="grid md:grid-cols-2 gap-8 items-center">
-      <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+      <div className="bg-cream rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
         <div className="divide-y divide-gray-100">
           {specs.map((spec, i) => (
             <div key={i} className="flex justify-between px-6 py-4 hover:bg-gray-50 transition-colors">

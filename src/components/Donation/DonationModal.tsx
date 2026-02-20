@@ -54,7 +54,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
     const costPerStudent = 12000 / school.studentCount
 
     return (
-      <div className="bg-cream rounded-lg p-4 mt-4">
+      <div className="bg-cream rounded-2xl p-6 mt-4 border border-gray-100 shadow-sm">
         <h4 className="font-semibold text-koompi-primary mb-3">Your donation provides:</h4>
         <ul className="space-y-2 text-sm text-gray-700">
           <li className="flex items-start gap-2">
@@ -209,7 +209,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
           {step === 'details' && (
             <>
               {/* Donation Summary */}
-              <div className="bg-cream rounded-lg p-4 mb-6">
+              <div className="bg-cream rounded-2xl p-6 mb-6 border border-gray-100 shadow-sm">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Donation Amount</span>
                   <span className="text-2xl font-bold text-koompi-primary">
