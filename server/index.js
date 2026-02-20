@@ -3,6 +3,12 @@ import crypto from 'crypto'
 import { MongoClient, ObjectId } from 'mongodb'
 import dotenv from 'dotenv'
 import multer from 'multer'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 dotenv.config()
 
@@ -92,7 +98,13 @@ app.get('/api/health', (req, res) => {
 // Get all schools
 app.get('/api/schools', async (req, res) => {
   try {
-    const { province, status } = req.query
+    const { province, status, source } = req.query
+
+    // If source=csv is specified, return CSV-based data
+    if (source === 'csv') {
+      return res.json(getSchoolsFromCSV(province, status))
+    }
+
     const filter = {}
     if (province) filter.province = province
     if (status) filter.status = status
@@ -101,8 +113,8 @@ app.get('/api/schools', async (req, res) => {
     res.json(schools)
   } catch (error) {
     console.error('Error fetching schools:', error)
-    // Return mock data for development
-    res.json(getMockSchools())
+    // Return CSV data as fallback
+    res.json(getSchoolsFromCSV(req.query.province, req.query.status))
   }
 })
 
@@ -671,6 +683,29 @@ app.get('/payment/success', (req, res) => {
     </html>
   `)
 })
+
+// Get schools from CSV data
+function getSchoolsFromCSV(provinceFilter = null, statusFilter = null) {
+  try {
+    const jsonPath = path.join(__dirname, '../public/data/schools.json')
+    if (fs.existsSync(jsonPath)) {
+      const schools = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'))
+
+      let filtered = schools
+      if (provinceFilter && provinceFilter !== 'all') {
+        filtered = filtered.filter(s => s.province.toLowerCase() === provinceFilter.toLowerCase())
+      }
+      if (statusFilter && statusFilter !== 'all') {
+        filtered = filtered.filter(s => s.status === statusFilter)
+      }
+
+      return filtered
+    }
+  } catch (error) {
+    console.error('Error reading CSV schools data:', error)
+  }
+  return []
+}
 
 // Mock data for development
 function getMockSchools() {

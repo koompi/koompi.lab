@@ -2,10 +2,14 @@ export type SchoolStatus = 'none' | 'lab' | 'lab-content' | 'full-solar'
 
 export interface School {
   _id: string
+  id?: string // Alternative ID from CSV
   name: string
-  nameKh?: string
+  nameKh?: string // Khmer name (standard)
+  nameKhmer?: string // Khmer name (CSV data)
+  nameEnglish?: string // English name (CSV data)
   province: string
-  provinceKh?: string
+  provinceKh?: string // Khmer province name (standard)
+  provinceKhmer?: string // Khmer province name (CSV data)
   district: string
   districtKh?: string
   schoolType?: string

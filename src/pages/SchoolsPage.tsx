@@ -21,7 +21,8 @@ const SchoolsPage = () => {
   const fetchSchools = async () => {
     setLoading(true)
     try {
-      const response = await fetch('/api/schools')
+      // Use CSV data source by default
+      const response = await fetch('/api/schools?source=csv')
       const data = await response.json()
       setSchools(data)
     } catch (error) {
@@ -242,6 +243,44 @@ const SchoolsPage = () => {
         school={isDonationModalOpen ? selectedSchool : null}
         onClose={() => setIsDonationModalOpen(false)}
       />
+
+      {/* Partnership Section */}
+      <section className="relative overflow-hidden bg-koompi-primary py-16">
+        {/* Subtle dot pattern overlay */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }} />
+
+        {/* Decorative gradient orbs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-koompi-accent-pink/10 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-koompi-accent-blue/10 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
+          <div className="flex flex-col items-center">
+            {/* MoEYS Logo */}
+            <img
+              src="/images/products/moeys-logo.png"
+              alt="MoEYS - Ministry of Education, Youth and Sport"
+              className="h-[200px] md:h-[250px]"
+            />
+
+            {/* In Collaboration With */}
+            <div className="w-full max-w-5xl mx-auto flex justify-center">
+              <span className="text-white text-[17px] font-semibold tracking-[1em] uppercase mt-6 mb-4">
+                In Collaboration With
+              </span>
+            </div>
+
+            {/* Partner Logos */}
+            <div className="flex items-center justify-center gap-[18px] flex-wrap">
+              <img src="/images/products/saladigital.png" alt="Sala Digital" className="h-[45px]" />
+              <img src="/images/products/plp.png" alt="PLP" className="h-[45px]" />
+              <img src="/images/products/moeys-edtech.png" alt="EdTech" className="h-[45px]" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

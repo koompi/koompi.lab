@@ -184,6 +184,26 @@ const milestones = [
   },
   {
     year: '2020',
+    title: 'KOOMPI E11 Launch',
+    description: "Compact 11.6\" notebook with 128GB eMMC, 4GB RAM, Intel Dual-Core 2.40GHz. Budget-friendly option for students.",
+    type: 'product' as const,
+    product: {
+      name: 'KOOMPI E11',
+      tagline: 'Budget-Friendly',
+      price: '$299',
+      image: '/images/products/koompi-e13.png',
+      specs: {
+        screen: '11.6" HD',
+        processor: 'Intel Dual-Core 2.40GHz',
+        ram: '4GB DDR4',
+        storage: '128GB eMMC + SSD slot',
+        battery: 'Up to 8 hours',
+        weight: '1.1kg',
+      },
+    },
+  },
+  {
+    year: '2018',
     title: 'KOOMPI E13 Launch',
     description: "The classic 13.3\" laptop with 8GB RAM, SSD storage, and slim design. Cambodia's first locally designed laptop brand.",
     type: 'product' as const,
@@ -303,7 +323,7 @@ const StoryPage = () => {
   // Scroll to milestone when hash changes
   useEffect(() => {
     const hash = window.location.hash.slice(1) // Remove the #
-    const targetYear = hash || '2020' // Default to 2020 if no hash
+    const targetYear = hash || '2018' // Default to 2018 if no hash
 
     setActiveYear(targetYear)
     const element = document.getElementById(targetYear)
@@ -451,7 +471,7 @@ const StoryPage = () => {
           {/* Section header */}
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-semibold mb-4">
-              Since 2020
+              Since 2018
             </span>
             <h2 className="text-4xl font-black text-koompi-primary mb-4">Our Journey</h2>
             <p className="text-gray-500 max-w-md mx-auto text-base leading-relaxed">

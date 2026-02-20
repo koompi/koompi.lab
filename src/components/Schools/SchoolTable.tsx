@@ -65,9 +65,16 @@ const SchoolTable = ({ schools, onFundClick }: SchoolTableProps) => {
               key={school._id}
               className={`hover:bg-blue-50/50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'}`}
             >
-              {/* School Name */}
+              {/* School Name - Show Khmer and English */}
               <td className="px-4 py-3">
-                <div className="font-medium text-gray-900 text-sm">{school.name}</div>
+                <div className="space-y-1">
+                  {(school.nameKhmer || school.name.includes('(')) && (
+                    <div className="text-sm font-medium text-gray-900" lang="kh">{school.nameKhmer || school.name.split('(')[0]?.trim()}</div>
+                  )}
+                  {(school.nameEnglish || !school.name.includes('(')) && (
+                    <div className="text-xs text-gray-500">{school.nameEnglish || (school.name.includes('(') ? school.name.split(/[(][)]/)[1]?.replace(')', '').trim() : school.name)}</div>
+                  )}
+                </div>
               </td>
 
               {/* Province */}
