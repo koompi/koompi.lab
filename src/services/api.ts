@@ -1,14 +1,6 @@
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
+import { ImpactStats } from '../types'
 
-export interface ImpactStats {
-  totalSchoolsInCambodia: number
-  prioritySchoolsTarget: number
-  totalDonors: number
-  schoolsEquipped: number
-  studentsReached: number
-  totalAmount: number
-  remainingToEquip: number
-}
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
 
 // Fallback data if API fails
 export const FALLBACK_STATS: ImpactStats = {

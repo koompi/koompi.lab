@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import SchoolTable from '../components/Schools/SchoolTable'
-import Footer from '../components/Shared/Footer'
 import DonationModal from '../components/Donation/DonationModal'
 import { School } from '../types'
 import schoolsData from '../data/schools-generated'
@@ -282,7 +281,6 @@ const SchoolsPage = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

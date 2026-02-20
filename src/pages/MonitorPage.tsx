@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import Footer from '../components/Shared/Footer'
 import HeroBackground from '../components/Shared/HeroBackground'
 
 const MonitorPage = () => {
@@ -294,7 +293,6 @@ const MonitorPage = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

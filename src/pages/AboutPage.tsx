@@ -1,4 +1,3 @@
-import Footer from '../components/Shared/Footer'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { containerVariants, fadeInUp, heroText, staggerItem, scaleIn } from '../utils/animations'
@@ -1111,7 +1110,6 @@ const AboutPage = () => {
         </motion.div>
       </section>
 
-      <Footer />
     </div>
   )
 }

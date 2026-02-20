@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { Navbar } from './components/Shared'
+import { Navbar, Footer } from './components/Shared'
 import HomePage from './pages/HomePage'
 import SchoolsPage from './pages/SchoolsPage'
 import StoryPage from './pages/StoryPage'
@@ -54,6 +54,7 @@ function App() {
         <Route path="/apps" element={<AppsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </>
   )
 }

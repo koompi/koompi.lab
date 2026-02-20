@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { FeatureCard, SpecTable, FAQ, ProductCTA } from '../components/Products'
-import Footer from '../components/Shared/Footer'
 import { getIcon } from '../components/Shared/Icons'
 import {
   CONTENT_CATEGORIES,
@@ -223,7 +222,6 @@ const ContentServerPage = () => {
         secondaryCTA={{ label: 'Contact Us', to: '/contact' }}
       />
 
-      <Footer />
     </div>
   )
 }

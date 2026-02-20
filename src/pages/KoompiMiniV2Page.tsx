@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import Footer from '../components/Shared/Footer'
 
 const KoompiMiniV2Page = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -358,7 +357,6 @@ const KoompiMiniV2Page = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

@@ -1,4 +1,3 @@
-import Footer from '../components/Shared/Footer'
 import { useState, useEffect } from 'react'
 import { IMPACT_STATS } from '../data/products'
 import { Link } from 'react-router-dom'
@@ -573,7 +572,6 @@ const StoryPage = () => {
         </div>
       </section>
 
-      <Footer />
 
       {/* ── Story Modal ──────────────────────────────────────────────────── */}
       {selectedStory && (

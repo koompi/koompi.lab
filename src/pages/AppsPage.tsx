@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Footer from '../components/Shared/Footer'
 import { getIcon } from '../components/Shared/Icons'
 import { APPS, APP_CATEGORIES, FEATURED_APPS, PLATFORM_ICONS } from '../data/apps'
 import type { App } from '../data/apps'
@@ -390,7 +389,6 @@ const AppsPage = () => {
         </div>
       </section>
 
-      <Footer />
 
       {/* App Detail Modal */}
       {selectedApp && (

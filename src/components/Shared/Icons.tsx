@@ -1,7 +1,5 @@
 import { ReactNode } from 'react'
 
-export type IconType = keyof typeof ICON_MAP
-
 // Filled icons for feature cards
 const FILLED_ICONS = {
   'laptop': (

@@ -3,7 +3,6 @@ import Hero from '../components/Hero/Hero'
 import Mission from '../components/Mission/Mission'
 import SchoolMap from '../components/Map/SchoolMap'
 import ImpactStats from '../components/Shared/ImpactStats'
-import Footer from '../components/Shared/Footer'
 import FadeInSection from '../components/Shared/FadeInSection'
 import { useState } from 'react'
 
@@ -298,7 +297,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

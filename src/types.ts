@@ -3,13 +3,11 @@ export type SchoolStatus = 'none' | 'lab' | 'lab-content' | 'full-solar'
 export interface School {
   _id: string
   id?: string // Alternative ID from CSV
-  name: string
-  nameKh?: string // Khmer name (standard)
-  nameKhmer?: string // Khmer name (CSV data)
-  nameEnglish?: string // English name (CSV data)
+  name: string // Primary school name (English or Khmer)
+  nameKh?: string // Khmer name (use this for Khmer language display)
+  nameEn?: string // English name (use this if primary name is Khmer)
   province: string
-  provinceKh?: string // Khmer province name (standard)
-  provinceKhmer?: string // Khmer province name (CSV data)
+  provinceKh?: string // Khmer province name
   district: string
   districtKh?: string
   schoolType?: string
@@ -18,8 +16,8 @@ export interface School {
   fundedPercentage: number
   images?: string[]
   establishedAt?: string
-  source?: string
-  verificationStatus?: string
+  source?: string // 'moeys' | 'community' | 'csv'
+  verificationStatus?: 'pending' | 'verified' | 'rejected'
 }
 
 export interface Donation {
@@ -40,6 +38,12 @@ export interface ImpactStats {
   totalSchools: number
   totalStudents: number
   totalAmount: number
+  // Extended fields from API
+  totalSchoolsInCambodia?: number
+  prioritySchoolsTarget?: number
+  schoolsEquipped?: number
+  studentsReached?: number
+  remainingToEquip?: number
 }
 
 export interface BarayIntent {

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductHero, FeatureCard, FAQ, ProductCTA } from '../components/Products'
-import Footer from '../components/Shared/Footer'
 import { LAB_FEATURES, HOW_IT_WORKS_STEPS, ONELAB_FAQ, IMPACT_STATS } from '../data/products'
 
 // Fallback data in case import fails

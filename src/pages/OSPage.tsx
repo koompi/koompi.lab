@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { ProductHero, FeatureCard, FAQ, ProductCTA } from '../components/Products'
-import Footer from '../components/Shared/Footer'
 import { OS_FEATURES, OS_FAQ } from '../data/products'
 
 const osScreenshots = [
@@ -239,7 +238,6 @@ const OSPage = () => {
         secondaryCTA={{ label: 'Download OS', to: '#download' }}
       />
 
-      <Footer />
     </div>
   )
 }

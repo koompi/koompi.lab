@@ -1,4 +1,4 @@
-import { School } from '../../types'
+import { School, STATUS_CONFIG } from '../../types'
 
 interface SchoolTableProps {
   schools: School[]
@@ -7,16 +7,12 @@ interface SchoolTableProps {
 
 const SchoolTable = ({ schools, onFundClick }: SchoolTableProps) => {
   const getStatusBadge = (school: School) => {
-    if (school.status === 'full-solar') {
-      return <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">☀ Solar</span>
-    }
-    if (school.status === 'lab-content') {
-      return <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">●● Lab + Content</span>
-    }
-    if (school.status === 'lab') {
-      return <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">● Lab Only</span>
-    }
-    return <span className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">○ Needs Support</span>
+    const config = STATUS_CONFIG[school.status]
+    return (
+      <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${config.color}`}>
+        {config.icon} {config.label}
+      </span>
+    )
   }
 
   const getFundingBar = (percentage: number) => (
@@ -68,11 +64,14 @@ const SchoolTable = ({ schools, onFundClick }: SchoolTableProps) => {
               {/* School Name - Show Khmer and English */}
               <td className="px-4 py-3">
                 <div className="space-y-1">
-                  {(school.nameKhmer || school.name.includes('(')) && (
-                    <div className="text-sm font-medium text-gray-900" lang="kh">{school.nameKhmer || school.name.split('(')[0]?.trim()}</div>
+                  {school.nameKh && (
+                    <div className="text-sm font-medium text-gray-900" lang="kh">{school.nameKh}</div>
                   )}
-                  {(school.nameEnglish || !school.name.includes('(')) && (
-                    <div className="text-xs text-gray-500">{school.nameEnglish || (school.name.includes('(') ? school.name.split(/[(][)]/)[1]?.replace(')', '').trim() : school.name)}</div>
+                  {school.nameEn && (
+                    <div className="text-xs text-gray-500">{school.nameEn}</div>
+                  )}
+                  {!school.nameKh && !school.nameEn && (
+                    <div className="text-sm font-medium text-gray-900">{school.name}</div>
                   )}
                 </div>
               </td>

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Footer from '../components/Shared/Footer'
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -322,7 +321,6 @@ const ContactPage = () => {
         </div>
       </div>
 
-      <Footer />
     </div>
   )
 }

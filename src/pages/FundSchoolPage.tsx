@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Footer from '../components/Shared/Footer'
 import {
   LAB_PACKAGE_PRICES,
   CONTENT_SERVER_ADDON_PRICE,
@@ -306,7 +305,6 @@ const FundSchoolPage = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

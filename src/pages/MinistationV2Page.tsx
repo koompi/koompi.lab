@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import Footer from '../components/Shared/Footer'
 
 const MinistationV2Page = () => {
   const [selectedUseCase, setSelectedUseCase] = useState('Study Setup')
@@ -294,7 +293,6 @@ const MinistationV2Page = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

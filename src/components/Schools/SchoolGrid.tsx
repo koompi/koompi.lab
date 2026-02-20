@@ -4,6 +4,7 @@ import SchoolCard from './SchoolCard'
 import SchoolSubmissionForm from './SchoolSubmissionForm'
 import { CSVImporter } from '../Admin'
 import { School, SchoolStatus } from '../../types'
+import { PROVINCES } from '../../data/provinces'
 
 interface SchoolGridProps {
   provinceFilter: string
@@ -256,14 +257,6 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
 
 // Generate mock schools for development
 const generateMockSchools = (community = false): School[] => {
-  const provinces = [
-    'Phnom Penh', 'Siem Reap', 'Battambang', 'Preah Sihanouk', 'Pursat',
-    'Kampong Cham', 'Kampong Thom', 'Kampong Speu', 'Takeo', 'Kampot',
-    'Kampong Chhnang', 'Kep', 'Kratie', 'Mondulkiri', 'Ratanakiri',
-    'Stung Treng', 'Preah Vihear', 'Oddar Meanchey', 'Banteay Meanchey', 'Pailin',
-    'Svay Rieng', 'Prey Veng', 'Tbong Khmum', 'Kandal',
-  ]
-
   const statuses: SchoolStatus[] = ['none', 'lab', 'lab-content', 'full-solar']
   const mockSchools: School[] = []
 
@@ -272,8 +265,8 @@ const generateMockSchools = (community = false): School[] => {
     for (let i = 0; i < 15; i++) {
       mockSchools.push({
         _id: `community-${i + 1}`,
-        name: `Community Submitted ${provinces[i % provinces.length]} School ${i + 1}`,
-        province: provinces[i % provinces.length],
+        name: `Community Submitted ${PROVINCES[i % PROVINCES.length]} School ${i + 1}`,
+        province: PROVINCES[i % PROVINCES.length],
         district: `District ${((i % 10) + 1)}`,
         studentCount: 200 + Math.floor(Math.random() * 1000),
         status: 'none',
@@ -288,8 +281,8 @@ const generateMockSchools = (community = false): School[] => {
       const status = i < 40 ? 'lab-content' : i < 64 ? 'lab' : 'full-solar'
       mockSchools.push({
         _id: `school-${i + 1}`,
-        name: `${provinces[i % provinces.length]} ${['Primary', 'Secondary', 'High'][i % 3]} School ${i + 1}`,
-        province: provinces[i % provinces.length],
+        name: `${PROVINCES[i % PROVINCES.length]} ${['Primary', 'Secondary', 'High'][i % 3]} School ${i + 1}`,
+        province: PROVINCES[i % PROVINCES.length],
         district: `District ${((i % 10) + 1)}`,
         studentCount: 300 + Math.floor(Math.random() * 1500),
         status: status,
@@ -304,8 +297,8 @@ const generateMockSchools = (community = false): School[] => {
     for (let i = 65; i < 165; i++) {
       mockSchools.push({
         _id: `school-${i + 1}`,
-        name: `${provinces[i % provinces.length]} ${['Primary', 'Secondary', 'High'][i % 3]} School ${i + 1}`,
-        province: provinces[i % provinces.length],
+        name: `${PROVINCES[i % PROVINCES.length]} ${['Primary', 'Secondary', 'High'][i % 3]} School ${i + 1}`,
+        province: PROVINCES[i % PROVINCES.length],
         district: `District ${((i % 10) + 1)}`,
         studentCount: 200 + Math.floor(Math.random() * 1800),
         status: 'none',

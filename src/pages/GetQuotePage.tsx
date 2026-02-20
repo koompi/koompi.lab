@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Footer from '../components/Shared/Footer'
 
 // Product prices
 const PRODUCTS = [
@@ -449,7 +448,6 @@ const GetQuotePage = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }
