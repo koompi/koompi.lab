@@ -7,46 +7,34 @@ const MonitorPage = () => {
     {
       title: '21.5" IPS Panel',
       desc: 'Crystal clear colors from every angle',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 9h6M12 9v6M12 15v-6" />
-          <circle cx="8" cy="12" r="1" fill="currentColor" />
-          <circle cx="16" cy="12" r="1" fill="currentColor" />
-        </svg>
-      ),
+      gradientFrom: 'from-amber-50',
+      gradientTo: 'to-orange-50',
+      accentColor: '#F59E0B',
+      shape: 'circle' as const,
     },
     {
       title: 'IPS 1080p Resolution',
       desc: 'Full HD display for stunning detail',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1.75-3M9.75 12l.1-.1a2 2 0 00-.1.1V7a2 2 0 012-2h6a2 2 0 012 2v3a2 2 0 01-2 2h-2a2 2 0 01-2 2V9a2 2 0 012-2h2" />
-          <circle cx="12" cy="12" r="3" fill="currentColor" />
-        </svg>
-      ),
+      gradientFrom: 'from-blue-50',
+      gradientTo: 'to-indigo-50',
+      accentColor: '#3B82F6',
+      shape: 'diamond' as const,
     },
     {
       title: '75Hz Refresh Rate',
       desc: 'Ultra-smooth motion for work and play',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 2L3 14h7l7 7v7l-9-9H4z" />
-          <polyline points="22 6 12 16 6 12" />
-        </svg>
-      ),
+      gradientFrom: 'from-emerald-50',
+      gradientTo: 'to-green-50',
+      accentColor: '#10B981',
+      shape: 'triangle' as const,
     },
     {
       title: 'Clarity & Vibrancy',
       desc: 'Brilliant IPS full HD display experience',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="9" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4M12 16v4M8 12h8M16 9l4 4M4 9l4 4" />
-          <circle cx="16" cy="8" r="1.5" fill="currentColor" />
-          <circle cx="8" cy="16" r="1.5" fill="currentColor" />
-        </svg>
-      ),
+      gradientFrom: 'from-rose-50',
+      gradientTo: 'to-pink-50',
+      accentColor: '#F43F5E',
+      shape: 'rect' as const,
     },
   ]
 
@@ -197,16 +185,36 @@ const MonitorPage = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-5">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg p-8">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-14 h-14 bg-koompi-secondary/10 rounded-xl flex items-center justify-center text-koompi-secondary">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-koompi-primary mb-1">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.desc}</p>
+              <div key={index} className="group relative">
+                <div className="relative h-full">
+                  {/* Gradient background layer */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradientFrom} ${feature.gradientTo} rounded-[1.5rem]`}></div>
+
+                  {/* White card layer */}
+                  <div className="relative h-full bg-white rounded-[1.5rem] p-8 shadow-sm border border-gray-100 overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                    {/* Decorative shape */}
+                    <svg className={`absolute -top-8 -right-8 w-32 h-32 opacity-5`} viewBox="0 0 100 100">
+                      {feature.shape === 'circle' && <circle cx="50" cy="50" r="50" fill={feature.accentColor}></circle>}
+                      {feature.shape === 'diamond' && <path d="M50 0 L100 50 L50 100 L0 50 Z" fill={feature.accentColor}></path>}
+                      {feature.shape === 'triangle' && <polygon points="50,0 100,80 0,80" fill={feature.accentColor}></polygon>}
+                      {feature.shape === 'rect' && <rect x="10" y="10" width="80" height="80" rx="10" fill={feature.accentColor}></rect>}
+                    </svg>
+
+                    {/* Content */}
+                    <div className="relative z-10 text-center">
+                      <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:tracking-wide transition-all duration-300">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 leading-relaxed">{feature.desc}</p>
+                    </div>
+
+                    {/* Bottom accent line */}
+                    <div
+                      className="absolute bottom-0 left-0 h-0.5 rounded-full"
+                      style={{ backgroundColor: feature.accentColor, width: '60%' }}
+                    ></div>
                   </div>
                 </div>
               </div>

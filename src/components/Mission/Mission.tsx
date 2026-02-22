@@ -21,14 +21,26 @@ const Mission = () => {
     {
       title: 'Offline-first',
       description: 'Content works without internet. Students access educational materials anytime, anywhere.',
+      gradientFrom: 'from-amber-50',
+      gradientTo: 'to-orange-50',
+      accentColor: '#F59E0B',
+      shape: 'diamond' as const,
     },
     {
       title: 'Solar-powered',
       description: 'Labs run anywhere. Solar panels enable digital education in remote areas without grid power.',
+      gradientFrom: 'from-emerald-50',
+      gradientTo: 'to-green-50',
+      accentColor: '#10B981',
+      shape: 'triangle' as const,
     },
     {
       title: 'MoEYS Approved',
       description: 'Official partnership with Ministry of Education, Youth and Sport. Curriculum-aligned content.',
+      gradientFrom: 'from-rose-50',
+      gradientTo: 'to-pink-50',
+      accentColor: '#F43F5E',
+      shape: 'rect' as const,
     },
   ]
 
@@ -52,7 +64,7 @@ const Mission = () => {
         </div>
 
         {/* Value Props - Now using ValuePropCard component */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        <div className="grid md:grid-cols-3 gap-5 mb-20">
           {valueProps.map((prop, i) => (
             <ValuePropCard
               key={i}
@@ -60,6 +72,10 @@ const Mission = () => {
               title={prop.title}
               description={prop.description}
               delay={i * 0.15}
+              gradientFrom={prop.gradientFrom}
+              gradientTo={prop.gradientTo}
+              accentColor={prop.accentColor}
+              shape={prop.shape}
             />
           ))}
         </div>
