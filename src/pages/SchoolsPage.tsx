@@ -14,24 +14,10 @@ const SchoolsPage = () => {
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false)
 
   useEffect(() => {
-    fetchSchools()
+    // Use local data directly for instant loading
+    setSchools(schoolsData)
+    setLoading(false)
   }, [])
-
-  const fetchSchools = async () => {
-    setLoading(true)
-    try {
-      // Use CSV data source by default
-      const response = await fetch('/api/schools?source=csv')
-      const data = await response.json()
-      setSchools(data)
-    } catch (error) {
-      console.error('Failed to fetch schools:', error)
-      // Use generated school data from CSV
-      setSchools(schoolsData)
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const handleFundClick = (school: School) => {
     setSelectedSchool(school)
@@ -64,10 +50,10 @@ const SchoolsPage = () => {
         {/* Dark overlay with blur */}
         <div className="absolute inset-0 bg-koompi-primary/80 backdrop-blur-[8px]" />
 
-        {/* Subtle dot pattern overlay */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+          backgroundSize: '30px 30px',
         }} />
 
         {/* Decorative gradient orbs */}
@@ -245,10 +231,10 @@ const SchoolsPage = () => {
 
       {/* Partnership Section */}
       <section className="relative overflow-hidden bg-koompi-primary py-16">
-        {/* Subtle dot pattern overlay */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+          backgroundSize: '30px 30px',
         }} />
 
         {/* Decorative gradient orbs */}

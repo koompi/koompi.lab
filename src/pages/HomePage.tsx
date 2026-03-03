@@ -123,76 +123,165 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 5. White - How It Works */}
-      <section className="py-24 px-4 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <FadeInSection className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-medium mb-4">
-              How It Works
+      {/* 5. Dark - How It Works - Journey Map */}
+      <section className="py-32 px-4 bg-koompi-primary relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-koompi-secondary/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-koompi-accent-pink/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-koompi-secondary/5 rounded-full blur-3xl" />
+        </div>
+
+        {/* Subtle grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+          backgroundSize: '30px 30px',
+        }} />
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          <FadeInSection className="text-center mb-20">
+            <span className="inline-block px-5 py-2 bg-koompi-secondary/20 text-koompi-secondary rounded-full text-sm font-semibold tracking-wide mb-6 border border-koompi-secondary/30">
+              HOW IT WORKS
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary">
-              From Funding to Learning in 4 Steps
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
+              Your Impact,
             </h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-koompi-secondary via-koompi-accent-pink to-koompi-secondary">
+                Step by Step
+              </span>
+            </h2>
+            <p className="text-white/50 text-lg max-w-xl mx-auto">
+              From choosing a school to seeing students learn — your donation creates real change in 4 simple steps
+            </p>
           </FadeInSection>
 
-          <div className="grid md:grid-cols-4 gap-8 relative">
-            {/* Connecting line (desktop only) */}
-            <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-koompi-secondary via-koompi-accent-pink to-koompi-secondary" />
+          {/* Journey Map */}
+          <div className="relative">
+            <div className="grid md:grid-cols-4 gap-6 md:gap-4 relative">
+              {[
+                {
+                  step: '1',
+                  title: 'Choose School',
+                  desc: 'Select a school that needs support from our verified list of partner schools across Cambodia.',
+                  detail: 'Browse schools by province, see current status, and read their story.',
+                  gradient: 'from-koompi-secondary to-cyan-400',
+                  glow: 'shadow-koompi-secondary/50'
+                },
+                {
+                  step: '2',
+                  title: 'Fund Equipment',
+                  desc: 'Choose a lab package, content server, or complete setup to fund.',
+                  detail: 'Transparent pricing — 100% goes to equipment, installation & training.',
+                  gradient: 'from-koompi-accent-pink to-rose-400',
+                  glow: 'shadow-koompi-accent-pink/50'
+                },
+                {
+                  step: '3',
+                  title: 'We Install',
+                  desc: 'Our team handles delivery, setup, and teacher training.',
+                  detail: 'Usually within 2-4 weeks. Includes full technical support.',
+                  gradient: 'from-amber-400 to-orange-500',
+                  glow: 'shadow-amber-400/50'
+                },
+                {
+                  step: '4',
+                  title: 'Students Learn',
+                  desc: 'Students access digital education immediately.',
+                  detail: 'Receive updates, photos, and impact reports from the school.',
+                  gradient: 'from-emerald-400 to-green-500',
+                  glow: 'shadow-emerald-400/50'
+                },
+              ].map((item, i) => (
+                <FadeInSection key={i} delay={i * 0.15} className="relative group">
+                  {/* Step Card */}
+                  <div className="relative h-full">
+                    {/* Floating card */}
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 md:p-8 hover:bg-white/10 transition-all duration-500 group-hover:-translate-y-2 group-hover:border-white/20 h-full min-h-[280px] flex flex-col">
+                      {/* Step number badge */}
+                      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${item.gradient} text-white text-xl font-bold mb-5 shadow-lg ${item.glow} relative z-10`}>
+                        {item.step}
+                      </div>
 
-            {[
-              {
-                step: '01',
-                title: 'Choose School',
-                desc: 'Select a school that needs support from our verified list.',
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                )
-              },
-              {
-                step: '02',
-                title: 'Fund Equipment',
-                desc: 'Choose a lab, content server, or complete package to fund.',
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                )
-              },
-              {
-                step: '03',
-                title: 'We Install',
-                desc: 'Our team handles delivery, setup, and teacher training.',
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                )
-              },
-              {
-                step: '04',
-                title: 'Students Learn',
-                desc: 'Students access digital education immediately.',
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                )
-              },
-            ].map((item, i) => (
-              <FadeInSection key={i} delay={i * 0.15} className="text-center relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-koompi-primary to-koompi-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 relative z-10 shadow-lg">
-                  {item.icon}
-                </div>
-                <span className="text-xs font-bold text-koompi-secondary tracking-widest">{item.step}</span>
-                <h3 className="text-lg font-bold text-koompi-primary mt-1 mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.desc}</p>
-              </FadeInSection>
-            ))}
+                      <h3 className="text-xl font-bold text-white mb-3 relative z-10">
+                        {item.title}
+                      </h3>
+                      <p className="text-white/60 text-sm leading-relaxed mb-auto relative z-10">
+                        {item.desc}
+                      </p>
+
+                      {/* Expandable detail on hover */}
+                      <div className="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500 ease-out">
+                        <p className="text-white/40 text-xs pt-2 border-t border-white/10">
+                          {item.detail}
+                        </p>
+                      </div>
+
+                      {/* Connector dot for mobile */}
+                      <div className="md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 w-2 h-2 bg-white/30 rounded-full last:hidden" />
+                    </div>
+
+                    {/* Glow effect on hover */}
+                    <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10`} />
+                  </div>
+                </FadeInSection>
+              ))}
+            </div>
           </div>
+
+          {/* Animated progress line - between cards and CTA */}
+          <div className="relative mt-16 mb-8">
+            <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-koompi-secondary via-koompi-accent-pink to-koompi-secondary animate-progress-line"
+                style={{
+                  animation: 'progressLine 3s ease-in-out infinite, shimmer 2s linear infinite',
+                  backgroundSize: '200% 100%'
+                }}
+              />
+            </div>
+            {/* Progress dot that moves along the line */}
+            <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg shadow-koompi-secondary/50 animate-traverse-line"
+              style={{ animation: 'traverseLine 8s ease-in-out infinite' }}
+            />
+          </div>
+
+          {/* CTA */}
+          <FadeInSection className="text-center mt-16">
+            <Link
+              to="/schools"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-koompi-secondary to-koompi-accent-pink text-white rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-koompi-accent-pink/30 hover:scale-105 transition-all duration-300 group"
+            >
+              Start Your Journey
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+          </FadeInSection>
         </div>
+
+        {/* Add custom animations via style tag */}
+        <style>{`
+          @keyframes progressLine {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+          }
+          @keyframes traverseLine {
+            0% { left: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+          }
+          @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+          }
+          .animate-progress-line {
+            animation: progressLine 3s ease-in-out infinite;
+          }
+          .animate-traverse-line {
+            animation: traverseLine 8s ease-in-out infinite;
+          }
+        `}</style>
       </section>
 
       {/* 6. Cream - Map Section */}
