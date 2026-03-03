@@ -204,8 +204,8 @@ const PricingSection = () => {
                 )}
               </div>
               <span className="font-bold text-koompi-primary">
-                {config.estimate
-                  ? `~$${config.estimate.toLocaleString()}`
+                {config.price
+                  ? `$${config.price.toLocaleString()}`
                   : 'Contact Us'}
               </span>
             </div>
