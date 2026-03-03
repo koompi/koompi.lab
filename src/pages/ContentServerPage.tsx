@@ -127,58 +127,150 @@ const ContentServerPage = () => {
         </div>
       </section>
 
-      {/* 3. How It Works - Visual Diagram */}
-      <section className="py-20 px-4 bg-cream">
-        <div className="w-[calc(100%-2rem)] max-w-5xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 bg-koompi-accent-blue/10 text-koompi-accent-blue rounded-full text-sm font-medium mb-4">
-            Simple Setup
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-koompi-primary mb-12">
-            How It Works
-          </h2>
+      {/* 3. How It Works - Living Network Visualization */}
+      <section className="py-32 px-4 bg-koompi-primary relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-koompi-secondary/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-koompi-accent-pink/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+        </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
-            {/* Content Server */}
-            <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center min-w-[140px]">
-              <img
-                src="/images/products/mini4.png"
-                alt="Content Server"
-                className="w-20 h-20 object-contain mx-auto mb-3"
-              />
-              <p className="font-semibold text-koompi-primary text-sm">Content Server</p>
-              <p className="text-xs text-gray-500">2TB Library</p>
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+          backgroundSize: '30px 30px',
+        }} />
+
+        <div className="relative z-10 max-w-5xl mx-auto w-[calc(100%-2rem)]">
+          <div className="text-center mb-12">
+            <span className="inline-block px-5 py-2 bg-koompi-secondary/20 text-koompi-secondary rounded-full text-sm font-semibold tracking-wide mb-6 border border-koompi-secondary/30">
+              SIMPLE SETUP
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              How It <span className="text-transparent bg-clip-text bg-gradient-to-r from-koompi-secondary via-koompi-accent-pink to-koompi-secondary">Works</span>
+            </h2>
+            <p className="text-white/50 text-lg max-w-xl mx-auto">
+              One box. Zero internet. Unlimited learning. See how the Content Server transforms any classroom.
+            </p>
+          </div>
+
+          {/* Network Visualization - Horizontal Layout */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-4">
+            {/* Content Server - LEFT */}
+            <div className="flex flex-col items-center">
+              <div className="relative group">
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-koompi-secondary to-koompi-accent-pink rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse-glow" />
+                {/* Card */}
+                <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 group-hover:border-koompi-secondary/50 transition-all duration-500">
+                  <img
+                    src="/images/products/mini4.png"
+                    alt="Content Server"
+                    className="w-24 h-24 object-contain mx-auto mb-4 group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <p className="font-bold text-white text-lg text-center">Content Server</p>
+                  <p className="text-koompi-secondary text-sm text-center font-medium">2TB Library</p>
+                  {/* Status indicator */}
+                  <div className="flex items-center justify-center gap-2 mt-4">
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                    <span className="text-xs text-green-400">Broadcasting</span>
+                  </div>
+                </div>
+              </div>
+              <p className="mt-4 text-white/60 text-sm">Step 1: Plug in & power on</p>
             </div>
 
-            {/* WiFi icon */}
-            <div className="shrink-0 text-koompi-accent-blue">
-              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
-              </svg>
+            {/* WiFi Waves - CENTER */}
+            <div className="flex flex-col items-center justify-center">
+              <div className="relative">
+                {/* Animated WiFi waves */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 border-2 border-koompi-secondary/30 rounded-full animate-ping" style={{ animationDuration: '2s' }} />
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-24 h-24 border-2 border-koompi-secondary/20 rounded-full animate-ping" style={{ animationDelay: '0.5s', animationDuration: '2s' }} />
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-32 h-32 border-2 border-koompi-accent-pink/20 rounded-full animate-ping" style={{ animationDelay: '1s', animationDuration: '2s' }} />
+                </div>
+                {/* Center icon */}
+                <div className="w-16 h-16 bg-gradient-to-br from-koompi-secondary to-koompi-accent-pink rounded-full flex items-center justify-center shadow-lg shadow-koompi-secondary/50">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                  </svg>
+                </div>
+              </div>
+              <p className="mt-8 text-white/60 text-sm font-medium">WiFi Network</p>
             </div>
 
-            {/* Devices */}
-            <div className="flex-1 grid grid-cols-2 gap-3">
+            {/* Connected Devices - RIGHT */}
+            <div className="grid grid-cols-2 gap-3">
               {[
-                { icon: '📱', label: 'Phones' },
-                { icon: '📋', label: 'Tablets' },
-                { icon: '💻', label: 'Laptops' },
-                { icon: '🖥️', label: 'Ministations' },
+                { label: 'Phones', desc: 'Connect instantly' },
+                { label: 'Tablets', desc: 'Full content access' },
+                { label: 'Laptops', desc: 'Browse & learn' },
+                { label: 'Ministations', desc: 'Classroom ready' },
               ].map((device, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-xl p-4 shadow border border-gray-100 text-center"
+                  className="relative group h-32"
+                  style={{ animationDelay: `${i * 0.15}s` }}
                 >
-                  <span className="text-2xl block mb-1 text-koompi-secondary">{getIcon(device.icon)}</span>
-                  <p className="text-xs text-gray-600">{device.label}</p>
+                  {/* Glow on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-koompi-secondary/20 to-koompi-accent-pink/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Card */}
+                  <div className="relative h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-center">
+                    <p className="font-semibold text-white text-base mb-1">{device.label}</p>
+                    <p className="text-xs text-white/40 mb-3">{device.desc}</p>
+                    {/* Connection status */}
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 bg-koompi-secondary rounded-full animate-pulse" />
+                      <span className="text-[10px] text-koompi-secondary/70">Connected</span>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <p className="mt-8 text-gray-600 text-lg">
-            Any device connects. <span className="font-semibold text-koompi-primary">No internet needed.</span>
-          </p>
+          {/* Bottom message */}
+          <div className="mt-16 text-center">
+            <p className="text-white/60 text-lg">
+              Any device connects. <span className="font-bold text-white">No internet needed.</span>
+            </p>
+            <div className="flex items-center justify-center gap-6 mt-6 text-sm text-white/40">
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Auto-discovery</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>150+ connections</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Offline forever</span>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Custom animations */}
+        <style>{`
+          @keyframes pulse-glow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+          }
+          .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+          }
+        `}</style>
       </section>
 
       {/* 4. Social Proof */}
