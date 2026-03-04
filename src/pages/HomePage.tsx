@@ -9,6 +9,9 @@ import { useState } from 'react'
 const HomePage = () => {
   const [provinceFilter, setProvinceFilter] = useState('all')
 
+  // provinceFilter is passed to SchoolMap when needed
+  // Currently SchoolMap doesn't use it for filtering display
+
   return (
     <div className="min-h-screen">
       {/* 1. Dark Hero - Video + Glitch */}
@@ -20,108 +23,7 @@ const HomePage = () => {
       {/* 3. Dark - Impact Stats */}
       <ImpactStats />
 
-      {/* 4. Cream - Product Showcase */}
-      <section className="py-24 px-4 bg-cream">
-        <div className="max-w-7xl mx-auto">
-          <FadeInSection className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 bg-koompi-accent-pink/10 text-koompi-accent-pink rounded-full text-sm font-medium mb-4">
-              Our Products
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-koompi-primary mb-4">
-              Complete Solutions for Schools
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Everything a school needs for digital education — from hardware to software to content.
-            </p>
-          </FadeInSection>
-
-          {/* Flagship Product — Dark Hero Card */}
-          <FadeInSection className="mb-8">
-            <Link
-              to="/onelab"
-              className="group block bg-koompi-primary rounded-3xl overflow-hidden relative"
-            >
-              {/* Gradient orbs */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-koompi-secondary/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
-
-              <div className="relative flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 p-8 md:p-12 lg:p-16">
-                  <span className="inline-block px-3 py-1 bg-koompi-secondary/20 text-koompi-secondary text-xs rounded-full font-medium mb-4">
-                    Flagship Product
-                  </span>
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-koompi-secondary transition-colors">
-                    KOOMPI Onelab
-                  </h3>
-                  <p className="text-white/70 mb-6 text-lg leading-relaxed">
-                    Complete computer lab with Ministations, Content Server, WiFi, and teacher training — everything a school needs in one package.
-                  </p>
-                  <span className="inline-flex items-center gap-2 text-koompi-secondary font-semibold group-hover:gap-3 transition-all">
-                    Explore Onelab
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
-                </div>
-                <div className="md:w-1/2 p-8 md:p-12 flex items-center justify-center">
-                  <img
-                    src="/images/products/ONELAB-1.png"
-                    alt="KOOMPI Onelab"
-                    className="max-h-72 w-auto object-contain animate-float drop-shadow-2xl group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </div>
-            </Link>
-          </FadeInSection>
-
-          {/* Secondary Products — 2-Column Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                name: 'Content Server',
-                desc: '2TB offline educational content hub. Khan Academy, Wiki Khmer, and more — no internet needed.',
-                image: '/images/products/content-server.png',
-                to: '/content-server',
-                accent: 'border-t-koompi-secondary',
-              },
-              {
-                name: 'KOOMPI OS',
-                desc: 'Lightweight Linux OS built for education. Runs on minimal hardware, easy for teachers.',
-                image: '/images/os/bg.png',
-                to: '/os',
-                accent: 'border-t-koompi-accent-pink',
-              },
-            ].map((product, i) => (
-              <FadeInSection key={i} delay={0.1 + i * 0.1}>
-                <Link
-                  to={product.to}
-                  className={`group block h-full bg-cream rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 border-t-4 ${product.accent}`}
-                >
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-cream overflow-hidden flex items-center justify-center p-6">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="max-h-44 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-koompi-primary mb-2 group-hover:text-koompi-secondary transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-4 leading-relaxed">{product.desc}</p>
-                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-koompi-secondary group-hover:gap-2.5 transition-all">
-                      Learn more
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </div>
-                </Link>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 4. Products Showcase - Premium Dark with Preview Panel */}
 
       {/* 5. Dark - How It Works - Journey Map */}
       <section className="py-32 px-4 bg-koompi-primary relative overflow-hidden">
@@ -192,8 +94,8 @@ const HomePage = () => {
                   gradient: 'from-emerald-400 to-green-500',
                   glow: 'shadow-emerald-400/50'
                 },
-              ].map((item, i) => (
-                <FadeInSection key={i} delay={i * 0.15} className="relative group">
+              ].map((item) => (
+                <FadeInSection key={item.step} delay={parseInt(item.step) * 0.15} className="relative group">
                   {/* Step Card */}
                   <div className="relative h-full">
                     {/* Floating card */}
@@ -309,8 +211,8 @@ const HomePage = () => {
               { image: '/images/products/Students.JPG', caption: 'Students using KOOMPI Ministations at a rural school' },
               { image: '/images/products/computer-lab.png', caption: 'A fully installed KOOMPI Onelab computer room' },
               { image: '/images/products/teacher.jpg', caption: 'Teacher-led ICT class with KOOMPI equipment' },
-            ].map((photo, i) => (
-              <FadeInSection key={i} delay={i * 0.1}>
+            ].map((photo) => (
+              <FadeInSection key={photo.caption} delay={0.1}>
                 <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 group">
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
@@ -334,6 +236,12 @@ const HomePage = () => {
         {/* Background accents */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-koompi-secondary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
+
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: 'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
+        }} />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <FadeInSection>

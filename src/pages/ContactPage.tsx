@@ -96,10 +96,10 @@ const ContactPage = () => {
         {/* Dark overlay with blur */}
         <div className="absolute inset-0 bg-koompi-primary/80 backdrop-blur-[8px]" />
 
-        {/* Subtle dot pattern overlay */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+        {/* Grid overlay */}
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: 'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
         }} />
 
         {/* Decorative gradient orbs */}
@@ -238,7 +238,7 @@ const ContactPage = () => {
                         <select
                           required
                           value={formData.inquiryType}
-                          onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value as any })}
+                          onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value as typeof formData.inquiryType })}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-koompi-primary focus:border-transparent"
                         >
                           <option value="general">General Inquiry</option>

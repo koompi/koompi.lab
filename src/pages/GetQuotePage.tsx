@@ -104,9 +104,9 @@ const GetQuotePage = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-koompi-primary/90 via-koompi-primary/85 to-secondary-600/90 backdrop-blur-[4px]" />
 
         {/* Dot pattern grid overlay */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: 'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
         }} />
 
         {/* Gradient orbs */}

@@ -14,17 +14,28 @@ export const MINISTATION_PRICE = 5000
 export const FUND_INSTALL_PHNOM_PENH = 500
 export const FUND_INSTALL_PROVINCE = 800
 
-// Impact statistics
+// Impact statistics (Source: MOEYS Cambodia 2024)
+// Total government schools: 13,818 (4,651 kindergartens + 7,348 primary + 1,819 secondary)
 export const IMPACT_STATS = {
-  labsInstalled: 45,
-  schoolsWithoutLabs: 13000,
-  provincesReached: 12,
+  labsInstalled: 65,
+  schoolsWithoutLabs: 13753, // 13,818 - 65
+  provincesReached: 25,
   studentsImpacted: 15000,
   teachersTrained: 320,
 }
 
 // Lab features for Onelab page
-export const LAB_FEATURES = [
+export interface LabFeature {
+  icon: string
+  title: string
+  description: string
+  image?: string
+  large?: boolean
+  link?: string
+  linkLabel?: string
+}
+
+export const LAB_FEATURES: LabFeature[] = [
   {
     icon: '💻',
     title: 'KOOMPI Computers',
@@ -58,7 +69,14 @@ export const LAB_FEATURES = [
 ]
 
 // How it works steps
-export const HOW_IT_WORKS_STEPS = [
+export interface HowItWorksStep {
+  step: string
+  title: string
+  description: string
+  icon?: string
+}
+
+export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
   {
     step: '01',
     title: 'Select a School',
@@ -135,7 +153,8 @@ export const CONTENT_SERVER_FAQ = [
 ]
 
 // OS Features
-export const OS_FEATURES = [
+// OS features for OS page
+export const OS_FEATURES: LabFeature[] = [
   {
     icon: '🚀',
     title: 'Lightning Fast',

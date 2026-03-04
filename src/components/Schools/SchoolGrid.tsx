@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import SchoolCard from './SchoolCard'
 import SchoolSubmissionForm from './SchoolSubmissionForm'
 import { CSVImporter } from '../Admin'
-import { School, SchoolStatus } from '../../types'
-import { PROVINCES } from '../../data/provinces'
+import { School } from '../../types'
+import type { SchoolStatus } from '../../types'
+import { CAMBODIA_PROVINCES } from '../../data/provinces'
 
 interface SchoolGridProps {
   provinceFilter: string
@@ -25,7 +26,7 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
     fetchSchools()
   }, [showCommunity])
 
-  const handleImportComplete = (count: number) => {
+  const handleImportComplete = (_count: number) => {
     setShowCSVImporter(false)
     fetchSchools() // Refresh the school list
   }
@@ -257,7 +258,6 @@ const SchoolGrid = ({ provinceFilter, statusFilter, onFundClick, limit, compact 
 
 // Generate mock schools for development
 const generateMockSchools = (community = false): School[] => {
-  const statuses: SchoolStatus[] = ['none', 'lab', 'lab-content', 'full-solar']
   const mockSchools: School[] = []
 
   if (community) {
@@ -265,8 +265,8 @@ const generateMockSchools = (community = false): School[] => {
     for (let i = 0; i < 15; i++) {
       mockSchools.push({
         _id: `community-${i + 1}`,
-        name: `Community Submitted ${PROVINCES[i % PROVINCES.length]} School ${i + 1}`,
-        province: PROVINCES[i % PROVINCES.length],
+        name: `Community Submitted ${CAMBODIA_PROVINCES[i % CAMBODIA_PROVINCES.length]} School ${i + 1}`,
+        province: CAMBODIA_PROVINCES[i % CAMBODIA_PROVINCES.length],
         district: `District ${((i % 10) + 1)}`,
         studentCount: 200 + Math.floor(Math.random() * 1000),
         status: 'none',
@@ -281,8 +281,8 @@ const generateMockSchools = (community = false): School[] => {
       const status = i < 40 ? 'lab-content' : i < 64 ? 'lab' : 'full-solar'
       mockSchools.push({
         _id: `school-${i + 1}`,
-        name: `${PROVINCES[i % PROVINCES.length]} ${['Primary', 'Secondary', 'High'][i % 3]} School ${i + 1}`,
-        province: PROVINCES[i % PROVINCES.length],
+        name: `${CAMBODIA_PROVINCES[i % CAMBODIA_PROVINCES.length]} ${['Primary', 'Secondary', 'High'][i % 3]} School ${i + 1}`,
+        province: CAMBODIA_PROVINCES[i % CAMBODIA_PROVINCES.length],
         district: `District ${((i % 10) + 1)}`,
         studentCount: 300 + Math.floor(Math.random() * 1500),
         status: status,
@@ -297,8 +297,8 @@ const generateMockSchools = (community = false): School[] => {
     for (let i = 65; i < 165; i++) {
       mockSchools.push({
         _id: `school-${i + 1}`,
-        name: `${PROVINCES[i % PROVINCES.length]} ${['Primary', 'Secondary', 'High'][i % 3]} School ${i + 1}`,
-        province: PROVINCES[i % PROVINCES.length],
+        name: `${CAMBODIA_PROVINCES[i % CAMBODIA_PROVINCES.length]} ${['Primary', 'Secondary', 'High'][i % 3]} School ${i + 1}`,
+        province: CAMBODIA_PROVINCES[i % CAMBODIA_PROVINCES.length],
         district: `District ${((i % 10) + 1)}`,
         studentCount: 200 + Math.floor(Math.random() * 1800),
         status: 'none',

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import HeroBackground from './HeroBackground'
@@ -69,29 +69,29 @@ const productsBySection = {
 
 // Animation variants
 const overlayVariants = {
-  closed: { opacity: 0 },
-  open: { opacity: 1, transition: { duration: 0.3, ease: 'easeInOut' } },
-  exit: { opacity: 0, transition: { duration: 0.25, ease: 'easeInOut' } }
+  closed: { opacity: 0 } as const,
+  open: { opacity: 1, transition: { duration: 0.3, ease: 'easeInOut' } } as const,
+  exit: { opacity: 0, transition: { duration: 0.25, ease: 'easeInOut' } } as const
 }
 
 const titleVariants = {
-  closed: { y: -20, opacity: 0 },
-  open: { y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+  closed: { y: -20, opacity: 0 } as const,
+  open: { y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } as const
 }
 
 const sectionVariants = {
-  closed: { y: 30, opacity: 0 },
-  open: { y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+  closed: { y: 30, opacity: 0 } as const,
+  open: { y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } as const
 }
 
 const productVariants = {
-  closed: { y: 20, opacity: 0 },
-  open: { y: 0, opacity: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }
+  closed: { y: 20, opacity: 0 } as const,
+  open: { y: 0, opacity: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } } as const
 }
 
 const closeButtonVariants = {
-  closed: { scale: 0.8, opacity: 0 },
-  open: { scale: 1, opacity: 1, transition: { duration: 0.3, delay: 0.2, ease: [0.22, 1, 0.36, 1] } }
+  closed: { scale: 0.8, opacity: 0 } as const,
+  open: { scale: 1, opacity: 1, transition: { duration: 0.3, delay: 0.2, ease: [0.22, 1, 0.36, 1] } } as const
 }
 
 interface ProductOverlayMenuProps {
@@ -101,7 +101,6 @@ interface ProductOverlayMenuProps {
 
 const ProductOverlayMenu = ({ isOpen, onClose }: ProductOverlayMenuProps) => {
   const location = useLocation()
-  const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
     if (isOpen) {
@@ -124,8 +123,7 @@ const ProductOverlayMenu = ({ isOpen, onClose }: ProductOverlayMenuProps) => {
     }
   }, [isOpen, onClose])
 
-  const sections = Object.entries(productsBySection) as const
-  const totalProducts = sections.reduce((acc, [, data]) => acc + data.products.length, 0)
+  const sections = Object.entries(productsBySection)
 
   return (
     <AnimatePresence>

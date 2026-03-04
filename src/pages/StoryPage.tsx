@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { IMPACT_STATS } from '../data/products'
-import { Link } from 'react-router-dom'
 
 // Render simple markdown: **bold** and • bullet lines
 const renderMarkdown = (text: string) => {
@@ -375,9 +374,9 @@ const StoryPage = () => {
           <source src="/videos/Video-bg-hero-sec.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-koompi-primary/80 backdrop-blur-[8px]" />
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: 'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
         }} />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6">

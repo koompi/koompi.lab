@@ -1,11 +1,28 @@
 import { useState } from 'react'
-import { PROVINCES } from '../../data/provinces'
-import { SCHOOL_NEEDS, SCHOOL_LEVELS, SUBMITTER_ROLES, SchoolLevel, SubmitterRole } from '../../data/school-form'
+import { CAMBODIA_PROVINCES } from '../../data/provinces'
+import { SCHOOL_NEEDS } from '../../data/school-form'
 import { FormInput, FormSelect, NeedCheckbox } from './FormComponents'
+
+// Local type definitions
+type SchoolLevel = 'primary' | 'secondary' | 'high'
+type SubmitterRole = 'principal' | 'teacher' | 'parent' | 'other'
+
+const SCHOOL_LEVELS: { value: SchoolLevel; label: string }[] = [
+  { value: 'primary', label: 'Primary School' },
+  { value: 'secondary', label: 'Secondary School' },
+  { value: 'high', label: 'High School' },
+]
+
+const SUBMITTER_ROLES: { value: SubmitterRole; label: string }[] = [
+  { value: 'principal', label: 'School Principal' },
+  { value: 'teacher', label: 'Teacher' },
+  { value: 'parent', label: 'Parent' },
+  { value: 'other', label: 'Other' },
+]
 
 interface SchoolSubmissionFormProps {
   onClose: () => void
-  onSuccess: () => void
+  onSuccess?: () => void
 }
 
 interface SchoolFormData {
@@ -27,7 +44,7 @@ interface SchoolFormData {
   message: string
 }
 
-const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps) => {
+const SchoolSubmissionForm = ({ onClose, onSuccess: _onSuccess }: SchoolSubmissionFormProps) => {
   const [step, setStep] = useState<1 | 2 | 3>(1)
   const [submitting, setSubmitting] = useState(false)
   const [formData, setFormData] = useState<SchoolFormData>({
@@ -48,15 +65,6 @@ const SchoolSubmissionForm = ({ onClose, onSuccess }: SchoolSubmissionFormProps)
     currentNeeds: [],
     message: '',
   })
-
-  const handleNeedToggle = (need: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      currentNeeds: prev.currentNeeds.includes(need)
-        ? prev.currentNeeds.filter((n) => n !== need)
-        : [...prev.currentNeeds, need],
-    }))
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -189,7 +197,7 @@ function SchoolInfoStep({
             label="Province"
             value={formData.province}
             onChange={(v) => updateField('province', v)}
-            options={PROVINCES.map((p) => ({ value: p, label: p }))}
+            options={CAMBODIA_PROVINCES.map((p) => ({ value: p, label: p }))}
             placeholder="Select"
             required
           />
@@ -228,13 +236,13 @@ function SchoolInfoStep({
           <div className="grid grid-cols-2 gap-2 mt-2">
             {SCHOOL_NEEDS.map((need) => (
               <NeedCheckbox
-                key={need}
-                need={need}
-                checked={formData.currentNeeds.includes(need)}
+                key={need.id}
+                need={need.label}
+                checked={formData.currentNeeds.includes(need.id)}
                 onToggle={() => {
-                  const newNeeds = formData.currentNeeds.includes(need)
-                    ? formData.currentNeeds.filter((n) => n !== need)
-                    : [...formData.currentNeeds, need]
+                  const newNeeds = formData.currentNeeds.includes(need.id)
+                    ? formData.currentNeeds.filter((n) => n !== need.id)
+                    : [...formData.currentNeeds, need.id]
                   updateField('currentNeeds', newNeeds)
                 }}
               />

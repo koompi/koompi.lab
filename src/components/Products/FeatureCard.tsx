@@ -1,11 +1,9 @@
 import { useEffect, useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
-import { getIcon } from '../Shared/Icons'
 
 interface FeatureCardProps {
   title: string
   description: string
-  icon: string
+  icon?: string
   image?: string
   hero?: boolean
   large?: boolean
@@ -20,7 +18,7 @@ interface FeatureCardProps {
 const FeatureCard = ({
   title,
   description,
-  icon,
+  icon: _icon, // icon may be used by parent
   image,
   hero,
   large,

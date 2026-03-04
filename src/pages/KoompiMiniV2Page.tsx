@@ -131,6 +131,12 @@ const KoompiMiniV2Page = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-koompi-primary/90 to-koompi-primary/70" />
 
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: 'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
+        }} />
+
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
           <div className="grid md:grid-cols-2 gap-12 items-center">

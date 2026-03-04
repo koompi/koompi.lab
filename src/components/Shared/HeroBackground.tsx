@@ -6,7 +6,7 @@ interface HeroBackgroundProps {
   disablePointerEvents?: boolean
 }
 
-const HeroBackground = ({ children, overlayOpacity = '80', disablePointerEvents = false }: HeroBackgroundProps) => {
+const HeroBackground = ({ children, overlayOpacity: _overlayOpacity = '80', disablePointerEvents = false }: HeroBackgroundProps) => {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -39,12 +39,12 @@ const HeroBackground = ({ children, overlayOpacity = '80', disablePointerEvents 
       <div className="absolute top-20 left-10 w-96 h-96 bg-koompi-secondary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-koompi-accent-pink/10 rounded-full blur-3xl" />
 
-      {/* Dot pattern grid overlay */}
+      {/* Grid overlay */}
       <div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-[0.012]"
         style={{
-          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+          backgroundImage: 'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
         }}
       />
 

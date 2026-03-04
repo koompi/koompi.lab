@@ -222,7 +222,7 @@ export const APPS: App[] = [
   },
 ]
 
-export const FEATURED_APPS = APPS.filter(app => app.new || app.rating >= 4.6)
+export const FEATURED_APPS = APPS.filter(app => app.new || (app.rating !== undefined && app.rating >= 4.6))
 
 export const PLATFORM_ICONS = {
   linux: '🐧',

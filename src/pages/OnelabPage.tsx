@@ -1,43 +1,29 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ProductHero, FeatureCard, FAQ, ProductCTA } from '../components/Products'
+import { FeatureCard, FAQ, ProductCTA } from '../components/Products'
 import { LAB_FEATURES, HOW_IT_WORKS_STEPS, ONELAB_FAQ, IMPACT_STATS } from '../data/products'
+import HeroBackground from '../components/Shared/HeroBackground'
 
 // Fallback data in case import fails
 const STATS = IMPACT_STATS || {
-  labsInstalled: 45,
-  schoolsWithoutLabs: 13000,
-  provincesReached: 12,
+  labsInstalled: 65,
+  schoolsWithoutLabs: 13753,
+  provincesReached: 25,
   studentsImpacted: 15000,
   teachersTrained: 320,
 }
 
 const OnelabPage = () => {
-  const [showFloatingCTA, setShowFloatingCTA] = useState(false)
-
   useEffect(() => {
-    const handleScroll = () => {
-      setShowFloatingCTA(window.scrollY > 600)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    // Scroll to top on mount
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
 
   return (
     <div className="min-h-screen">
-      {/* 1. Hero - Content Server Style */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{
-        background: 'linear-gradient(180deg, #1a2a4a 0%, #263c5c 50%, #2d4a6c 100%)'
-      }}>
-        {/* Dot pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div style={{
-            backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-            backgroundSize: '20px 20px',
-          }} className="absolute inset-0" />
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 pt-32 pb-20 flex flex-col items-center justify-center text-center">
+      {/* 1. Hero - Video Background */}
+      <HeroBackground>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 pt-32 pb-20 flex flex-col items-center justify-center text-center h-screen">
           {/* Title */}
           <h1 className="text-[48px] md:text-[72px] font-black text-white mb-6 leading-tight">
             KOOMPI <span style={{ color: '#F16179' }}>ONELAB</span>
@@ -81,7 +67,7 @@ const OnelabPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </HeroBackground>
 
       {/* 2. Problem → Solution */}
       <section className="py-20 px-4 bg-white">
@@ -195,7 +181,7 @@ const OnelabPage = () => {
                   <div className="w-12 h-12 bg-gradient-to-br from-koompi-accent-pink to-pink-400 rounded-full flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0">
                     {step.step}
                   </div>
-                  {step.step < 4 && <div className="w-0.5 flex-1 bg-gray-200 mt-2" />}
+                  {parseInt(step.step) < 4 && <div className="w-0.5 flex-1 bg-gray-200 mt-2" />}
                 </div>
                 <div className="pb-8">
                   <span className="text-2xl text-koompi-accent-pink">{step.icon}</span>

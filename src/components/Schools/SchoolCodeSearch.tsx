@@ -4,7 +4,7 @@ interface SchoolCodeSearchProps {
   onSearchResult?: (found: boolean, schoolCode?: string) => void
 }
 
-const SchoolCodeSearch = ({ onSearchResult }: SchoolCodeSearchProps) => {
+const SchoolCodeSearch = ({ onSearchResult: _onSearchResult }: SchoolCodeSearchProps) => {
   const [schoolCode, setSchoolCode] = useState('')
   const [isSearching, setIsSearching] = useState(false)
   const [error, setError] = useState('')
@@ -26,7 +26,7 @@ const SchoolCodeSearch = ({ onSearchResult }: SchoolCodeSearchProps) => {
       const response = await fetch(`/api/schools/code/${schoolCode.trim()}`)
 
       if (response.ok) {
-        const school = await response.json()
+        await response.json()
         // Navigate to school details page
         window.location.href = `/schools/${schoolCode.trim()}`
       } else if (response.status === 404) {

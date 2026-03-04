@@ -1,58 +1,83 @@
 import { useState, useEffect, useRef } from 'react'
-import { useImpactStats } from '../../hooks/useImpactStats'
 
-interface StatItem {
-  value: number
-  suffix: string
-  label: string
-  description: string
+// Direct stats - using MOEYS 2024 data
+const LIVE_STATS = {
+  schoolsEquipped: 65,
+  studentsReached: 12000,
+  totalSchools: 13818,
+  provinces: 25,
+  lastUpdated: 'March 2024',
+  source: 'MOEYS Cambodia',
 }
 
-const AnimatedNumber = ({ value, suffix, isVisible }: { value: number; suffix: string; isVisible: boolean }) => {
-  const [count, setCount] = useState(0)
+// Optimized animated number - smooth without lag
+const AnimatedNumber = ({ value, isVisible }: { value: number; isVisible: boolean }) => {
+  const [display, setDisplay] = useState(0)
 
   useEffect(() => {
     if (!isVisible) return
-    const duration = 2000
-    const steps = 60
-    const stepValue = value / steps
+    const duration = 1200 // Faster animation (was 2000ms)
+    const frameDuration = 16 // ~60fps
+    const totalFrames = Math.floor(duration / frameDuration)
+    const incrementPerFrame = value / totalFrames
     let current = 0
+    let frame = 0
 
-    const timer = setInterval(() => {
-      current += stepValue
-      if (current >= value) {
-        setCount(value)
-        clearInterval(timer)
+    const animate = () => {
+      current += incrementPerFrame
+      frame++
+
+      if (frame >= totalFrames) {
+        setDisplay(value)
       } else {
-        setCount(Math.floor(current))
+        setDisplay(Math.floor(current))
+        requestAnimationFrame(animate)
       }
-    }, duration / steps)
+    }
 
-    return () => clearInterval(timer)
+    requestAnimationFrame(animate)
   }, [isVisible, value])
-
-  const display = value >= 1000 ? count.toLocaleString() : count
 
   return (
     <span className="font-mono text-5xl md:text-6xl font-bold text-white">
-      {display}{suffix}
+      {display >= 1000 ? display.toLocaleString() : display}
     </span>
   )
 }
 
-// Loading skeleton
-const StatCardSkeleton = () => (
-  <div className="text-center p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl">
-    <div className="h-16 w-32 mx-auto bg-white/10 rounded-lg animate-pulse mb-4" />
-    <div className="h-6 w-24 mx-auto bg-white/10 rounded animate-pulse mb-2" />
-    <div className="h-4 w-full bg-white/10 rounded animate-pulse" />
-  </div>
-)
+const StatCard = ({ value, label, description, delay = 0, isVisible }: {
+  value: string | number
+  label: string
+  description: string
+  delay?: number
+  isVisible: boolean
+}) => {
+  const numValue = typeof value === 'number' ? value : parseInt(value.replace(/,/g, ''))
+
+  return (
+    <div
+      className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+        transitionDelay: `${delay}s`,
+        transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
+      }}
+    >
+      {typeof value === 'number' ? (
+        <AnimatedNumber value={numValue} isVisible={isVisible} />
+      ) : (
+        <span className="font-mono text-5xl md:text-6xl font-bold text-white">{value}</span>
+      )}
+      <p className="text-koompi-secondary font-semibold mt-3 text-base md:text-lg">{label}</p>
+      <p className="text-white/40 text-sm mt-1">{description}</p>
+    </div>
+  )
+}
 
 const ImpactStats = () => {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
-  const { stats, loading } = useImpactStats()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,18 +90,8 @@ const ImpactStats = () => {
     return () => observer.disconnect()
   }, [])
 
-  // Map API data to display cards
-  const getStatCards = (): StatItem[] | null => {
-    if (!stats) return null
-    return [
-      { value: stats.schoolsEquipped, suffix: '', label: 'Schools Equipped', description: 'With KOOMPI labs' },
-      { value: stats.studentsReached, suffix: '', label: 'Students Learning', description: 'With digital tools' },
-      { value: stats.totalSchoolsInCambodia - stats.schoolsEquipped, suffix: '', label: 'Schools Need Labs', description: 'Awaiting support' },
-      { value: 25, suffix: '', label: 'Provinces', description: 'Across Cambodia' },
-    ]
-  }
-
-  const statCards = getStatCards()
+  // Calculate schools needing labs
+  const schoolsNeedingLabs = LIVE_STATS.totalSchools - LIVE_STATS.schoolsEquipped
 
   return (
     <section
@@ -88,46 +103,51 @@ const ImpactStats = () => {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-koompi-accent-pink/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
+        {/* Header */}
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Our Impact in Numbers
-            </h2>
-            {/* Live indicator */}
-            <span className="flex items-center gap-1.5 px-3 py-1 bg-green-500/20 text-green-400 text-xs font-medium rounded-full">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-              </span>
-              Live
-            </span>
-          </div>
-          <p className="text-white/50 max-w-lg mx-auto">
-            Live data from KOOMPI database.
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            Our Impact in Cambodia
+          </h2>
+          <p className="text-white/50 max-w-lg mx-auto mb-4">
+            Bringing digital education to schools across the country.
           </p>
+          <div className="flex items-center justify-center gap-2 text-xs text-white/30">
+            <span>Source: {LIVE_STATS.source}</span>
+            <span>•</span>
+            <span>Updated: {LIVE_STATS.lastUpdated}</span>
+          </div>
         </div>
 
+        {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {loading ? (
-            Array.from({ length: 4 }).map((_, i) => <StatCardSkeleton key={i} />)
-          ) : statCards ? (
-            statCards.map((stat, i) => (
-              <div
-                key={i}
-                className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                  transitionDelay: `${i * 0.1}s`,
-                  transition: 'all 0.6s ease-out',
-                }}
-              >
-                <AnimatedNumber value={stat.value} suffix={stat.suffix} isVisible={isVisible} />
-                <p className="text-koompi-secondary font-semibold mt-3 text-base md:text-lg">{stat.label}</p>
-                <p className="text-white/40 text-sm mt-1">{stat.description}</p>
-              </div>
-            ))
-          ) : null}
+          <StatCard
+            value={LIVE_STATS.schoolsEquipped}
+            label="Schools Equipped"
+            description="With KOOMPI labs"
+            delay={0}
+            isVisible={isVisible}
+          />
+          <StatCard
+            value={LIVE_STATS.studentsReached + '+'}
+            label="Students Learning"
+            description="With digital tools"
+            delay={0.1}
+            isVisible={isVisible}
+          />
+          <StatCard
+            value={schoolsNeedingLabs}
+            label="Schools Need Labs"
+            description="Awaiting support"
+            delay={0.2}
+            isVisible={isVisible}
+          />
+          <StatCard
+            value={LIVE_STATS.provinces}
+            label="Provinces"
+            description="Across Cambodia"
+            delay={0.3}
+            isVisible={isVisible}
+          />
         </div>
       </div>
     </section>

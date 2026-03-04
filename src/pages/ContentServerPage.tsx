@@ -1,12 +1,6 @@
 import { Link } from 'react-router-dom'
-import { FeatureCard, SpecTable, FAQ, ProductCTA } from '../components/Products'
-import { getIcon } from '../components/Shared/Icons'
-import {
-  CONTENT_CATEGORIES,
-  CONTENT_SERVER_SPECS,
-  CONTENT_SERVER_FAQ,
-  CONTENT_SERVER_PACKAGE_PRICE,
-} from '../data/products'
+import { FAQ, ProductCTA } from '../components/Products'
+import { CONTENT_SERVER_FAQ } from '../data/products'
 
 const ContentServerPage = () => {
   return (
@@ -27,10 +21,10 @@ const ContentServerPage = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-koompi-primary/90 via-koompi-primary/80 to-secondary-600/90 backdrop-blur-[4px]" />
 
-        {/* Dot pattern grid overlay */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+        {/* Grid overlay */}
+        <div className="absolute inset-0 opacity-[0.012]" style={{
+          backgroundImage: 'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
         }} />
 
         {/* Content */}

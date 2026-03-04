@@ -1,10 +1,15 @@
 import { useEffect, useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
-import ValuePropCard from './ValuePropCard'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 const Mission = () => {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '-20%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -17,157 +22,98 @@ const Mission = () => {
     return () => observer.disconnect()
   }, [])
 
-  const valueProps = [
-    {
-      title: 'Offline-first',
-      description: 'Content works without internet. Students access educational materials anytime, anywhere.',
-      gradientFrom: 'from-amber-50',
-      gradientTo: 'to-orange-50',
-      accentColor: '#F59E0B',
-      shape: 'diamond' as const,
-    },
-    {
-      title: 'Solar-powered',
-      description: 'Labs run anywhere. Solar panels enable digital education in remote areas without grid power.',
-      gradientFrom: 'from-emerald-50',
-      gradientTo: 'to-green-50',
-      accentColor: '#10B981',
-      shape: 'triangle' as const,
-    },
-    {
-      title: 'MoEYS Approved',
-      description: 'Official partnership with Ministry of Education, Youth and Sport. Curriculum-aligned content.',
-      gradientFrom: 'from-rose-50',
-      gradientTo: 'to-pink-50',
-      accentColor: '#F43F5E',
-      shape: 'rect' as const,
-    },
-  ]
-
   return (
-    <section ref={sectionRef} id="mission" className="py-24 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Headline */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-5 py-2 bg-gradient-to-r from-koompi-accent-pink/20 to-pink-500/10 text-koompi-accent-pink rounded-full text-sm font-semibold mb-6 border border-koompi-accent-pink/20">
-            Our Mission
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-koompi-primary mb-6">
-            Built to empower.
-            <span className="block text-koompi-accent-pink">Born to connect.</span>
+    <section
+      ref={sectionRef}
+      id="mission"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
+    >
+      {/* Large decorative background text */}
+      <motion.div
+        style={{ y, opacity }}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+      >
+        <span className="text-[20vw] font-black text-gray-50 leading-none tracking-tighter select-none">
+          MISSION
+        </span>
+      </motion.div>
+
+      {/* Floating gradient orbs */}
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          x: [0, 30, 0],
+          y: [0, -30, 0],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-koompi-accent-pink/10 to-transparent blur-3xl"
+      />
+      <motion.div
+        animate={{
+          scale: [1.3, 1, 1.3],
+          x: [0, -30, 0],
+          y: [0, 30, 0],
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-gradient-to-tr from-koompi-secondary/10 to-transparent blur-3xl"
+      />
+
+      {/* Grid pattern */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: 'linear-gradient(to right, rgb(38, 60, 92) 1px, transparent 1px), linear-gradient(to bottom, rgb(38, 60, 92) 1px, transparent 1px)',
+        backgroundSize: '40px 40px',
+      }} />
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-20 text-center">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-koompi-accent-pink/5 rounded-full border border-koompi-accent-pink/20 mb-8"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-koompi-accent-pink animate-ping"></span>
+            <span className="text-sm font-semibold text-koompi-accent-pink">Our Mission</span>
+          </motion.span>
+
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-koompi-primary leading-none tracking-tighter mb-6">
+            Built to
+            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-koompi-accent-pink to-pink-600">
+              empower.
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our KOOMPI Lab and Content Server solutions are designed specifically
-            for Cambodian schools, bridging the digital divide with technology that
-            works everywhere.
+
+          <p className="text-xl md:text-2xl text-gray-500 max-w-2xl mx-auto leading-relaxed mb-12">
+            Bridging Cambodia's digital divide with technology that works everywhere.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Value Props - Now using ValuePropCard component */}
-        <div className="grid md:grid-cols-3 gap-5 mb-20">
-          {valueProps.map((prop, i) => (
-            <ValuePropCard
-              key={i}
-              icon={null}
-              title={prop.title}
-              description={prop.description}
-              delay={i * 0.15}
-              gradientFrom={prop.gradientFrom}
-              gradientTo={prop.gradientTo}
-              accentColor={prop.accentColor}
-              shape={prop.shape}
-            />
-          ))}
-        </div>
-
-        {/* Cost Summary */}
-        <div className="bg-gradient-to-br from-cream to-white rounded-3xl shadow-xl p-8 md:p-14 border border-gray-100/50 relative overflow-hidden">
-          {/* Decorative gradient overlay */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-koompi-secondary/5 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-koompi-accent-pink/5 to-transparent rounded-full blur-2xl" />
-
-          <div className="relative z-10 grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-bold text-koompi-primary mb-4">
-                Transparent Pricing
-              </h3>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Every donation goes directly to hardware, installation, and training.
-                We maintain full transparency so donors know their impact.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-center gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-koompi-secondary to-cyan-600 rounded-full flex items-center justify-center shadow-md">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </span>
-                  <span className="text-gray-800 font-medium text-lg">Content Server: ~$3,500</span>
-                </li>
-                <li className="flex items-center gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-koompi-secondary to-cyan-600 rounded-full flex items-center justify-center shadow-md">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </span>
-                  <span className="text-gray-800 font-medium text-lg">Full Lab Bundle: ~$12,000</span>
-                </li>
-                <li className="flex items-center gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-koompi-accent-yellow to-amber-500 rounded-full flex items-center justify-center shadow-md">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                    </svg>
-                  </span>
-                  <span className="text-gray-800 font-medium text-lg">Solar upgrade available</span>
-                </li>
-              </ul>
-              <Link
-                to="/fund#pricing"
-                className="inline-flex items-center gap-2 mt-6 text-koompi-secondary font-semibold hover:gap-3 transition-all group text-lg hover:underline decoration-2 underline-offset-4"
-              >
-                See full pricing details
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-            <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
-              {/* Subtle shine effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="relative z-10">
-                <h4 className="font-bold text-koompi-primary mb-6 text-lg">What's Included:</h4>
-                <ul className="space-y-4 text-gray-700">
-                  <li className="flex items-center gap-3">
-                    <span className="flex-shrink-0 w-2 h-2 bg-koompi-secondary rounded-full" />
-                    KOOMPI Mini/Ministations
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="flex-shrink-0 w-2 h-2 bg-koompi-secondary rounded-full" />
-                    2TB SSD with educational content
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="flex-shrink-0 w-2 h-2 bg-koompi-secondary rounded-full" />
-                    Deco Mesh WiFi (150 connections)
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="flex-shrink-0 w-2 h-2 bg-koompi-secondary rounded-full" />
-                    KOOMPI Apps & Salacamp platform
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="flex-shrink-0 w-2 h-2 bg-koompi-secondary rounded-full" />
-                    Professional installation
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="flex-shrink-0 w-2 h-2 bg-koompi-secondary rounded-full" />
-                    Teacher training
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <a
+            href="#onelab"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-koompi-primary text-white rounded-full font-semibold text-lg hover:bg-koompi-accent-pink transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-koompi-accent-pink/30 hover:-translate-y-1"
+          >
+            Learn more about our work
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </motion.div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
     </section>
   )
 }

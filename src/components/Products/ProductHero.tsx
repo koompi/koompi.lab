@@ -133,14 +133,14 @@ const ProductHero = ({
         )}
         <div className="video-overlay bg-koompi-primary/80 backdrop-blur-[8px]" />
 
-        {/* Dot pattern */}
-        <div className="absolute inset-0 z-[2] opacity-10">
+        {/* Grid pattern */}
+        <div className="absolute inset-0 z-[2] opacity-[0.012]">
           <div
             className="absolute inset-0"
             style={{
               backgroundImage:
-                'radial-gradient(circle, white 1px, transparent 1px)',
-              backgroundSize: '24px 24px',
+                'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+              backgroundSize: '30px 30px',
             }}
           />
         </div>
@@ -176,14 +176,14 @@ const ProductHero = ({
   if (variant === 'split') {
     return (
       <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-koompi-primary via-koompi-primary to-secondary-600">
-        {/* Dot pattern */}
-        <div className="absolute inset-0 opacity-5">
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.012]">
           <div
             className="absolute inset-0"
             style={{
               backgroundImage:
-                'radial-gradient(circle, white 1px, transparent 1px)',
-              backgroundSize: '20px 20px',
+                'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+              backgroundSize: '30px 30px',
             }}
           />
         </div>
@@ -243,13 +243,13 @@ const ProductHero = ({
     >
       <div className="absolute inset-0 bg-koompi-primary/70 backdrop-blur-sm" />
 
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-[0.012]">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              'radial-gradient(circle, white 1px, transparent 1px)',
-            backgroundSize: '20px 20px',
+              'linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px), linear-gradient(rgb(255, 255, 255) 1px, transparent 1px)',
+            backgroundSize: '30px 30px',
           }}
         />
       </div>

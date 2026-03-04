@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import HeroBackground from './HeroBackground'
 import ProductOverlayMenu from './ProductOverlayMenu'
 
 const navLinks = [

@@ -39,6 +39,58 @@ const FILLED_ICONS = {
       <rect x="19" y="11" width="6" height="10" rx="1" fill="#F16179"/>
     </svg>
   ),
+  'search': (
+    <svg className="w-full h-full" fill="#F16179" viewBox="0 0 24 24">
+      <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fillOpacity="0.3"/>
+      <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" stroke="#F16179" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  'firefox': (
+    <svg className="w-full h-full" fill="#F16179" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fillOpacity="0.2"/>
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#F16179" strokeWidth="2"/>
+    </svg>
+  ),
+  'linux': (
+    <svg className="w-full h-full" fill="#F16179" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8" fillOpacity="0.2"/>
+      <circle cx="12" cy="12" r="8" stroke="#F16179" strokeWidth="2"/>
+    </svg>
+  ),
+  'apple': (
+    <svg className="w-full h-full" fill="#F16179" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8" fillOpacity="0.2"/>
+      <circle cx="12" cy="12" r="8" stroke="#F16179" strokeWidth="2"/>
+    </svg>
+  ),
+  'target': (
+    <svg className="w-full h-full" fill="#F16179" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fillOpacity="0.2"/>
+      <circle cx="12" cy="12" r="10" stroke="#F16179" strokeWidth="2"/>
+      <circle cx="12" cy="12" r="6" fillOpacity="0.4"/>
+      <circle cx="12" cy="12" r="6" stroke="#F16179" strokeWidth="2"/>
+      <circle cx="12" cy="12" r="2" fill="#F16179"/>
+    </svg>
+  ),
+  'computer': (
+    <svg className="w-full h-full" fill="#F16179" viewBox="0 0 24 24">
+      <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3H9.75z" fillOpacity="0.2"/>
+      <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="#F16179" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  'monitor': (
+    <svg className="w-full h-full" fill="#F16179" viewBox="0 0 24 24">
+      <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3" stroke="#F16179" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="#F16179" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fillOpacity="0.2"/>
+    </svg>
+  ),
+  'document': (
+    <svg className="w-full h-full" fill="#F16179" viewBox="0 0 24 24">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" fillOpacity="0.2"/>
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#F16179" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="#F16179" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
 }
 
 export type IconType = keyof typeof ICON_MAP
@@ -135,6 +187,26 @@ const ICON_MAP = {
   'chart': (
     <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+  ),
+  'search': (
+    <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  ),
+  'firefox': (
+    <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+    </svg>
+  ),
+  'linux': (
+    <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+    </svg>
+  ),
+  'apple': (
+    <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M15.5 14c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zm-2 2c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.5 16h-3c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h3c.28 0 .5.22.5.5s-.22.5-.5.5z"/>
     </svg>
   ),
 
@@ -320,10 +392,10 @@ export const EMOJI_TO_ICON: Record<string, IconType> = {
   '📄': 'document',
   '🎵': 'music',
   '🎬': 'film',
-  '🦊': 'firefox',
-  '🐧': 'linux',
+  '🦊': 'laptop',
+  '🐧': 'laptop',
   '🪟': 'check',
-  '🍎': 'apple',
+  '🍎': 'laptop',
   '📴': 'wifi',
   '🌍': 'globe',
   '🤝': 'handshake',
@@ -331,11 +403,11 @@ export const EMOJI_TO_ICON: Record<string, IconType> = {
 
 export const getIcon = (iconOrEmoji: string, variant: 'outline' | 'filled' = 'outline'): ReactNode => {
   // If it's an emoji, map it to SVG key
-  const iconKey = EMOJI_TO_ICON[iconOrEmoji] || iconOrEmoji as IconType
+  const iconKey = (EMOJI_TO_ICON[iconOrEmoji] || iconOrEmoji) as IconType
 
   if (variant === 'filled') {
-    return FILLED_ICONS[iconKey] || FILLED_ICONS.laptop
+    return (FILLED_ICONS as Record<string, ReactNode>)[iconKey] || FILLED_ICONS.laptop
   }
 
-  return ICON_MAP[iconKey] || ICON_MAP.check
+  return (ICON_MAP as Record<string, ReactNode>)[iconKey] || ICON_MAP.check
 }

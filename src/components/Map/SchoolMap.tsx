@@ -3,7 +3,10 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
 
 // Fix for default marker icons in React
-delete (L.Icon.Default.prototype as any)._getIconUrl
+const iconDefault = L.Icon.Default.prototype as L.Icon.Default & {
+  _getIconUrl?: string
+}
+delete iconDefault._getIconUrl
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
@@ -144,7 +147,6 @@ const SchoolMap = ({ onProvinceSelect }: SchoolMapProps) => {
 
             {SCHOOL_LOCATIONS.map((location) => {
               const percentage = Math.round((location.funded / location.schools) * 100)
-              const isSelected = selectedProvince === location.province
 
               return (
                 <Marker

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getIcon } from '../components/Shared/Icons'
-import { APPS, APP_CATEGORIES, FEATURED_APPS, PLATFORM_ICONS } from '../data/apps'
+import { APPS, APP_CATEGORIES, FEATURED_APPS } from '../data/apps'
 import type { App } from '../data/apps'
 
 const AppsPage = () => {
@@ -39,7 +39,7 @@ const AppsPage = () => {
   }
 
   // Download handler
-  const handleDownload = (appId: string, platform: string) => {
+  const handleDownload = (appId: string) => {
     if (installedApps.has(appId)) {
       // Open app
       window.open('#', '_blank')
@@ -760,7 +760,7 @@ const AppDetailModal = ({ app, onClose, onDownload, isDownloading, isInstalled }
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     )}
-                    {platform === 'mac' && (
+                    {platform === 'macos' && (
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
                       </svg>

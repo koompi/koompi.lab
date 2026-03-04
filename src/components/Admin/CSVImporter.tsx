@@ -35,8 +35,8 @@ const CSVImporter = ({ onClose, onImportComplete }: CSVImporterProps) => {
   const [file, setFile] = useState<File | null>(null)
   const [dragActive, setDragActive] = useState(false)
   const [parseResult, setParseResult] = useState<ParseResult | null>(null)
-  const [importing, setImporting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [_importing, setImporting] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleDrag = (e: React.DragEvent) => {

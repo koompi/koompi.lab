@@ -33,25 +33,23 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
   if (!school) return null
 
   const getImpactMessage = () => {
-    if (typeof amount === 'string') return ''
-
-    const studentsImpacted = Math.round((amount / 12000) * school.studentCount)
-    const percentage = Math.round((amount / 12000) * 100)
+    const numAmount = typeof amount === 'number' ? amount : parseInt(amount) || 0
+    const studentsImpacted = Math.round((numAmount / 12000) * school.studentCount)
 
     if (school.status === 'none') {
-      return `Your $${amount.toLocaleString()} helps bring digital education to ${studentsImpacted} students`
+      return `Your $${numAmount.toLocaleString()} helps bring digital education to ${studentsImpacted} students`
     }
     if (school.status === 'lab') {
-      return `Your $${amount.toLocaleString()} adds offline educational content for ${studentsImpacted} students`
+      return `Your $${numAmount.toLocaleString()} adds offline educational content for ${studentsImpacted} students`
     }
     if (school.status === 'lab-content') {
-      return `Your $${amount.toLocaleString()} helps fund solar power for ${studentsImpacted} students`
+      return `Your $${numAmount.toLocaleString()} helps fund solar power for ${studentsImpacted} students`
     }
-    return `Your donation of $${amount.toLocaleString()} supports ${studentsImpacted} students`
+    return `Your donation of $${numAmount.toLocaleString()} supports ${studentsImpacted} students`
   }
 
   const getCostBreakdown = () => {
-    const costPerStudent = 12000 / school.studentCount
+    const numAmount = typeof amount === 'number' ? amount : parseInt(amount) || 0
 
     return (
       <div className="bg-cream rounded-2xl p-6 mt-4 border border-gray-100 shadow-sm">
@@ -59,7 +57,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
         <ul className="space-y-2 text-sm text-gray-700">
           <li className="flex items-start gap-2">
             <span className="text-koompi-accent-pink mt-0.5">✓</span>
-            <span><strong>{Math.round(amount / 1200)} KOOMPI Ministations</strong> - Low-power computers</span>
+            <span><strong>{Math.round(numAmount / 1200)} KOOMPI Ministations</strong> - Low-power computers</span>
           </li>
           <li className="flex items-start gap-2">
             <span className="text-koompi-accent-pink mt-0.5">✓</span>
@@ -74,7 +72,7 @@ const DonationModal = ({ school, onClose }: DonationModalProps) => {
             <span><strong>Installation & Training</strong> - Teacher support included</span>
           </li>
         </ul>
-        {school.status === 'none' && amount < 12000 && (
+        {school.status === 'none' && numAmount < 12000 && (
           <p className="text-xs text-gray-500 mt-3">
             *Partial donations will be pooled with others to fund this school
           </p>
